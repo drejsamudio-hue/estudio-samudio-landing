@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones</title>
+<meta name="description" content="Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos y reclamos bancarios. Información para consumidores de Posadas y toda la provincia de Misiones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#FAF7F1; --papel2:#F2EDE3; --nieve:#FEFCF8;
+    --tierra:#A8452A; --tierra-claro:#B44C2F; --tierra-oscuro:#8A3520; --tierra-suave:#F6E8E1;
+    --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#8C93A0;
+    --linea:#E3DCCF; --linea-fuerte:#D2C8B6;
+    --verde:#1e7d44; --amarillo:#c9891b; --rojo:#a33;
+    --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+    --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --margen:104px;
+    --sombra:0 1px 2px rgba(24,18,10,.04), 0 6px 20px -8px rgba(24,18,10,.10);
+    --sombra-alta:0 2px 4px rgba(24,18,10,.05), 0 14px 34px -12px rgba(24,18,10,.18);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);font-size:17.5px;line-height:1.62;color:var(--tinta);
+       background:#EFE9DE;
+       background-image:radial-gradient(1200px 600px at 50% -10%, #F7F1E6 0%, #EFE9DE 60%);
+       -webkit-font-smoothing:antialiased}
+
+  /* ── HOJA ── */
+  .hoja{max-width:880px;margin:0 auto;background:var(--papel);position:relative;min-height:100vh;
+        box-shadow:0 0 0 1px rgba(24,18,10,.06), 0 30px 80px -40px rgba(24,18,10,.35)}
+  .hoja::before{content:"";position:absolute;top:0;bottom:0;left:var(--margen);width:1px;
+                background:linear-gradient(180deg,transparent 0,var(--linea) 40px,var(--linea) calc(100% - 40px),transparent 100%)}
+  .hoja::after{content:"";position:absolute;top:0;bottom:0;left:calc(var(--margen) - 5px);width:1.5px;
+               background:linear-gradient(180deg,transparent 0,rgba(168,69,42,.32) 40px,rgba(168,69,42,.32) calc(100% - 40px),transparent 100%)}
+  .cuerpo{padding:0 44px 0 calc(var(--margen) + 40px)}
+  @media(max-width:760px){
+    :root{--margen:0px}
+    body{background:var(--papel)}
+    .hoja{box-shadow:none}
+    .hoja::before,.hoja::after{display:none}
+    .cuerpo{padding:0 22px}
+  }
+
+  /* ── MASTHEAD ── */
+  .sello{display:flex;align-items:center;gap:11px;padding-top:46px;font-size:11.5px;letter-spacing:3.2px;
+         text-transform:uppercase;font-weight:600;color:var(--tierra)}
+  .sello svg{flex:none;opacity:.9}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8.4vw,74px);line-height:.98;letter-spacing:-1.4px;
+     margin:26px 0 0;text-wrap:balance}
+  h1 em{font-style:italic;color:var(--tierra)}
+  .bajada{font-size:19px;line-height:1.55;color:var(--tinta-70);max-width:46ch;margin:22px 0 0;text-wrap:pretty}
+  .lugar{margin:26px 0 38px;font-size:15px;letter-spacing:.4px;color:var(--tinta-45);display:flex;align-items:center;gap:9px}
+  .lugar svg{flex:none;color:var(--tierra)}
+  .lugar::after{content:"";flex:1;height:1px;background:var(--linea)}
+
+  /* ── FOLIADO STICKY ── */
+  .foliado{position:sticky;top:0;z-index:30;background:rgba(250,247,241,.88);backdrop-filter:saturate(1.4) blur(14px);
+           border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .foliado .in{max-width:880px;margin:0 auto;padding:13px 22px;display:flex;align-items:center}
+  @media(min-width:761px){.foliado .in{padding-left:calc(var(--margen) + 40px);padding-right:44px}}
+  .folio{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;letter-spacing:.2px;
+         color:var(--tinta-45);white-space:nowrap;transition:color .35s}
+  .folio .num{width:30px;height:30px;flex:none;border:1px solid var(--linea-fuerte);border-radius:50%;
+              display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;
+              color:var(--tinta-45);background:var(--nieve);transition:.35s}
+  .folio .tx{display:none}
+  @media(min-width:600px){.folio .tx{display:inline}}
+  .folio.on{color:var(--tinta);font-weight:600}
+  .folio.on .num{border-color:var(--tierra);background:var(--tierra);color:#fff;box-shadow:0 0 0 4px rgba(168,69,42,.12)}
+  .folio.done{color:var(--tinta-70)}
+  .folio.done .num{border-color:rgba(168,69,42,.45);color:var(--tierra);background:var(--tierra-suave);font-family:var(--sans);font-size:14px}
+  .rule{flex:1;height:1px;background:var(--linea);margin:0 14px;position:relative;overflow:hidden;min-width:16px}
+  .rule i{position:absolute;inset:0;width:0;background:var(--tierra);opacity:.55;transition:width .55s cubic-bezier(.4,0,.2,1)}
+  .rule.fill i{width:100%}
+
+  /* ── PASOS ── */
+  main{padding-bottom:80px}
+  .step{display:none}
+  .step.active{display:block;animation:enter .45s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.step.active{animation:none}.rule i{transition:none}}
+  .anot{position:relative;padding-top:52px}
+  .anot .marca{display:inline-block;font-family:var(--serif);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;
+               color:var(--tierra);opacity:.75}
+  @media(min-width:761px){
+    .anot .marca{position:absolute;left:calc(-1 * (var(--margen) + 40px) + 18px);top:60px;width:calc(var(--margen) - 30px);
+                 text-align:right;font-size:12.5px;letter-spacing:1.2px;line-height:1.35;color:var(--tinta-45);opacity:1}
+  }
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(31px,5vw,42px);line-height:1.08;letter-spacing:-.6px;
+     margin:10px 0 12px;text-wrap:pretty}
+  p.lead{color:var(--tinta-70);margin:0 0 32px;font-size:17.5px;max-width:52ch;text-wrap:pretty}
+
+  /* ── VERTICALES ── */
+  .verticales{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:660px){.verticales{grid-template-columns:1fr 1fr}}
+  .vbtn{position:relative;display:flex;flex-direction:column;gap:16px;align-items:flex-start;text-align:left;font:inherit;
+        cursor:pointer;background:var(--nieve);border:1px solid var(--linea);border-radius:10px;padding:24px 22px 22px;
+        min-height:56px;box-shadow:var(--sombra);transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s,background .18s}
+  .vbtn:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:var(--linea-fuerte)}
+  .vbtn:active{transform:translateY(-1px)}
+  .vbtn:focus-visible{outline:2px solid var(--tierra);outline-offset:3px}
+  .vbtn.sel{border-color:var(--tierra);background:#FFFBF8;box-shadow:0 0 0 1px var(--tierra),var(--sombra-alta)}
+  .vico{width:54px;height:54px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:9px;
+        background:var(--papel2);color:var(--tierra);box-shadow:inset 0 0 0 1px rgba(168,69,42,.10);transition:.2s}
+  .vbtn:hover .vico{background:var(--tierra-suave)}
+  .vbtn.sel .vico{background:var(--tierra);color:#fff;box-shadow:none}
+  .vbtn b{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1;letter-spacing:-.3px;display:block;margin-bottom:8px}
+  .vbtn .d{font-size:16px;color:var(--tinta-70);line-height:1.5;display:block}
+  .vbtn .go{margin-top:auto;font-size:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--tierra);
+            display:flex;align-items:center;gap:7px;opacity:.85;transition:gap .18s}
+  .vbtn:hover .go{gap:11px;opacity:1}
+
+  /* ── PREGUNTAS ── */
+  .q{margin:0 0 34px}
+  .q .qt{display:block;font-size:20px;font-weight:600;line-height:1.35;letter-spacing:-.15px;margin-bottom:14px;text-wrap:pretty}
+  .q.err .qt{color:var(--rojo)}
+  .q.err .opts{outline:1.5px solid rgba(170,51,51,.55);outline-offset:9px;border-radius:12px}
+  .opts{display:flex;flex-direction:column;gap:9px}
+  .opt{display:flex;align-items:center;gap:14px;background:var(--nieve);border:1px solid var(--linea);border-radius:9px;
+       padding:14px 17px;min-height:60px;font-size:17.5px;line-height:1.42;cursor:pointer;
+       transition:border-color .16s,background .16s,box-shadow .16s}
+  .opt:hover{background:#fff;border-color:var(--linea-fuerte);box-shadow:var(--sombra)}
+  .opt input{position:absolute;opacity:0;width:0;height:0}
+  .dot{flex:none;width:24px;height:24px;border:1.5px solid var(--linea-fuerte);border-radius:50%;position:relative;
+       background:#fff;transition:border-color .16s,box-shadow .16s}
+  .dot::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--tierra);transform:scale(0);
+              transition:transform .18s cubic-bezier(.3,1.7,.5,1)}
+  .opt.on{border-color:var(--tierra);background:#FFFBF8;box-shadow:0 0 0 1px rgba(168,69,42,.35)}
+  .opt.on .dot{border-color:var(--tierra)}
+  .opt.on .dot::after{transform:scale(1)}
+  .opt:focus-within{outline:2px solid var(--tierra);outline-offset:3px}
+
+  /* ── FORMULARIO ── */
+  .campo{margin-bottom:22px}
+  .campo .lb{display:block;font-size:16.5px;font-weight:600;letter-spacing:-.1px;margin-bottom:8px}
+  .campo .hint{font-weight:400;color:var(--tinta-45);font-size:15px}
+  input[type=text],input[type=tel],input[type=email],select{width:100%;min-height:56px;padding:15px 16px;font:inherit;
+    font-size:17.5px;color:var(--tinta);background:var(--nieve);border:1px solid var(--linea-fuerte);border-radius:9px;
+    transition:border-color .15s,box-shadow .15s,background .15s}
+  input::placeholder{color:#B0A896}
+  input:hover,select:hover{border-color:#C0B49F}
+  input:focus,select:focus{outline:none;background:#fff;border-color:var(--tierra);box-shadow:0 0 0 4px rgba(168,69,42,.13)}
+  select{appearance:none;padding-right:46px;cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23A8452A' stroke-width='2' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 17px center}
+  .campo.err input,.campo.err select{border-color:var(--rojo);background:#FDF5F5}
+  .emsg{display:none;margin-top:8px;font-size:15px;font-weight:600;color:var(--rojo)}
+  .campo.err .emsg{display:block}
+  @media(min-width:660px){.fila{display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+  .consent{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:var(--tinta-70);
+           background:var(--papel2);border:1px solid var(--linea);border-radius:9px;padding:17px;cursor:pointer;transition:background .15s}
+  .consent:hover{background:#EFE9DD}
+  .consent input{width:24px;height:24px;flex:none;margin:1px 0 0;accent-color:var(--tierra)}
+  .campo.err .consent{border-color:var(--rojo);background:#FDF5F5}
+
+  /* ── BOTONES ── */
+  .acciones{display:flex;flex-direction:column;gap:12px;margin-top:34px;padding-top:28px;border-top:1px solid var(--linea)}
+  @media(min-width:660px){.acciones{flex-direction:row-reverse;align-items:center}.acciones .btn{flex:1}}
+  .btn{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;min-height:60px;padding:17px 26px;
+       font-family:var(--sans);font-size:18.5px;font-weight:600;letter-spacing:.1px;color:#fff;
+       background:linear-gradient(180deg,var(--tierra-claro),var(--tierra));border:none;border-radius:9px;cursor:pointer;
+       box-shadow:0 1px 2px rgba(24,18,10,.18),0 10px 24px -10px rgba(24,18,10,.45);
+       transition:filter .16s,transform .14s,box-shadow .16s}
+  .btn:hover{filter:brightness(1.06);box-shadow:0 2px 4px rgba(24,18,10,.18),0 16px 30px -12px rgba(24,18,10,.5)}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+  .btn:disabled{opacity:.6;cursor:not-allowed;transform:none;filter:none}
+  .volver{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:15px 24px;
+          font:inherit;font-size:17px;font-weight:600;color:var(--tinta-70);background:transparent;
+          border:1px solid var(--linea-fuerte);border-radius:9px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+  .volver:hover{background:var(--papel2);color:var(--tinta);border-color:#C0B49F}
+  @media(min-width:660px){.volver{width:auto;min-width:164px}}
+
+  /* ── DICTAMEN ── */
+  .dictamen{position:relative;border:1px solid var(--linea);border-radius:12px;padding:34px 26px 30px;background:var(--nieve);
+            box-shadow:var(--sombra);overflow:hidden}
+  .dictamen::before{content:"";position:absolute;top:0;left:0;right:0;height:5px}
+  .d-verde::before{background:var(--verde)}
+  .d-amarillo::before{background:var(--amarillo)}
+  .d-rojo::before{background:var(--rojo)}
+  .estampa{display:inline-block;padding:8px 16px;border:1.5px solid;border-radius:6px;font-size:14px;font-weight:700;
+           letter-spacing:2.2px;text-transform:uppercase;margin-bottom:18px}
+  .e-verde{color:var(--verde);border-color:rgba(30,125,68,.5);background:#EEF7F1}
+  .e-amarillo{color:var(--amarillo);border-color:rgba(201,137,27,.5);background:#FCF5E7}
+  .e-rojo{color:var(--rojo);border-color:rgba(170,51,51,.5);background:#FBEFEF}
+  .dictamen h3{font-family:var(--serif);font-weight:400;font-size:clamp(29px,4.8vw,40px);line-height:1.1;letter-spacing:-.6px;
+               margin:0 0 16px;text-wrap:pretty}
+  .dictamen p{margin:0 0 18px;font-size:17.5px;color:var(--tinta-70);text-wrap:pretty;max-width:54ch}
+  .dictamen p b{color:var(--tinta);font-weight:600}
+  .ctas{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+  @media(min-width:660px){.ctas{flex-direction:row}}
+  .cta{display:flex;align-items:center;justify-content:center;gap:11px;min-height:60px;padding:17px 24px;border-radius:9px;
+       text-decoration:none;font-size:18px;font-weight:600;transition:filter .15s,transform .14s,box-shadow .15s}
+  .cta.wa{background:linear-gradient(180deg,#249354,#1e7d44);color:#fff;box-shadow:0 10px 22px -12px rgba(30,125,68,.9)}
+  .cta.mail{background:linear-gradient(180deg,#1B3455,var(--tinta));color:#fff;box-shadow:0 10px 22px -12px rgba(18,35,59,.9)}
+  .cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .cta:active{transform:translateY(1px)}
+  .nota{font-size:15.5px;color:var(--tinta-45);margin-top:18px}
+  .guardado{display:flex;gap:11px;align-items:flex-start;margin-top:18px;padding:15px;border:1px solid #BCDFC9;
+            background:#EEF7F1;border-radius:9px;font-size:16px;font-weight:600;color:var(--verde)}
+  .pie-legal{font-size:14.5px;line-height:1.55;color:var(--tinta-45);border-top:1px solid var(--linea);padding-top:20px;
+             margin-top:30px;max-width:62ch}
+  .pie-legal b{color:var(--tinta-70)}
+  .reiniciar{background:none;border:none;padding:14px 2px;margin-top:6px;min-height:52px;font:inherit;font-size:16.5px;
+             font-weight:600;color:var(--tierra);text-decoration:underline;text-underline-offset:4px;
+             text-decoration-thickness:1px;cursor:pointer}
+  .reiniciar:hover{color:var(--tierra-oscuro)}
+
+  .spin{display:inline-block;width:20px;height:20px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;
+        border-radius:50%;animation:spin .65s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ── PRUEBA SOCIAL ── */
+  .credenciales{display:grid;grid-template-columns:1fr;gap:2px;margin:0 0 40px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--linea)}
+  @media(min-width:660px){.credenciales{grid-template-columns:repeat(3,1fr)}}
+  .cred{background:var(--papel);padding:20px 4px 20px 0;display:flex;gap:12px;align-items:flex-start}
+  @media(min-width:660px){.cred{padding:22px 18px 22px 0}}
+  .cred svg{flex:none;color:var(--tierra);margin-top:2px}
+  .cred b{display:block;font-size:16px;font-weight:600;line-height:1.3;margin-bottom:3px}
+  .cred span{font-size:14.5px;color:var(--tinta-45);line-height:1.45;display:block}
+
+  .voces{margin:8px 0 0;padding-top:40px;border-top:1px solid var(--linea)}
+  .voces .tit{font-family:var(--serif);font-size:clamp(26px,4vw,34px);line-height:1.12;letter-spacing:-.5px;margin:8px 0 6px}
+  .voces .sub{font-size:16.5px;color:var(--tinta-70);margin:0 0 26px;max-width:50ch}
+  .grid-voces{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:660px){.grid-voces{grid-template-columns:1fr 1fr}}
+  .voz{background:var(--nieve);border:1px solid var(--linea);border-radius:11px;padding:26px 24px;box-shadow:var(--sombra);position:relative}
+  .voz .comilla{font-family:var(--serif);font-size:56px;line-height:.6;color:var(--tierra);opacity:.28;display:block;margin-bottom:10px}
+  .voz p{font-family:var(--serif);font-size:20.5px;line-height:1.42;margin:0 0 18px;text-wrap:pretty}
+  .voz .quien{display:flex;align-items:center;gap:11px;border-top:1px solid var(--linea);padding-top:14px}
+  .voz .ini{width:38px;height:38px;flex:none;border-radius:50%;background:var(--tierra-suave);color:var(--tierra);
+            display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;letter-spacing:.5px}
+  .voz .quien div{font-size:14.5px;line-height:1.35;color:var(--tinta-45)}
+  .voz .quien b{display:block;color:var(--tinta);font-size:15.5px;font-weight:600}
+  .marco{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:var(--tinta-70);
+        background:var(--papel2);border:1px solid var(--linea);border-radius:999px;padding:9px 15px}
+  .chip svg{color:var(--tierra);flex:none}
+
+  footer{background:var(--tinta);color:#A9B6C8;font-size:15px;line-height:1.6;padding:38px 0}
+  footer .in{max-width:880px;margin:0 auto;padding:0 22px}
+  @media(min-width:761px){footer .in{padding-left:calc(var(--margen) + 40px);padding-right:44px}}
+  footer b{color:#fff;font-weight:600}
+  footer .t{color:#D9906F}
+  a{color:var(--tierra)}
+  a:hover{color:var(--tierra-oscuro)}
+  /* ══ VARIANTES DE TWEAKS ══════════════════════════════ */
+  /* Paleta */
+  html[data-paleta="ladrillo"]{--tierra:#7E2D1C;--tierra-claro:#93381F;--tierra-oscuro:#5E1C0F;--tierra-suave:#F2E3DE}
+  html[data-paleta="ocre"]{--tierra:#A2761E;--tierra-claro:#B98A27;--tierra-oscuro:#7E5B12;--tierra-suave:#F7EEDA}
+  html[data-paleta="tinta"]{--tierra:#2C4A6E;--tierra-claro:#365A83;--tierra-oscuro:#1E3654;--tierra-suave:#E4EAF2}
+
+  /* Papel — reencuadra toda la superficie */
+  html[data-papel="expediente"]{--papel:#F2ECDF;--papel2:#E9E1D0;--nieve:#FAF6EC;--linea:#DCD2BE;--linea-fuerte:#C8BBA1;
+    --sombra:0 1px 0 rgba(24,18,10,.06);--sombra-alta:0 1px 0 rgba(24,18,10,.10)}
+  html[data-papel="expediente"] body{background:#E6DECC;background-image:none}
+  html[data-papel="expediente"] .hoja{background-image:repeating-linear-gradient(180deg,transparent 0 33px,rgba(18,35,59,.05) 33px 34px)}
+  html[data-papel="expediente"] .vbtn,html[data-papel="expediente"] .opt,html[data-papel="expediente"] .dictamen,
+  html[data-papel="expediente"] .voz,html[data-papel="expediente"] input,html[data-papel="expediente"] select,
+  html[data-papel="expediente"] .btn,html[data-papel="expediente"] .volver,html[data-papel="expediente"] .cta,
+  html[data-papel="expediente"] .consent,html[data-papel="expediente"] .estampa{border-radius:2px}
+  html[data-papel="expediente"] .btn,html[data-papel="expediente"] .cta{background-image:none;box-shadow:none}
+  html[data-papel="expediente"] .btn{background-color:var(--tierra)}
+  html[data-papel="expediente"] .vbtn:hover{transform:none}
+  html[data-papel="expediente"] h1,html[data-papel="expediente"] h2,html[data-papel="expediente"] .dictamen h3{letter-spacing:-.2px}
+
+  html[data-papel="despacho"]{--papel:#FFFFFF;--papel2:#F5F5F3;--nieve:#FFFFFF;--linea:#EAE7E1;--linea-fuerte:#D9D5CD;
+    --sombra:0 2px 6px rgba(24,18,10,.04);--sombra-alta:0 10px 40px -14px rgba(24,18,10,.18)}
+  html[data-papel="despacho"] body{background:#F6F4F0;background-image:none}
+  html[data-papel="despacho"] .hoja::after{opacity:0}
+  html[data-papel="despacho"] .hoja::before{background:linear-gradient(180deg,transparent,rgba(0,0,0,.06),transparent)}
+  html[data-papel="despacho"] .anot{padding-top:76px}
+  html[data-papel="despacho"] .vbtn{padding:34px 30px 30px;border-radius:18px}
+  html[data-papel="despacho"] .opt{border-radius:14px;padding:17px 20px;min-height:66px}
+  html[data-papel="despacho"] .dictamen,html[data-papel="despacho"] .voz{border-radius:20px;padding:40px 34px}
+  html[data-papel="despacho"] .btn,html[data-papel="despacho"] .cta,html[data-papel="despacho"] .volver,
+  html[data-papel="despacho"] input,html[data-papel="despacho"] select,html[data-papel="despacho"] .consent{border-radius:14px}
+  html[data-papel="despacho"] .credenciales{gap:1px}
+  html[data-papel="despacho"] h1{letter-spacing:-2px}
+
+  /* Escala de lectura */
+  html[data-escala="grande"] body{font-size:19.5px}
+  html[data-escala="grande"] .opt{font-size:19.5px;min-height:66px}
+  html[data-escala="grande"] .q .qt{font-size:22px}
+  html[data-escala="grande"] p.lead,html[data-escala="grande"] .dictamen p{font-size:19.5px}
+  html[data-escala="grande"] input,html[data-escala="grande"] select{font-size:19.5px;min-height:62px}
+  html[data-escala="grande"] .campo .lb{font-size:18px}
+  html[data-escala="grande"] .consent{font-size:17px}
+  html[data-escala="grande"] .btn,html[data-escala="grande"] .cta{font-size:20.5px;min-height:66px}
+  html[data-escala="grande"] .volver{font-size:18.5px;min-height:62px}
+  html[data-escala="grande"] .vbtn .d{font-size:17.5px}
+  html[data-escala="grande"] .bajada{font-size:21px}
+
+  html[data-escala="mayor"] body{font-size:21.5px}
+  html[data-escala="mayor"] .opt{font-size:21.5px;min-height:74px;padding:17px 19px}
+  html[data-escala="mayor"] .q .qt{font-size:24px}
+  html[data-escala="mayor"] p.lead,html[data-escala="mayor"] .dictamen p{font-size:21.5px}
+  html[data-escala="mayor"] input,html[data-escala="mayor"] select{font-size:21.5px;min-height:70px}
+  html[data-escala="mayor"] .campo .lb{font-size:20px}
+  html[data-escala="mayor"] .consent{font-size:18.5px}
+  html[data-escala="mayor"] .btn,html[data-escala="mayor"] .cta{font-size:22.5px;min-height:74px}
+  html[data-escala="mayor"] .volver{font-size:20px;min-height:68px}
+  html[data-escala="mayor"] .vbtn .d{font-size:19px}
+  html[data-escala="mayor"] .vbtn b{font-size:30px}
+  html[data-escala="mayor"] .bajada{font-size:22.5px}
+
+  html[data-voces="off"] .voces{display:none}
+
+  /* ══ PANEL DE AJUSTES (quitar el bloque #tw* antes de publicar) ══ */
+  #twBtn{position:fixed;right:16px;bottom:16px;z-index:60;width:52px;height:52px;border-radius:50%;border:1px solid var(--linea-fuerte);
+    background:var(--nieve);color:var(--tierra);display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow:0 6px 20px -6px rgba(24,18,10,.35)}
+  #twBtn:hover{background:var(--tierra);color:#fff;border-color:var(--tierra)}
+  #twPanel{position:fixed;right:16px;bottom:78px;z-index:60;width:min(320px,calc(100vw - 32px));background:var(--nieve);
+    border:1px solid var(--linea-fuerte);border-radius:14px;box-shadow:0 24px 60px -20px rgba(24,18,10,.5);padding:18px;
+    display:none;max-height:calc(100vh - 110px);overflow:auto}
+  #twPanel.open{display:block}
+  #twPanel h4{margin:0 0 4px;font-family:var(--serif);font-weight:400;font-size:21px}
+  #twPanel .nota-tw{margin:0 0 16px;font-size:14px;color:var(--tinta-45);line-height:1.4}
+  .twg{margin-bottom:16px}
+  .twg > span{display:block;font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;color:var(--tinta-45);margin-bottom:8px}
+  .twopts{display:flex;flex-wrap:wrap;gap:7px}
+  .twopts button{font:inherit;font-size:13.5px;font-weight:500;padding:8px 12px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--linea-fuerte);background:transparent;color:var(--tinta-70)}
+  .twopts button:hover{border-color:var(--tierra);color:var(--tierra)}
+  .twopts button.on{background:var(--tierra);border-color:var(--tierra);color:#fff}
+  #twPanel .cerrar{background:none;border:none;font:inherit;font-size:13.5px;color:var(--tinta-45);text-decoration:underline;
+    cursor:pointer;padding:6px 0 0}
+
+</style>
+</head>
+<body>
+
+<div class="hoja">
+  <div class="cuerpo">
+    <div class="sello">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 21h14M7 7h10M6 7l-3 7h6zM18 7l3 7h-6z"/></svg>
+      Estudio Samudio · Derecho del Consumidor
+    </div>
+    <h1>Evaluá tu caso<br><em>sin compromiso</em></h1>
+    <p class="bajada">Planes de ahorro de autos y reclamos bancarios. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
+    <div class="lugar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Posadas y toda la provincia de Misiones
+    </div>
+
+    <div class="credenciales">
+      <div class="cred">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 21h14M7 7h10M6 7l-3 7h6zM18 7l3 7h-6z"/></svg>
+        <span><b>Abogado matriculado</b><span>Colegio de Abogados de Misiones · ejercicio en toda la provincia</span></span>
+      </div>
+      <div class="cred">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M14 4v6h6M8 14h7M8 17.5h5"/></svg>
+        <span><b>Práctica concentrada</b><span>Derecho del consumidor: planes de ahorro y reclamos bancarios</span></span>
+      </div>
+      <div class="cred">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.3L12 3 3.5 7.3v5c0 4.7 3.4 8 8.5 8.7 5.1-.7 8.5-4 8.5-8.7z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+        <span><b>Evaluación sin costo</b><span>Primera lectura de tu caso gratuita y sin compromiso</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foliado">
+    <div class="in" id="foliado">
+      <div class="folio on" data-s="1"><span class="num" data-n="I">I</span><span class="tx">Tu situación</span></div>
+      <span class="rule" data-r="1"><i></i></span>
+      <div class="folio" data-s="2"><span class="num" data-n="II">II</span><span class="tx">Preguntas</span></div>
+      <span class="rule" data-r="2"><i></i></span>
+      <div class="folio" data-s="3"><span class="num" data-n="III">III</span><span class="tx">Tus datos</span></div>
+    </div>
+  </div>
+
+  <main class="cuerpo" id="main">
+
+    <!-- PASO 1 -->
+    <section class="step active" id="step1">
+      <div class="anot">
+        <span class="marca">Foja I</span>
+        <h2>¿Sobre qué es tu situación?</h2>
+        <p class="lead">Elegí la opción que más se acerca a tu caso.</p>
+        <div class="verticales">
+          <button class="vbtn" data-v="ahorro" type="button">
+            <span class="vico">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l1.8-5.2A2.5 2.5 0 017.2 6h9.6a2.5 2.5 0 012.4 1.8L21 13v5h-3v-2H6v2H3z"/><circle cx="7.5" cy="15.5" r="1.2"/><circle cx="16.5" cy="15.5" r="1.2"/></svg>
+            </span>
+            <span>
+              <b>Plan de ahorro de auto</b>
+              <span class="d">Cuota que se disparó, no te entregan el vehículo, integraciones o cargos sorpresa, trabas para dar de baja.</span>
+            </span>
+            <span class="go">Elegir esta
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </button>
+          <button class="vbtn" data-v="banco" type="button">
+            <span class="vico">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><path d="M2.5 9.5h19M6 15h4"/></svg>
+            </span>
+            <span>
+              <b>Reclamo bancario</b>
+              <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
+            </span>
+            <span class="go">Elegir esta
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASO 2 -->
+    <section class="step" id="step2">
+      <div class="anot">
+        <span class="marca">Foja II</span>
+        <h2 id="wizTitle">Contanos un poco más</h2>
+        <p class="lead">Cuatro preguntas rápidas. Ninguna respuesta te compromete a nada.</p>
+        <div id="wizForm"></div>
+        <div class="acciones">
+          <button class="btn" id="toStep3" type="button">Continuar
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <button class="volver" data-back="1" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Volver
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASO 3 -->
+    <section class="step" id="step3">
+      <div class="anot">
+        <span class="marca">Foja III</span>
+        <h2>Dejanos tus datos para enviarte la evaluación</h2>
+        <p class="lead">Te contactamos solo por tu consulta. No enviamos publicidad.</p>
+        <div class="fila">
+          <div class="campo" id="wNombre">
+            <label class="lb" for="fNombre">Nombre y apellido</label>
+            <input type="text" id="fNombre" autocomplete="name" required>
+            <div class="emsg">Completá tu nombre para continuar.</div>
+          </div>
+          <div class="campo">
+            <label class="lb" for="fLocalidad">Localidad</label>
+            <input type="text" id="fLocalidad" autocomplete="address-level2" placeholder="Posadas, Oberá...">
+          </div>
+        </div>
+        <div class="fila">
+          <div class="campo" id="wTel">
+            <label class="lb" for="fTel">WhatsApp / Teléfono</label>
+            <input type="tel" id="fTel" autocomplete="tel" inputmode="tel" required>
+            <div class="emsg">Necesitamos un teléfono o WhatsApp para contactarte.</div>
+          </div>
+          <div class="campo">
+            <label class="lb" for="fEmail">Email <span class="hint">(opcional)</span></label>
+            <input type="email" id="fEmail" autocomplete="email" inputmode="email">
+          </div>
+        </div>
+        <div class="campo">
+          <label class="lb" for="fSituacion">¿Alguna de estas situaciones es la tuya? <span class="hint">(opcional — la ley da protección reforzada en estos casos)</span></label>
+          <select id="fSituacion">
+            <option value="">Seleccionar…</option>
+            <option>Jubilado/a o pensionado/a</option>
+            <option>Mayor de 70</option>
+            <option>Dificultad con canales digitales</option>
+            <option>Persona con discapacidad</option>
+            <option>Otra situación de vulnerabilidad</option>
+            <option>Ninguna / prefiero no responder</option>
+          </select>
+        </div>
+        <div class="campo" id="wConsent">
+          <label class="consent" for="fConsent">
+            <input type="checkbox" id="fConsent">
+            <span>Autorizo a ser contactado/a por el estudio y el tratamiento de mis datos personales conforme a la Ley 25.326, con el único fin de evaluar mi consulta.</span>
+          </label>
+          <div class="emsg">Necesitamos tu consentimiento para poder contactarte.</div>
+        </div>
+        <div class="acciones">
+          <button class="btn" id="verResultado" type="button">Ver mi evaluación</button>
+          <button class="volver" data-back="2" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Volver
+          </button>
+        </div>
+        <div id="saveStatus"></div>
+      </div>
+    </section>
+
+    <!-- RESULTADO -->
+    <section class="step" id="step4">
+      <div class="anot">
+        <span class="marca">Dictamen</span>
+        <div id="resultBox"></div>
+        <div class="pie-legal">
+          Esta evaluación es <b>gratuita, automática y orientativa</b>. No constituye asesoramiento legal sobre un caso concreto ni garantiza resultado alguno. Cada situación requiere un análisis particular de la documentación. Estudio Samudio — Derecho del Consumidor, Posadas, Misiones.
+        </div>
+        <button class="reiniciar" id="reiniciar" type="button">Empezar una evaluación nueva</button>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="cuerpo">
+    <section class="voces">
+      <span class="marca" style="font-family:var(--serif);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra);opacity:.75">Consultas atendidas</span>
+      <h2 class="tit">Gente de Misiones que dio el primer paso</h2>
+      <p class="sub">Comentarios de personas que consultaron al estudio. Publicados con su autorización; iniciales y localidad para preservar la identidad.</p>
+      <div class="grid-voces">
+        <div class="voz">
+          <span class="comilla" aria-hidden="true">&ldquo;</span>
+          <p>Pagué el plan cuatro años y la cuota se me fue al doble. Pensé que no había nada que hacer. Me explicaron en criollo qué papeles juntar y qué se podía reclamar.</p>
+          <div class="quien">
+            <span class="ini">R.M.</span>
+            <div><b>R. M.</b>Posadas · plan de ahorro de auto</div>
+          </div>
+        </div>
+        <div class="voz">
+          <span class="comilla" aria-hidden="true">&ldquo;</span>
+          <p>Me descontaban un seguro que nunca pedí. Fui al banco tres veces y nada. Acá me dijeron con qué resúmenes empezar y cómo dejar el reclamo por escrito.</p>
+          <div class="quien">
+            <span class="ini">S.A.</span>
+            <div><b>S. A.</b>Oberá · reclamo bancario</div>
+          </div>
+        </div>
+      </div>
+      <div class="marco">
+        <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Atención por WhatsApp, sin turno previo</span>
+        <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Trato directo con el abogado, no con un call center</span>
+        <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Te decimos si tu caso no conviene: también es una respuesta</span>
+      </div>
+    </section>
+    <div style="height:64px"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="in">
+    <b>Estudio Samudio</b> — Derecho del Consumidor · <span class="t">Posadas y provincia de Misiones</span><br>
+    Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════
+const CONFIG = {
+  whatsapp: "5493764353599",
+  email: "dr.ejsamudio@gmail.com",
+  sheetsWebhook: ""
+};
+
+// ═══════════════════════════════════════════════════════════
+// ESTADO
+// ═══════════════════════════════════════════════════════════
+let vertical = null;
+let respuestas = {};
+
+// ═══════════════════════════════════════════════════════════
+// PREGUNTAS POR VERTICAL
+// consumo=0 → ROJO automático. prueba=0 → AMARILLO forzado.
+// ═══════════════════════════════════════════════════════════
+const PREGUNTAS = {
+  ahorro: {
+    titulo: "Tu plan de ahorro de auto",
+    qs: [
+      { id:"consumo", t:"¿El plan lo contrataste para uso personal o familiar (no para reventa comercial)?",
+        o:[["Sí, uso personal/familiar",2],["Es de mi actividad comercial/empresa",0]] },
+      { id:"problema", t:"¿Cuál es tu situación principal?",
+        o:[["La cuota se volvió impagable / ajustes desproporcionados",2],
+           ["Adjudicado pero no me entregan el auto o me piden integrar de más",2],
+           ["Me traban la baja / cancelación anticipada",1],
+           ["Otra",1]] },
+      { id:"prueba", t:"¿Tenés documentación del plan?",
+        o:[["Sí: contrato + comprobantes de pago + comunicaciones",2],
+           ["Tengo parte (algunos comprobantes o el contrato)",1],
+           ["No tengo casi nada",0]] },
+      { id:"monto", t:"Aproximadamente, ¿cuánto llevás pagado o cuánto está en juego?",
+        o:[["Un monto significativo (varias cuotas / valor del vehículo)",2],
+           ["Un monto intermedio",1],
+           ["Muy poco / recién arranqué",0]] }
+    ]
+  },
+  banco: {
+    titulo: "Tu reclamo bancario",
+    qs: [
+      { id:"consumo", t:"¿La cuenta/tarjeta es tuya como persona (no una cuenta comercial de tu empresa)?",
+        o:[["Sí, es personal",2],["Es cuenta comercial/empresa",0]] },
+      { id:"problema", t:"¿Cuál es el cargo que reclamás?",
+        o:[["Seguro que no solicité",2],
+           ["Débito automático que no reconozco",2],
+           ["Comisiones/cargos abusivos",1],
+           ["Intereses de refinanciación no informados",1]] },
+      { id:"prueba", t:"¿Podés mostrar el cobro?",
+        o:[["Sí: resúmenes donde aparece el cargo, y reclamé antes al banco",2],
+           ["Tengo los resúmenes pero no reclamé formalmente aún",1],
+           ["No tengo los resúmenes a mano",0]] },
+      { id:"monto", t:"¿Hace cuánto y con qué frecuencia te cobran?",
+        o:[["Hace varios meses/años, todos los meses",2],
+           ["Algunos meses",1],
+           ["Fue una sola vez / monto muy chico",0]] }
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════════════════
+// NAVEGACIÓN FOLIADA (reversible, conserva respuestas)
+// ═══════════════════════════════════════════════════════════
+const PASOS = ['step1','step2','step3','step4'];
+const TICK = '✓';
+
+function irA(n){
+  PASOS.forEach((id,i) => document.getElementById(id).classList.toggle('active', i === n-1));
+  document.querySelectorAll('.folio').forEach(f => {
+    const s = parseInt(f.dataset.s), num = f.querySelector('.num');
+    const done = s < n, on = s === n;
+    f.classList.toggle('done', done);
+    f.classList.toggle('on', on);
+    num.textContent = done ? TICK : num.dataset.n;
+  });
+  document.querySelectorAll('.rule').forEach(r => r.classList.toggle('fill', parseInt(r.dataset.r) < n));
+  const y = document.getElementById('main').getBoundingClientRect().top + window.pageYOffset - 68;
+  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+}
+
+document.querySelectorAll('[data-back]').forEach(b => {
+  b.addEventListener('click', () => irA(parseInt(b.dataset.back)));
+});
+
+// ═══════════════════════════════════════════════════════════
+// PASO 1 — elegir vertical
+// ═══════════════════════════════════════════════════════════
+document.querySelectorAll('.vbtn').forEach(b => {
+  b.addEventListener('click', () => {
+    const nueva = b.dataset.v;
+    document.querySelectorAll('.vbtn').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel');
+    if (nueva !== vertical) { vertical = nueva; respuestas = {}; renderWizard(); }
+    irA(2);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════
+// PASO 2 — wizard de preguntas
+// ═══════════════════════════════════════════════════════════
+function renderWizard() {
+  const data = PREGUNTAS[vertical];
+  document.getElementById('wizTitle').textContent = data.titulo;
+  const f = document.getElementById('wizForm');
+  f.innerHTML = data.qs.map(q => `
+    <div class="q" id="q-${q.id}">
+      <span class="qt">${q.t}</span>
+      <div class="opts" role="radiogroup">
+        ${q.o.map(op => `
+          <label class="opt">
+            <input type="radio" name="${q.id}" value="${op[1]}" data-q="${q.id}">
+            <span class="dot" aria-hidden="true"></span>
+            <span>${op[0]}</span>
+          </label>`).join('')}
+      </div>
+    </div>`).join('');
+  f.querySelectorAll('input[type=radio]').forEach(r => {
+    r.addEventListener('change', e => {
+      respuestas[e.target.dataset.q] = parseInt(e.target.value);
+      f.querySelectorAll(`input[name="${e.target.name}"]`).forEach(o => o.closest('.opt').classList.toggle('on', o.checked));
+      document.getElementById('q-' + e.target.dataset.q).classList.remove('err');
+    });
+  });
+}
+
+document.getElementById('toStep3').addEventListener('click', () => {
+  const data = PREGUNTAS[vertical];
+  let primerFalta = null;
+  data.qs.forEach(q => {
+    const falta = respuestas[q.id] === undefined;
+    document.getElementById('q-' + q.id).classList.toggle('err', falta);
+    if (falta && !primerFalta) primerFalta = q.id;
+  });
+  if (primerFalta) {
+    const el = document.getElementById('q-' + primerFalta);
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
+    const inp = el.querySelector('input');
+    if (inp) inp.focus({ preventScroll: true });
+    return;
+  }
+  irA(3);
+});
+
+// ═══════════════════════════════════════════════════════════
+// SCORING
+// ═══════════════════════════════════════════════════════════
+function clasificar() {
+  if (respuestas.consumo === 0) {
+    return { nivel: 'ROJO', motivo: 'Por lo que indicás, no se trataría de una relación de consumo protegida por la Ley 24.240 (uso comercial/empresarial). Esto cambia el marco legal aplicable.' };
+  }
+  if (respuestas.prueba === 0) {
+    return { nivel: 'AMARILLO', motivo: 'Tu caso puede tener base, pero sin documentación es difícil avanzar. El primer paso sería reunir la prueba (contrato, resúmenes, comprobantes, comunicaciones).' };
+  }
+  const total = (respuestas.consumo || 0) + (respuestas.problema || 0) + (respuestas.prueba || 0) + (respuestas.monto || 0);
+  if (total >= 6) return { nivel: 'VERDE' };
+  if (total >= 4) return { nivel: 'AMARILLO' };
+  return { nivel: 'ROJO' };
+}
+
+// ═══════════════════════════════════════════════════════════
+// DATOS — Google Sheets + WhatsApp + Email
+// ═══════════════════════════════════════════════════════════
+function getDatosFormulario() {
+  return {
+    nombre:    (document.getElementById('fNombre').value || '').trim(),
+    localidad: (document.getElementById('fLocalidad').value || '').trim(),
+    telefono:  (document.getElementById('fTel').value || '').trim(),
+    email:     (document.getElementById('fEmail').value || '').trim(),
+    situacion: document.getElementById('fSituacion').value || ''
+  };
+}
+
+async function guardarEnSheet(datos, resultado) {
+  if (!CONFIG.sheetsWebhook) return;
+  const payload = {
+    fecha:     new Date().toISOString(),
+    vertical:  vertical === 'ahorro' ? 'Plan de ahorro' : 'Bancario',
+    nivel:     resultado.nivel,
+    nombre:    datos.nombre,
+    localidad: datos.localidad,
+    telefono:  datos.telefono,
+    email:     datos.email,
+    consumo:   respuestas.consumo,
+    problema:  respuestas.problema,
+    prueba:    respuestas.prueba,
+    monto:     respuestas.monto,
+    situacion: datos.situacion
+  };
+  try {
+    await fetch(CONFIG.sheetsWebhook, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) {
+    console.warn('No se pudo guardar en la planilla:', e);
+  }
+}
+
+function buildWhatsAppMsg(datos, resultado) {
+  const verticalLabel = vertical === 'ahorro' ? 'plan de ahorro' : 'reclamo bancario';
+  let msg = `Hola, soy ${datos.nombre || '[nombre]'} de ${datos.localidad || 'Misiones'}.\n`;
+  msg += `Completé la evaluación online (${verticalLabel}) y me dio ${resultado.nivel}.\n`;
+  if (datos.telefono) msg += `Mi teléfono: ${datos.telefono}\n`;
+  if (datos.email) msg += `Mi email: ${datos.email}\n`;
+  if (datos.situacion) msg += `Situación: ${datos.situacion}\n`;
+  if (resultado.nivel === 'VERDE') {
+    msg += `Quiero avanzar con la evaluación de mi caso.`;
+  } else if (resultado.nivel === 'AMARILLO') {
+    msg += `Quiero saber qué me falta para poder avanzar.`;
+  }
+  return encodeURIComponent(msg);
+}
+
+function buildMailtoMsg(datos, resultado) {
+  const verticalLabel = vertical === 'ahorro' ? 'Plan de ahorro' : 'Reclamo bancario';
+  const subject = encodeURIComponent(`Evaluación de caso — ${verticalLabel} — ${resultado.nivel}`);
+  let body = `Nombre: ${datos.nombre}\nLocalidad: ${datos.localidad}\n`;
+  body += `Teléfono: ${datos.telefono}\nEmail: ${datos.email}\n`;
+  if (datos.situacion) body += `Situación: ${datos.situacion}\n`;
+  body += `Vertical: ${verticalLabel}\nResultado: ${resultado.nivel}\n`;
+  if (resultado.motivo) body += `Detalle: ${resultado.motivo}\n`;
+  return `mailto:${CONFIG.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+}
+
+// ═══════════════════════════════════════════════════════════
+// VALIDACIÓN INLINE
+// ═══════════════════════════════════════════════════════════
+function marcarError(wrapId, inputId) {
+  const w = document.getElementById(wrapId);
+  w.classList.add('err');
+  window.scrollTo({ top: Math.max(0, w.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
+  const el = document.getElementById(inputId);
+  if (el) el.focus({ preventScroll: true });
+}
+['fNombre','fTel'].forEach(id => {
+  document.getElementById(id).addEventListener('input', e => e.target.closest('.campo').classList.remove('err'));
+});
+document.getElementById('fConsent').addEventListener('change', () => {
+  document.getElementById('wConsent').classList.remove('err');
+});
+
+// ═══════════════════════════════════════════════════════════
+// PASO 3 → DICTAMEN
+// ═══════════════════════════════════════════════════════════
+const ICO_WA = '<svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 002.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.27-1.38a9.9 9.9 0 004.77 1.22h.01A9.9 9.9 0 0022 11.96 9.9 9.9 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.19 8.19 0 01-1.26-4.37 8.23 8.23 0 0114.06-5.82 8.17 8.17 0 012.43 5.83 8.24 8.24 0 01-8.24 8.23zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.02s.87 2.34.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>';
+const ICO_MAIL = '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
+
+document.getElementById('verResultado').addEventListener('click', async () => {
+  const btn = document.getElementById('verResultado');
+  if (btn.disabled) return;
+  const datos = getDatosFormulario();
+
+  document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
+  if (!datos.nombre)   { marcarError('wNombre','fNombre'); return; }
+  if (!datos.telefono) { marcarError('wTel','fTel'); return; }
+  if (!document.getElementById('fConsent').checked) { marcarError('wConsent','fConsent'); return; }
+
+  const resultado = clasificar();
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>Procesando…';
+
+  await guardarEnSheet(datos, resultado);
+
+  const status = document.getElementById('saveStatus');
+  if (CONFIG.sheetsWebhook) {
+    status.innerHTML = '<div class="guardado"><span>✓</span><span>Tu evaluación fue registrada. Te contactamos pronto.</span></div>';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Ver mi evaluación';
+
+  const box = document.getElementById('resultBox');
+  const waUrl = `https://wa.me/${CONFIG.whatsapp}?text=${buildWhatsAppMsg(datos, resultado)}`;
+  const mailUrl = buildMailtoMsg(datos, resultado);
+
+  if (resultado.nivel === 'VERDE') {
+    box.className = 'dictamen d-verde';
+    box.innerHTML = `
+      <span class="estampa e-verde">Caso con recorrido</span>
+      <h3>Tu situación tiene base para reclamar</h3>
+      <p>Por tus respuestas, tu caso reúne los elementos que la ley de consumo protege y contás con prueba. El siguiente paso es revisar tu documentación para confirmar la estrategia.</p>
+      <p><b>Dato que puede jugar a tu favor:</b> si conocés a otras personas con el mismo problema (mismo plan/administradora o mismo banco), presentarse en conjunto fortalece el reclamo y demuestra que no es un caso aislado.</p>
+      <div class="ctas">
+        <a class="cta wa" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Escribir por WhatsApp</a>
+        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Enviar por email</a>
+      </div>
+      <p class="nota">Sin compromiso. Evaluamos tu documentación y te confirmamos si conviene avanzar.</p>`;
+
+  } else if (resultado.nivel === 'AMARILLO') {
+    box.className = 'dictamen d-amarillo';
+    box.innerHTML = `
+      <span class="estampa e-amarillo">Necesita más información</span>
+      <h3>Tu caso podría avanzar, pero falta un paso</h3>
+      <p>${resultado.motivo || 'Hay elementos a favor, pero necesitamos completar información o reunir documentación antes de confirmar si conviene avanzar.'}</p>
+      <div class="ctas">
+        <a class="cta wa" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Consultar qué me falta</a>
+        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Enviar por email</a>
+      </div>
+      <p class="nota">Reunir la documentación suele ser suficiente para pasar a la siguiente etapa.</p>`;
+
+  } else {
+    box.className = 'dictamen d-rojo';
+    box.innerHTML = `
+      <span class="estampa e-rojo">Poco recorrido por ahora</span>
+      <h3>Con esta información, no vemos una base sólida</h3>
+      <p>${resultado.motivo || 'Por como está planteado, hoy no se ve una base firme para un reclamo de consumo. Esto no es definitivo: si cambia la situación o aparece documentación, puede reevaluarse.'}</p>
+      <div class="ctas">
+        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Consultar de todos modos</a>
+      </div>
+      <p class="nota">Quedamos a disposición para cualquier duda.</p>`;
+  }
+
+  irA(4);
+});
+
+// ═══════════════════════════════════════════════════════════
+// REINICIAR
+// ═══════════════════════════════════════════════════════════
+document.getElementById('reiniciar').addEventListener('click', () => {
+  vertical = null; respuestas = {};
+  document.querySelectorAll('.vbtn').forEach(x => x.classList.remove('sel'));
+  document.getElementById('wizForm').innerHTML = '';
+  ['fNombre','fLocalidad','fTel','fEmail'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('fSituacion').value = '';
+  document.getElementById('fConsent').checked = false;
+  document.getElementById('saveStatus').innerHTML = '';
+  document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
+  irA(1);
+});
+</script>
+
+<button id="twBtn" type="button" aria-label="Ajustes de apariencia" title="Ajustes de apariencia">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg>
+</button>
+<div id="twPanel" role="dialog" aria-label="Ajustes de apariencia">
+  <h4>Apariencia</h4>
+  <p class="nota-tw">Prueba de variantes. No afecta el cuestionario ni el scoring.</p>
+  <div class="twg" data-k="papel"><span>Superficie</span><div class="twopts">
+    <button data-v="foliada">Hoja foliada</button><button data-v="expediente">Expediente sellado</button><button data-v="despacho">Despacho claro</button>
+  </div></div>
+  <div class="twg" data-k="paleta"><span>Acento</span><div class="twopts">
+    <button data-v="tierra">Tierra colorada</button><button data-v="ladrillo">Ladrillo</button><button data-v="ocre">Ocre</button><button data-v="tinta">Tinta</button>
+  </div></div>
+  <div class="twg" data-k="escala"><span>Escala de lectura</span><div class="twopts">
+    <button data-v="normal">Estándar</button><button data-v="grande">Grande</button><button data-v="mayor">Muy grande</button>
+  </div></div>
+  <div class="twg" data-k="voces"><span>Voces de clientes</span><div class="twopts">
+    <button data-v="on">Mostrar</button><button data-v="off">Ocultar</button>
+  </div></div>
+  <button class="cerrar" type="button" id="twCerrar">Cerrar</button>
+</div>
+<script>
+(function(){
+  var DEF = { papel:'foliada', paleta:'tierra', escala:'normal', voces:'on' };
+  var LS = 'samudio_apariencia';
+  var st = Object.assign({}, DEF);
+  try { st = Object.assign(st, JSON.parse(localStorage.getItem(LS) || '{}')); } catch(e){}
+  function aplicar(){
+    var r = document.documentElement;
+    Object.keys(DEF).forEach(function(k){ r.setAttribute('data-' + k, st[k]); });
+    document.querySelectorAll('.twg').forEach(function(g){
+      g.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.v === st[g.dataset.k]); });
+    });
+    try { localStorage.setItem(LS, JSON.stringify(st)); } catch(e){}
+  }
+  document.querySelectorAll('.twg button').forEach(function(b){
+    b.addEventListener('click', function(){ st[b.closest('.twg').dataset.k] = b.dataset.v; aplicar(); });
+  });
+  var p = document.getElementById('twPanel');
+  document.getElementById('twBtn').addEventListener('click', function(){ p.classList.toggle('open'); });
+  document.getElementById('twCerrar').addEventListener('click', function(){ p.classList.remove('open'); });
+  aplicar();
+})();
+</script>
+</body>
+</html>
