@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones</title>
-<meta name="description" content="Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos y reclamos bancarios. Información para consumidores de Posadas y toda la provincia de Misiones.">
+<meta name="description" content="Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos, reclamos bancarios, fintech y débitos duplicados. Posadas y toda la provincia de Misiones.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -341,7 +341,7 @@
       Estudio Samudio · Derecho del Consumidor
     </div>
     <h1>Evaluá tu caso<br><em>sin compromiso</em></h1>
-    <p class="bajada">Planes de ahorro de autos y reclamos bancarios. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
+    <p class="bajada">Planes de ahorro, reclamos bancarios, fintech y débitos duplicados. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
     <div class="lugar">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
       Posadas y toda la provincia de Misiones
@@ -401,6 +401,30 @@
             <span>
               <b>Reclamo bancario</b>
               <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
+            </span>
+            <span class="go">Elegir esta
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </button>
+          <button class="vbtn" data-v="fintech" type="button">
+            <span class="vico">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+            </span>
+            <span>
+              <b>Fintech / préstamo digital</b>
+              <span class="d">Préstamo que no pediste, cargo o membresía no autorizada en billetera digital o plataforma online.</span>
+            </span>
+            <span class="go">Elegir esta
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </button>
+          <button class="vbtn" data-v="debito" type="button">
+            <span class="vico">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18M7 15h2M11 15h2"/><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 10v5M9 12.5l3-2.5 3 2.5" stroke-width="1.4"/></svg>
+            </span>
+            <span>
+              <b>Débito duplicado</b>
+              <span class="d">Pagaste manualmente y el proveedor igual ejecutó el débito automático, cobrándote dos veces.</span>
             </span>
             <span class="go">Elegir esta
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -601,6 +625,46 @@ const PREGUNTAS = {
            ["Algunos meses",1],
            ["Fue una sola vez / monto muy chico",0]] }
     ]
+  },
+  fintech: {
+    titulo: "Tu reclamo fintech / préstamo digital",
+    qs: [
+      { id:"consumo", t:"¿La operación fue para uso personal o familiar (no para tu empresa)?",
+        o:[["Sí, uso personal/familiar",2],["Es de mi actividad comercial/empresa",0]] },
+      { id:"problema", t:"¿Cuál es el problema principal?",
+        o:[["Me acreditaron un préstamo que no solicité",2],
+           ["Me cobran una membresía o servicio que no contraté",2],
+           ["Operación o cargo que no reconozco en la plataforma",2],
+           ["Me bloquearon fondos o cuenta sin causa",1]] },
+      { id:"prueba", t:"¿Tenés registro de lo que pasó?",
+        o:[["Sí: capturas / mails / movimientos de la app que muestran el cargo",2],
+           ["Tengo algo pero no lo preservé formalmente",1],
+           ["No tengo ningún registro a mano",0]] },
+      { id:"monto", t:"¿Cuánto está en juego aproximadamente?",
+        o:[["Un monto relevante (más de un sueldo o cuota importante)",2],
+           ["Un monto intermedio",1],
+           ["Muy poco / cargo menor",0]] }
+    ]
+  },
+  debito: {
+    titulo: "Tu cobro duplicado por débito",
+    qs: [
+      { id:"consumo", t:"¿El servicio es para uso personal o familiar (no de tu empresa)?",
+        o:[["Sí, uso personal/familiar",2],["Es de mi actividad comercial/empresa",0]] },
+      { id:"problema", t:"¿Qué pasó exactamente?",
+        o:[["Pagué manualmente y el débito automático se ejecutó igual el mismo mes",2],
+           ["El proveedor reconoció el doble cobro pero no me devolvió todo lo que corresponde",2],
+           ["Imputaron parte del reintegro a una factura futura sin pedirme permiso",2],
+           ["Me cobraron dos veces pero no sé bien cómo",1]] },
+      { id:"prueba", t:"¿Podés mostrar ambos cobros?",
+        o:[["Sí: tengo el comprobante del pago manual y el resumen con el débito",2],
+           ["Tengo uno de los dos registros",1],
+           ["No tengo nada a mano",0]] },
+      { id:"monto", t:"¿Cuánto representa el doble cobro?",
+        o:[["Una cuota o factura significativa (telefonía, prepaga, streaming, etc.)",2],
+           ["Un monto menor pero que se repitió más de una vez",1],
+           ["Un monto muy chico / única vez",0]] }
+    ]
   }
 };
 
@@ -720,7 +784,7 @@ async function guardarEnSheet(datos, resultado) {
   if (!CONFIG.sheetsWebhook) return;
   const payload = {
     fecha:     new Date().toISOString(),
-    vertical:  vertical === 'ahorro' ? 'Plan de ahorro' : 'Bancario',
+    vertical:  vertical === 'ahorro' ? 'Plan de ahorro' : vertical === 'banco' ? 'Bancario' : vertical === 'fintech' ? 'Fintech' : 'Débito duplicado',
     nivel:     resultado.nivel,
     nombre:    datos.nombre,
     localidad: datos.localidad,
@@ -745,7 +809,7 @@ async function guardarEnSheet(datos, resultado) {
 }
 
 function buildWhatsAppMsg(datos, resultado) {
-  const verticalLabel = vertical === 'ahorro' ? 'plan de ahorro' : 'reclamo bancario';
+  const verticalLabel = vertical === 'ahorro' ? 'plan de ahorro' : vertical === 'banco' ? 'reclamo bancario' : vertical === 'fintech' ? 'fintech / préstamo digital' : 'débito duplicado';
   let msg = `Hola, soy ${datos.nombre || '[nombre]'} de ${datos.localidad || 'Misiones'}.\n`;
   msg += `Completé la evaluación online (${verticalLabel}) y me dio ${resultado.nivel}.\n`;
   if (datos.telefono) msg += `Mi teléfono: ${datos.telefono}\n`;
@@ -760,7 +824,7 @@ function buildWhatsAppMsg(datos, resultado) {
 }
 
 function buildMailtoMsg(datos, resultado) {
-  const verticalLabel = vertical === 'ahorro' ? 'Plan de ahorro' : 'Reclamo bancario';
+  const verticalLabel = vertical === 'ahorro' ? 'Plan de ahorro' : vertical === 'banco' ? 'Reclamo bancario' : vertical === 'fintech' ? 'Fintech / préstamo digital' : 'Débito duplicado';
   const subject = encodeURIComponent(`Evaluación de caso — ${verticalLabel} — ${resultado.nivel}`);
   let body = `Nombre: ${datos.nombre}\nLocalidad: ${datos.localidad}\n`;
   body += `Teléfono: ${datos.telefono}\nEmail: ${datos.email}\n`;
