@@ -1,0 +1,33 @@
+title: "Derecho del Consumidor — Estudio Samudio"
+description: "Guías claras sobre derechos del consumidor en Argentina: planes de ahorro, bancos, fintech y débito automático. Posadas y provincia de Misiones."
+url: "https://drejsamudio-hue.github.io"
+baseurl: "/estudio-samudio-landing"
+lang: es
+
+permalink: /notas/:slug/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+
+author:
+  name: "Estudio Samudio"
+
+# Datos institucionales — se muestran en el footer de cada nota
+estudio:
+  nombre: "Estudio Samudio"
+  matricula_cam: "Mat. CAM 4372"
+  matricula_stjm: "Mat. STJM 4031"
+  ubicacion: "Posadas, Misiones, Argentina"
+  wizard_url: "https://drejsamudio-hue.github.io/estudio-samudio-landing/"

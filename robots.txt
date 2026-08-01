@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drejsamudio-hue.github.io/estudio-samudio-landing/sitemap.xml
