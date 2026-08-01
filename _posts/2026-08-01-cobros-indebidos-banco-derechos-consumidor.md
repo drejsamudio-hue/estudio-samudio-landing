@@ -5,7 +5,7 @@ h1: "Cobros indebidos del banco: qué son, por qué son ilegales y cómo reclama
 description: "Seguros no solicitados, comisiones abusivas, débitos que no reconocés: conocé tus derechos como cliente bancario en Argentina. Posadas y Misiones."
 vertical: "Bancario"
 slug: cobros-indebidos-banco-derechos-consumidor
-date: 2026-08-03 09:00:00 -0300
+date: 2026-08-01 09:00:00 -0300
 ---
 
 ## Ese cargo que aparece todos los meses y nunca pediste

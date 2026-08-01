@@ -5,7 +5,7 @@ h1: "Plan de ahorro de autos: tus derechos cuando la cuota se dispara o el vehí
 description: "Guía clara sobre tus derechos como suscriptor de un plan de ahorro en Argentina: ajustes de cuota, cancelación, entrega del auto y qué reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
 slug: plan-de-ahorro-auto-derechos-consumidor
-date: 2026-08-03 09:00:00 -0300
+date: 2026-08-01 09:00:00 -0300
 ---
 
 ## El problema que probablemente te trajo hasta acá

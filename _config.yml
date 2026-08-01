@@ -5,6 +5,7 @@ baseurl: "/estudio-samudio-landing"
 lang: es
 
 permalink: /notas/:slug/
+future: true
 
 markdown: kramdown
 kramdown:
