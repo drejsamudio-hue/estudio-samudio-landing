@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pagaste la factura y te la debitaron igual: qué hacer con el doble cobro"
+title: "Te cobraron dos veces la misma factura: qué hacer"
 h1: "Te cobraron dos veces la misma factura: por qué es ilegal y cómo reclamarlo"
 description: "Pagaste manualmente y el débito automático se ejecutó igual. Te prometieron el reintegro y devolvieron solo una parte. Conocé tus derechos. Posadas y Misiones."
 vertical: "Débito duplicado"
@@ -50,9 +50,17 @@ Además: si a vos te pasó, es muy probable que le esté pasando a otros con el 
 
 ## Evaluá tu situación sin compromiso
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/debitos-no-autorizados-como-frenarlos/' | relative_url }}">Si el débito no corresponde a nada que hayas contratado, o el servicio ya estaba dado de baja</a></li>
+  <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Si el cargo lo aplicó el banco: seguros y comisiones que no pediste</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cobros y débitos que no reconocés en tu cuenta o tarjeta: cómo reclamar al banco"
+title: "Cobros indebidos del banco: cómo reclamarlos"
 h1: "Cobros indebidos del banco: qué son, por qué son ilegales y cómo reclamarlos"
 description: "Seguros no solicitados, comisiones abusivas, débitos que no reconocés: conocé tus derechos como cliente bancario en Argentina. Posadas y Misiones."
 vertical: "Bancario"
@@ -49,9 +49,17 @@ Los cobros indebidos bancarios rara vez son un error individual: suelen responde
 
 ## Evaluá tu situación sin compromiso
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/debitos-no-autorizados-como-frenarlos/' | relative_url }}">Si el débito directamente nunca lo autorizaste, o diste de baja el servicio y siguen cobrando</a></li>
+  <li><a href="{{ '/notas/bloqueo-cierre-cuenta-bancaria/' | relative_url }}">Si además te bloquearon o cerraron la cuenta sin explicación</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>

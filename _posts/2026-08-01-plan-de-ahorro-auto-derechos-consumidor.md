@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Plan de ahorro para autos: qué hacer si la cuota se volvió impagable o no te entregan el vehículo"
+title: "Plan de ahorro de autos: tus derechos como suscriptor"
 h1: "Plan de ahorro de autos: tus derechos cuando la cuota se dispara o el vehículo no llega"
 description: "Guía clara sobre tus derechos como suscriptor de un plan de ahorro en Argentina: ajustes de cuota, cancelación, entrega del auto y qué reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
@@ -43,9 +43,17 @@ Cuando varios suscriptores del **mismo grupo o la misma administradora** tienen 
 
 ## Evaluá tu situación sin compromiso
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/baja-plan-ahorro-devolucion/' | relative_url }}">Si ya diste de baja el plan y no te devuelven lo aportado</a></li>
+  <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Si los cargos aparecen en tu resumen bancario</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Cada situación es distinta y no todas terminan en un reclamo viable. Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>

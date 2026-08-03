@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Te acreditaron un préstamo que no pediste o te cobran una membresía que no contrataste: qué hacer"
+title: "Préstamo que no pediste y cargos de apps: qué hacer"
 h1: "Préstamos que no pediste y cargos que no reconocés: tus derechos frente a las apps financieras"
 description: "Préstamos no solicitados, membresías que nunca contrataste, cargos que no reconocés en billeteras y apps: tus derechos como usuario de fintech en Argentina. Posadas y Misiones."
 vertical: "Fintech"
@@ -53,9 +53,17 @@ Los errores de las plataformas digitales rara vez son individuales: responden a 
 
 ## Evaluá tu situación sin compromiso
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/debitos-no-autorizados-como-frenarlos/' | relative_url }}">Si la app sigue debitando después de que pediste la baja</a></li>
+  <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Si el cargo lo hizo un banco y no una fintech</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>

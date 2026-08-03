@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Te bloquearon o cerraron la cuenta sin explicación: qué puede y qué no puede hacer el banco"
+title: "Cuenta bancaria bloqueada o cerrada sin explicación"
 h1: "Te bloquearon o cerraron la cuenta sin explicación: qué puede y qué no puede hacer el banco"
 description: "Cuenta bancaria bloqueada sin aviso, sueldo inaccesible, derivaciones sin respuesta: qué puede hacer el banco, qué no, y cómo construir la prueba. Posadas y Misiones."
 vertical: "Bancario"
@@ -72,9 +72,17 @@ En Misiones el reclamo judicial de consumo es gratuito para el consumidor y tram
 
 El banco puede tener motivos legítimos para restringir o cerrar una cuenta. Lo que no puede es hacerlo en silencio, sin procedimiento, sin devolverte tu dinero y sometiéndote a un circuito de derivaciones sin salida. Documentá desde hoy y reclamá por escrito: en este tipo de casos, la prueba se construye en los primeros días.
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Cobros y comisiones que el banco aplica sin que los hayas pedido</a></li>
+  <li><a href="{{ '/notas/debitos-no-autorizados-como-frenarlos/' | relative_url }}">Si al reabrirse la cuenta aparecen débitos que no reconocés</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

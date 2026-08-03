@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Querés darte de baja del plan de ahorro: qué te tienen que devolver y qué te pueden descontar"
+title: "Baja del plan de ahorro: qué te tienen que devolver"
 h1: "Diste de baja el plan de ahorro y no te devuelven: qué corresponde"
 description: "Devolución de plan de ahorro cancelado: qué pueden descontarte, qué no, y por qué haber dado de baja no te deja afuera de reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
@@ -64,9 +64,17 @@ En Misiones el reclamo de consumo es gratuito para el consumidor (sin tasa de ju
 
 Darte de baja no significa regalar lo que pusiste. Si la devolución no llega, llega incompleta, llega sin explicación o llega en valores de otra época, tenés un reclamo posible. El primer paso es pedir la liquidación detallada por escrito; el segundo, hacer evaluar los números.
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/plan-de-ahorro-auto-derechos-consumidor/' | relative_url }}">Tus derechos como suscriptor mientras el plan sigue vigente</a></li>
+  <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Si los descuentos aparecen en tu cuenta bancaria</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

@@ -325,6 +325,7 @@
     </div>
     <h1>Evaluá tu caso<br><em>sin compromiso</em></h1>
     <p class="bajada">Planes de ahorro, reclamos bancarios, fintech y débitos duplicados. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
+    <p style="margin:0 0 18px;font-size:15px"><a href="/estudio-samudio-landing/notas/" style="color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
     <div class="lugar">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
       Posadas y toda la provincia de Misiones
@@ -768,6 +769,7 @@ async function guardarEnSheet(datos, resultado) {
   if (!CONFIG.sheetsWebhook) return;
   const payload = {
     fecha:     new Date().toISOString(),
+    origen:    (new URLSearchParams(location.search).get('utm_campaign') || document.referrer || 'directo'),
     vertical:  vertical === 'ahorro' ? 'Plan de ahorro' : vertical === 'banco' ? 'Bancario' : vertical === 'fintech' ? 'Fintech' : 'Débito duplicado',
     nivel:     resultado.nivel,
     nombre:    datos.nombre,

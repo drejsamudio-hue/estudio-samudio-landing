@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te cobraron"
+title: "Débitos que no autorizaste: cómo frenarlos"
 h1: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te cobraron"
-description: "Débito automático que no autorizaste, servicio dado de baja que sigue cobrando, pago doble: cómo frenarlo y reclamar la devolución. Posadas y Misiones."
+description: "Débito automático que no autorizaste, o servicio dado de baja que sigue cobrando: cómo frenarlo y reclamar la devolución. Posadas y Misiones."
 vertical: "Bancario"
 slug: debitos-no-autorizados-como-frenarlos
 date: 2026-08-03 09:00:00 -0300
@@ -69,9 +69,17 @@ Este patrón, además, no es exclusivo de los bancos: se repite en telefonía, p
 
 Un débito sin consentimiento no se vuelve legítimo porque nadie lo reclame. Revisá tus resúmenes, pedí la baja por escrito en los dos frentes y —sobre todo— reclamá expresamente la devolución de lo ya cobrado. En Misiones, el reclamo judicial de consumo es gratuito para el consumidor y tramita por proceso sumarísimo.
 
+<div class="relacionadas">
+<p class="rel-t">Seguir leyendo</p>
+<ul>
+  <li><a href="{{ '/notas/doble-cobro-debito-automatico-que-hacer/' | relative_url }}">Si pagaste la factura y el débito se ejecutó igual, el caso es un doble cobro</a></li>
+  <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Si el cargo lo originó el propio banco: seguros y comisiones no solicitados</a></li>
+</ul>
+</div>
+
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>
