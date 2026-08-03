@@ -769,7 +769,6 @@ async function guardarEnSheet(datos, resultado) {
   if (!CONFIG.sheetsWebhook) return;
   const payload = {
     fecha:     new Date().toISOString(),
-    origen:    (new URLSearchParams(location.search).get('utm_campaign') || document.referrer || 'directo'),
     vertical:  vertical === 'ahorro' ? 'Plan de ahorro' : vertical === 'banco' ? 'Bancario' : vertical === 'fintech' ? 'Fintech' : 'Débito duplicado',
     nivel:     resultado.nivel,
     nombre:    datos.nombre,
@@ -780,7 +779,8 @@ async function guardarEnSheet(datos, resultado) {
     problema:  respuestas.problema,
     prueba:    respuestas.prueba,
     monto:     respuestas.monto,
-    situacion: datos.situacion
+    situacion: datos.situacion,
+    origen:    (new URLSearchParams(location.search).get('utm_campaign') || document.referrer || 'directo')
   };
   try {
     await fetch(CONFIG.sheetsWebhook, {
