@@ -22,6 +22,8 @@ exclude:
   - Gemfile.lock
   - node_modules
 
+google_site_verification: _HS1KM4Xkb18yj0IjsEpAEhBSPfrn4RSJjV0czsKsGM
+
 author:
   name: "Estudio Samudio"
 
