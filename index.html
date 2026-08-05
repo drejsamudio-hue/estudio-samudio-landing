@@ -21,10 +21,10 @@
   :root{
     --papel:#FAF7F1; --papel2:#F2EDE3; --nieve:#FEFCF8;
     --tierra:#A8452A; --tierra-claro:#B44C2F; --tierra-oscuro:#8A3520; --tierra-suave:#F6E8E1;
-    --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#8C93A0;
+    --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#6B7382;
     --linea:#E3DCCF; --linea-fuerte:#D2C8B6;
     --verde:#1e7d44; --amarillo:#c9891b; --rojo:#a33;
-    --serif:"Archivo",system-ui,sans-serif;
+    --display:"Archivo",system-ui,sans-serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     --mono:"IBM Plex Mono","JetBrains Mono","Fira Code",monospace;
     --margen:104px;
@@ -58,7 +58,7 @@
   .sello{display:flex;align-items:center;gap:11px;padding-top:46px;font-size:11px;letter-spacing:3.5px;
          text-transform:uppercase;font-weight:600;color:var(--tierra);font-family:var(--mono)}
   .sello svg{flex:none;opacity:.9}
-  h1{font-family:var(--serif);font-weight:800;font-size:clamp(42px,8vw,72px);line-height:.96;letter-spacing:-2px;
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,8vw,72px);line-height:1.08;letter-spacing:-2px;
      margin:26px 0 0;text-wrap:balance}
   h1 em{font-style:normal;color:var(--tierra);font-weight:800}
   .bajada{font-size:19px;line-height:1.55;color:var(--tinta-70);max-width:46ch;margin:22px 0 0;text-wrap:pretty}
@@ -99,7 +99,7 @@
     .anot .marca{position:absolute;left:calc(-1 * (var(--margen) + 40px) + 18px);top:60px;width:calc(var(--margen) - 30px);
                  text-align:right;font-size:11px;letter-spacing:1.4px;line-height:1.35;color:var(--tinta-45);opacity:1;font-family:var(--mono)}
   }
-  h2{font-family:var(--serif);font-weight:700;font-size:clamp(29px,4.8vw,40px);line-height:1.06;letter-spacing:-1.2px;
+  h2{font-family:var(--display);font-weight:700;font-size:clamp(29px,4.8vw,40px);line-height:1.06;letter-spacing:-1.2px;
      margin:10px 0 12px;text-wrap:pretty}
   p.lead{color:var(--tinta-70);margin:0 0 32px;font-size:17.5px;max-width:52ch;text-wrap:pretty}
 
@@ -117,7 +117,7 @@
         background:var(--papel2);color:var(--tierra);box-shadow:inset 0 0 0 1px rgba(168,69,42,.10);transition:.2s}
   .vbtn:hover .vico{background:var(--tierra-suave)}
   .vbtn.sel .vico{background:var(--tierra);color:#fff;box-shadow:none}
-  .vbtn b{font-family:var(--serif);font-weight:700;font-size:24px;line-height:1.1;letter-spacing:-.5px;display:block;margin-bottom:8px}
+  .vbtn b{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.1;letter-spacing:-.5px;display:block;margin-bottom:8px}
   .vbtn .d{font-size:16px;color:var(--tinta-70);line-height:1.5;display:block}
   .vbtn .go{margin-top:auto;font-size:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--tierra);
             display:flex;align-items:center;gap:7px;opacity:.85;transition:gap .18s}
@@ -196,7 +196,7 @@
   .e-verde{color:var(--verde);border-color:rgba(30,125,68,.5);background:#EEF7F1}
   .e-amarillo{color:var(--amarillo);border-color:rgba(201,137,27,.5);background:#FCF5E7}
   .e-rojo{color:var(--rojo);border-color:rgba(170,51,51,.5);background:#FBEFEF}
-  .dictamen h3{font-family:var(--serif);font-weight:700;font-size:clamp(27px,4.4vw,36px);line-height:1.06;letter-spacing:-1px;
+  .dictamen h3{font-family:var(--display);font-weight:700;font-size:clamp(27px,4.4vw,36px);line-height:1.06;letter-spacing:-1px;
                margin:0 0 16px;text-wrap:pretty}
   .dictamen p{margin:0 0 18px;font-size:17.5px;color:var(--tinta-70);text-wrap:pretty;max-width:54ch}
   .dictamen p b{color:var(--tinta);font-weight:600}
@@ -239,16 +239,16 @@
   .cred span{font-size:14.5px;color:var(--tinta-45);line-height:1.45;display:block}
 
   .voces{margin:8px 0 0;padding-top:40px;border-top:1px solid var(--linea)}
-  .voces .tit{font-family:var(--serif);font-size:clamp(24px,3.8vw,32px);line-height:1.1;letter-spacing:-1px;margin:8px 0 6px;font-weight:700}
+  .voces .tit{font-family:var(--display);font-size:clamp(24px,3.8vw,32px);line-height:1.1;letter-spacing:-1px;margin:8px 0 6px;font-weight:700}
   .voces .sub{font-size:16.5px;color:var(--tinta-70);margin:0 0 26px;max-width:50ch}
   .grid-voces{display:grid;grid-template-columns:1fr;gap:16px}
   @media(min-width:660px){.grid-voces{grid-template-columns:1fr 1fr}}
-  .voz{background:var(--nieve);border:1px solid var(--linea);border-radius:11px;padding:26px 24px;box-shadow:var(--sombra);position:relative}
-  .voz .comilla{font-family:var(--serif);font-size:56px;line-height:.6;color:var(--tierra);opacity:.28;display:block;margin-bottom:10px}
-  .voz p{font-family:var(--sans);font-size:18px;line-height:1.5;margin:0 0 18px;text-wrap:pretty;color:var(--tinta)}
+  .voz{background:var(--nieve);border:1px solid var(--linea);border-radius:11px;padding:30px 24px;box-shadow:var(--sombra);position:relative}
+  .voz .comilla{font-family:var(--display);font-size:56px;line-height:.6;color:var(--tierra);opacity:.28;display:block;margin-bottom:12px}
+  .voz p{font-family:var(--sans);font-size:18px;line-height:1.58;margin:0 0 20px;text-wrap:pretty;color:var(--tinta)}
   .voz .quien{display:flex;align-items:center;gap:11px;border-top:1px solid var(--linea);padding-top:14px}
-  .voz .ini{width:38px;height:38px;flex:none;border-radius:50%;background:var(--tierra-suave);color:var(--tierra);
-            display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;letter-spacing:.5px}
+  .voz .ini{width:40px;height:40px;flex:none;border-radius:50%;background:var(--tierra-suave);color:var(--tierra);
+            display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;letter-spacing:.5px}
   .voz .quien div{font-size:14.5px;line-height:1.35;color:var(--tinta-45)}
   .voz .quien b{display:block;color:var(--tinta);font-size:15.5px;font-weight:600}
   .marco{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
@@ -383,8 +383,7 @@
               <b>Plan de ahorro de auto</b>
               <span class="d">Cuota que se disparó, no te entregan el vehículo, integraciones o cargos sorpresa, trabas para dar de baja.</span>
             </span>
-            <span class="go">Elegir esta
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
           </button>
           <button class="vbtn" data-v="banco" type="button">
@@ -395,8 +394,7 @@
               <b>Reclamo bancario</b>
               <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
             </span>
-            <span class="go">Elegir esta
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
           </button>
           <button class="vbtn" data-v="fintech" type="button">
@@ -407,8 +405,7 @@
               <b>Fintech / préstamo digital</b>
               <span class="d">Préstamo que no pediste, cargo o membresía no autorizada en billetera digital o plataforma online.</span>
             </span>
-            <span class="go">Elegir esta
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
           </button>
           <button class="vbtn" data-v="debito" type="button">
@@ -419,8 +416,7 @@
               <b>Débito duplicado</b>
               <span class="d">Pagaste manualmente y el proveedor igual ejecutó el débito automático, cobrándote dos veces.</span>
             </span>
-            <span class="go">Elegir esta
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
           </button>
         </div>
@@ -520,7 +516,7 @@
 
   <div class="cuerpo">
     <section class="voces">
-      <span class="marca" style="font-family:var(--serif);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra);opacity:.75">Consultas atendidas</span>
+      <span class="marca" style="font-family:var(--display);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra);opacity:.75">Consultas atendidas</span>
       <h2 class="tit">Gente de Misiones que dio el primer paso</h2>
       <p class="sub">Comentarios de personas que consultaron al estudio. Publicados con su autorización; iniciales y localidad para preservar la identidad.</p>
       <div class="grid-voces">
@@ -547,7 +543,7 @@
         <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Te decimos si tu caso no conviene: también es una respuesta</span>
       </div>
     </section>
-    <div style="height:64px"></div>
+    <div style="height:80px"></div>
   </div>
 </div>
 
