@@ -2,7 +2,7 @@
 layout: post
 title: "Te cobraron dos veces la misma factura: qué hacer"
 h1: "Te cobraron dos veces la misma factura: por qué es ilegal y cómo reclamarlo"
-description: "Pagaste manualmente y el débito automático se ejecutó igual. Te prometieron el reintegro y devolvieron solo una parte. Conocé tus derechos. Posadas y Misiones."
+description: "Pagaste una factura por transferencia o en el local y el débito automático te la cobró igual. Cómo reclamar el doble cobro y la devolución completa. Posadas y Misiones."
 vertical: "Débito duplicado"
 slug: doble-cobro-debito-automatico-que-hacer
 date: 2026-08-01 09:00:00 -0300
@@ -53,7 +53,7 @@ Además: si a vos te pasó, es muy probable que le esté pasando a otros con el 
 <div class="relacionadas">
 <p class="rel-t">Seguir leyendo</p>
 <ul>
-  <li><a href="{{ '/notas/debitos-no-autorizados-como-frenarlos/' | relative_url }}">Si el débito no corresponde a nada que hayas contratado, o el servicio ya estaba dado de baja</a></li>
+  <li><a href="{{ '/notas/debitos-no-autorizados-como-frenarlos/' | relative_url }}">Si el débito es de algo que nunca contrataste, o de un servicio que ya diste de baja</a></li>
   <li><a href="{{ '/notas/cobros-indebidos-banco-derechos-consumidor/' | relative_url }}">Si el cargo lo aplicó el banco: seguros y comisiones que no pediste</a></li>
 </ul>
 </div>

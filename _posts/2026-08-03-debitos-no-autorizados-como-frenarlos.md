@@ -2,7 +2,7 @@
 layout: post
 title: "Débitos que no autorizaste: cómo frenarlos"
 h1: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te cobraron"
-description: "Débito automático que no autorizaste, o servicio dado de baja que sigue cobrando: cómo frenarlo y reclamar la devolución. Posadas y Misiones."
+description: "Servicio dado de baja que sigue cobrando, o débito de algo que nunca contrataste: cómo frenarlo y reclamar todo lo cobrado sin tu consentimiento. Posadas y Misiones."
 vertical: "Bancario"
 slug: debitos-no-autorizados-como-frenarlos
 date: 2026-08-03 09:00:00 -0300
@@ -12,7 +12,9 @@ Hay una categoría de cargo que no depende de la letra chica de ningún contrato
 
 Los dos casos tienen el mismo problema de fondo: alguien está sacando dinero de tu cuenta sin título para hacerlo.
 
-## Las cinco formas más comunes
+## Las tres formas más comunes
+
+*(Si tu caso es que pagaste una factura y el débito automático te la cobró igual, ese patrón —el pago doble y el "reintegro" que en realidad es una imputación unilateral a futuro— tiene [su propio desarrollo acá]({{ '/notas/doble-cobro-debito-automatico-que-hacer/' | relative_url }}).)*
 
 **1. La suscripción que no muere.**
 Diste de baja el gimnasio, el streaming, la prepaga o el servicio. Te confirmaron la baja. El débito sigue llegando igual, mes a mes.
@@ -20,13 +22,7 @@ Diste de baja el gimnasio, el streaming, la prepaga o el servicio. Te confirmaro
 **2. El adherido que nunca adheriste.**
 Un servicio aparece debitando y no recordás haberlo dado de alta. Suele originarse en una promoción, un período de prueba o una venta telefónica donde nunca hubo consentimiento claro.
 
-**3. El pago doble.**
-Pagaste la factura por caja, transferencia o app, y el débito automático se ejecutó igual. Te cobraron dos veces lo mismo.
-
-**4. El "reintegro" que nunca fue reintegro.**
-Reclamaste el pago doble. Te reconocieron el error y te prometieron la devolución. Pero en vez de devolverte el dinero, lo aplicaron como crédito a una factura futura que ni siquiera venció. Eso no es una devolución: es la empresa decidiendo unilateralmente qué hacer con tu plata.
-
-**5. El monto que no coincide.**
+**3. El monto que no coincide.**
 El débito se ejecuta por un importe distinto del que corresponde, sin aviso ni explicación.
 
 ## El punto clave: el consentimiento
