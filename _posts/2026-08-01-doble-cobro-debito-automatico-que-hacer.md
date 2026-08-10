@@ -5,7 +5,7 @@ h1: "Te cobraron dos veces la misma factura: por qué es ilegal y cómo reclamar
 description: "Pagaste una factura por transferencia o en el local y el débito automático te la cobró igual. Cómo reclamar el doble cobro y la devolución completa. Posadas y Misiones."
 vertical: "Débito duplicado"
 slug: doble-cobro-debito-automatico-que-hacer
-date: 2026-08-01 09:00:00 -0300
+date: 2026-08-06 09:00:00 -0300
 ---
 
 ## Pagaste. Y te lo cobraron igual.

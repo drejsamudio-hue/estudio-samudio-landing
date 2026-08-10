@@ -5,7 +5,7 @@ h1: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te
 description: "Servicio dado de baja que sigue cobrando, o débito de algo que nunca contrataste: cómo frenarlo y reclamar todo lo cobrado sin tu consentimiento. Posadas y Misiones."
 vertical: "Bancario"
 slug: debitos-no-autorizados-como-frenarlos
-date: 2026-08-03 09:00:00 -0300
+date: 2026-08-06 09:00:00 -0300
 ---
 
 Hay una categoría de cargo que no depende de la letra chica de ningún contrato: el débito que directamente **nunca autorizaste**. Y hay una variante todavía más frecuente: el débito de algo que **sí autorizaste en su momento, pero que ya diste de baja**.
