@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Débitos que no autorizaste: cómo frenarlos"
+title: "Débitos no autorizados en Misiones: cómo frenarlos"
 h1: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te cobraron"
 description: "Servicio dado de baja que sigue cobrando, o débito de algo que nunca contrataste: cómo frenarlo y reclamar todo lo cobrado sin tu consentimiento. Posadas y Misiones."
 vertical: "Bancario"
@@ -60,6 +60,12 @@ Y si te ofrecen "acreditarlo a tu cuenta como saldo a favor", tenés derecho a e
 - **Daño punitivo (art. 52 bis, LDC).** Cobrar sin causa de manera sostenida, reconocer el error y aun así no devolver, es exactamente el tipo de conducta que la multa civil busca desalentar.
 
 Este patrón, además, no es exclusivo de los bancos: se repite en telefonía, prepagas, seguros, streaming, gimnasios y cualquier servicio con adhesión a débito automático. El encuadre legal es el mismo.
+
+## Dónde reclamar en Misiones
+
+Los reclamos de consumo en la provincia tramitan por el proceso sumarísimo del código procesal, con gratuidad para el consumidor. Antes o en paralelo a la vía judicial, existe la [Dirección Provincial de Defensa del Consumidor de Misiones](https://defensaconsumidor.misiones.gob.ar/), con sede en Posadas y delegaciones en el interior.
+
+Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de la provincia, de forma presencial y digital.
 
 ## En síntesis
 
