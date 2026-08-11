@@ -1094,9 +1094,22 @@ document.getElementById('reiniciar').addEventListener('click', () => {
 });
 
 // ═══════════════════════════════════════════════════════════
-// INICIO — retoma progreso guardado, si lo hay
+// INICIO — preselección por ?vertical=, o si no, retoma progreso
+// guardado. El querystring gana: es una intención nueva (desde una
+// nota o un anuncio), no una sesión vieja.
 // ═══════════════════════════════════════════════════════════
-cargarProgreso();
+const verticalQS = new URLSearchParams(location.search).get('vertical');
+if (verticalQS && PREGUNTAS[verticalQS]) {
+  vertical = verticalQS;
+  respuestas = {};
+  const card = document.querySelector(`.vbtn[data-v="${vertical}"]`);
+  if (card) card.classList.add('sel');
+  renderWizard();
+  guardarProgreso();
+  irA(2);
+} else {
+  cargarProgreso();
+}
 </script>
 
 
