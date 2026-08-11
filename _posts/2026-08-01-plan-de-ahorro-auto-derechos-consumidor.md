@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Plan de ahorro de autos: tus derechos como suscriptor"
+title: "Plan de ahorro de auto en Misiones: tus derechos"
 h1: "Plan de ahorro de autos: tus derechos cuando la cuota se dispara o el vehículo no llega"
 description: "Guía clara sobre tus derechos como suscriptor de un plan de ahorro en Argentina: ajustes de cuota, cancelación, entrega del auto y qué reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
@@ -40,6 +40,12 @@ Cuando varios suscriptores del **mismo grupo o la misma administradora** tienen 
 - Si te adjudicaron: la documentación de la adjudicación y lo que te exigieron integrar.
 
 > **Consejo práctico:** guardá las comunicaciones digitales de forma que puedan probarse después. Hay herramientas gratuitas de sellado de tiempo, como [OpenTimestamps](https://opentimestamps.org), que certifican que un archivo existía en una fecha determinada. Subís el archivo, se genera un sello verificable, y lo guardás junto con el original. Es gratis y no requiere registro.
+
+## Dónde reclamar en Misiones
+
+Los reclamos de consumo en la provincia tramitan por el proceso sumarísimo del código procesal, con gratuidad para el consumidor. Antes o en paralelo a la vía judicial, existe la [Dirección Provincial de Defensa del Consumidor de Misiones](https://defensaconsumidor.misiones.gob.ar/), con sede en Posadas y delegaciones en el interior.
+
+Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de la provincia, de forma presencial y digital.
 
 ## Evaluá tu situación sin compromiso
 

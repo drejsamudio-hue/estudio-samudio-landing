@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Te cobraron dos veces la misma factura: qué hacer"
+title: "Doble cobro por débito automático: reclamo en Misiones"
 h1: "Te cobraron dos veces la misma factura: por qué es ilegal y cómo reclamarlo"
 description: "Pagaste una factura por transferencia o en el local y el débito automático te la cobró igual. Cómo reclamar el doble cobro y la devolución completa. Posadas y Misiones."
 vertical: "Débito duplicado"
@@ -47,6 +47,12 @@ Además: si a vos te pasó, es muy probable que le esté pasando a otros con el 
 - El comprobante de la devolución parcial, si la hubo.
 
 > **Consejo práctico:** las capturas del chat de atención al cliente son la prueba clave en este patrón, porque ahí suele quedar reconocido el error y prometido el reintegro total. Guardalas y sellalas con [OpenTimestamps](https://opentimestamps.org) antes de que el historial se pierda o el reclamo se cierre.
+
+## Dónde reclamar en Misiones
+
+Los reclamos de consumo en la provincia tramitan por el proceso sumarísimo del código procesal, con gratuidad para el consumidor. Antes o en paralelo a la vía judicial, existe la [Dirección Provincial de Defensa del Consumidor de Misiones](https://defensaconsumidor.misiones.gob.ar/), con sede en Posadas y delegaciones en el interior.
+
+Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de la provincia, de forma presencial y digital.
 
 ## Evaluá tu situación sin compromiso
 

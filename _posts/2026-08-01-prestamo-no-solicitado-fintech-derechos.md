@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Préstamo que no pediste y cargos de apps: qué hacer"
+title: "Préstamo no solicitado: tus derechos en Misiones"
 h1: "Préstamos que no pediste y cargos que no reconocés: tus derechos frente a las apps financieras"
 description: "Préstamos no solicitados, membresías que nunca contrataste, cargos que no reconocés en billeteras y apps: tus derechos como usuario de fintech en Argentina. Posadas y Misiones."
 vertical: "Fintech"
@@ -50,6 +50,12 @@ Este vertical tiene una particularidad frente a los demás. Toda tu prueba vive 
 ## Si te pasó a vos, probablemente le pasó a otros
 
 Los errores de las plataformas digitales rara vez son individuales: responden a cómo está diseñado el sistema. Si conocés a otras personas con el mismo problema en la misma plataforma, esa coincidencia importa y fortalece el reclamo.
+
+## Dónde reclamar en Misiones
+
+Los reclamos de consumo en la provincia tramitan por el proceso sumarísimo del código procesal, con gratuidad para el consumidor. Antes o en paralelo a la vía judicial, existe la [Dirección Provincial de Defensa del Consumidor de Misiones](https://defensaconsumidor.misiones.gob.ar/), con sede en Posadas y delegaciones en el interior.
+
+Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de la provincia, de forma presencial y digital.
 
 ## Evaluá tu situación sin compromiso
 
