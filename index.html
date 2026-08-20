@@ -15,14 +15,14 @@
 <meta property="og:title" content="Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones">
 <meta property="og:description" content="4 preguntas en 30 segundos. Evaluación gratuita y orientativa por abogado matriculado. Planes de ahorro, bancos, fintech y débitos — Posadas y Misiones.">
 <meta property="og:url" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/">
-<meta property="og:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio-1200x630.svg">
+<meta property="og:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Estudio Samudio — Evaluá tu caso sin compromiso — Posadas, Misiones">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones">
 <meta name="twitter:description" content="Evaluación gratuita y orientativa: planes de ahorro, reclamos bancarios, fintech y débitos duplicados.">
-<meta name="twitter:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio-1200x630.svg">
+<meta name="twitter:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png">
 <link rel="icon" href="/estudio-samudio-landing/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon.svg">
 <link rel="manifest" href="/estudio-samudio-landing/site.webmanifest">
@@ -33,7 +33,11 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-LTD1RWM91T', { anonymize_ip: true });
+  gtag('config', 'G-LTD1RWM91T', {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +49,7 @@
   "@id": "https://drejsamudio-hue.github.io/estudio-samudio-landing/#legalservice",
   "name": "Estudio Samudio — Derecho del Consumidor",
   "url": "https://drejsamudio-hue.github.io/estudio-samudio-landing/",
-  "image": "https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio-1200x630.svg",
+  "image": "https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png",
   "telephone": "+54-376-435-3599",
   "email": "dr.ejsamudio@gmail.com",
   "priceRange": "Consulta inicial sin costo",
@@ -1065,7 +1069,16 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.addEventListener('input', persist);
 
   // GA4 helpers
-  function gv(event, params){ try{ if(typeof gtag==='function') gtag('event',event,params||{});}catch(e){} }
+  function gv(event, params){
+    try{
+      if(typeof gtag==='function') {
+        gtag('event', event, params || {});
+        if(window.location.search.includes('debug_ga4=1')) console.log(`[GA4] Evento disparado: ${event}`, params || {});
+      }
+    }catch(e){
+      if(window.location.search.includes('debug_ga4=1')) console.warn(`[GA4] No se pudo enviar: ${event}`, e);
+    }
+  }
   // vertical_selected
   document.querySelectorAll('.vbtn').forEach(b=>{
     b.addEventListener('click', ()=> gv('vertical_selected',{vertical:b.dataset.v}));
