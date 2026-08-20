@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cobros indebidos del banco: cómo reclamarlos"
+title: "Cobros indebidos del banco: cómo reclamar en Misiones"
 h1: "Cobros indebidos del banco: qué son, por qué son ilegales y cómo reclamarlos"
 description: "Seguros no solicitados, comisiones abusivas, débitos que no reconocés: conocé tus derechos como cliente bancario en Argentina. Posadas y Misiones."
 vertical: "Bancario"
@@ -46,6 +46,12 @@ Los cobros indebidos bancarios rara vez son un error individual: suelen responde
 - El detalle de desde cuándo y cada cuánto te cobran.
 
 > **Consejo práctico:** descargá y guardá los resúmenes en PDF antes de que caduque el acceso online, y sellá la fecha con [OpenTimestamps](https://opentimestamps.org) para poder probar cuándo los obtuviste.
+
+## Dónde reclamar en Misiones
+
+Los reclamos de consumo en la provincia tramitan por el proceso sumarísimo del código procesal, con gratuidad para el consumidor. Antes o en paralelo a la vía judicial, existe la [Dirección Provincial de Defensa del Consumidor de Misiones](https://defensaconsumidor.misiones.gob.ar/), con sede en Posadas y delegaciones en el interior.
+
+Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de la provincia, de forma presencial y digital.
 
 ## Evaluá tu situación sin compromiso
 
