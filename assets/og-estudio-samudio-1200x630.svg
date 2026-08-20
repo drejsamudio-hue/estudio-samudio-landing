@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FAF7F1"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#A8452A"/>
+  <text x="60" y="90" font-family="monospace" font-size="18" letter-spacing="4" fill="#A8452A" font-weight="600">ESTUDIO SAMUDIO · POSADAS · MISIONES</text>
+  <text x="60" y="220" font-family="sans-serif" font-size="64" font-weight="800" fill="#12233B" letter-spacing="-2">Evaluá tu caso</text>
+  <text x="60" y="290" font-family="sans-serif" font-size="64" font-weight="800" fill="#A8452A" letter-spacing="-2">sin compromiso</text>
+  <text x="60" y="360" font-family="sans-serif" font-size="22" fill="#5A6474">Planes de ahorro · Reclamos bancarios · Fintech · Débitos duplicados</text>
+  <text x="60" y="400" font-family="sans-serif" font-size="18" fill="#5A6474">Evaluación gratuita y orientativa · Abogado matriculado CAM 4372 · STJM 4031</text>
+  <rect x="60" y="460" width="340" height="56" rx="10" fill="#A8452A"/>
+  <text x="230" y="496" font-family="sans-serif" font-size="22" font-weight="700" fill="white" text-anchor="middle">Evaluar mi caso →</text>
+  <text x="60" y="580" font-family="monospace" font-size="13" fill="#8C93A0">Derecho del Consumidor · Posadas y toda la provincia de Misiones</text>
+</svg>

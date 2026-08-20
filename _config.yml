@@ -1,15 +1,30 @@
 title: "Derecho del Consumidor — Estudio Samudio"
-description: "Guías claras sobre derechos del consumidor en Argentina: planes de ahorro, bancos, fintech y débito automático. Posadas y provincia de Misiones."
+description: "Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos, reclamos bancarios, fintech y débitos duplicados. Posadas y toda la provincia de Misiones."
 url: "https://drejsamudio-hue.github.io"
 baseurl: "/estudio-samudio-landing"
-lang: es
-
+lang: es-AR
 permalink: /notas/:slug/
 future: true
+
+# --- SEO / Social ---
+# Cuando migres a dominio propio, cambiá solo url y baseurl:
+# url: "https://estudiosamudio.com.ar"
+# baseurl: ""
+# y dejá el resto igual. El canonical se regenera solo.
+logo: "/assets/og-estudio-samudio-1200x630.jpg"
+image: "/assets/og-estudio-samudio-1200x630.jpg"
+twitter:
+  username: "EstudioSamudio"
+  card: summary_large_image
+social:
+  name: "Estudio Samudio"
+  links:
+    - "https://www.instagram.com/estudiosamudio"
 
 markdown: kramdown
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
 
 plugins:
   - jekyll-sitemap
@@ -21,11 +36,30 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - vendor
+  - informes
+  - scripts
+
+# Defaults para que cada nota herede SEO completo sin repetir front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: "Estudio Samudio"
+      lang: es-AR
+      image: /assets/og-estudio-samudio-1200x630.jpg
+  - scope:
+      path: ""
+    values:
+      image: /assets/og-estudio-samudio-1200x630.jpg
 
 google_site_verification: _HS1KM4Xkb18yj0IjsEpAEhBSPfrn4RSJjV0czsKsGM
 
 author:
   name: "Estudio Samudio"
+  twitter: "EstudioSamudio"
 
 # Datos institucionales — se muestran en el footer de cada nota
 estudio:
@@ -34,3 +68,13 @@ estudio:
   matricula_stjm: "Mat. STJM 4031"
   ubicacion: "Posadas, Misiones, Argentina"
   wizard_url: "https://drejsamudio-hue.github.io/estudio-samudio-landing/"
+  telefono: "+54 376 435-3599"
+  email: "dr.ejsamudio@gmail.com"
+  direccion: "Posadas, Misiones"
+  horario: "Lun a Vie 9:00–18:00"
+  area_served:
+    - "Posadas"
+    - "Oberá"
+    - "Eldorado"
+    - "Puerto Iguazú"
+    - "Misiones"
