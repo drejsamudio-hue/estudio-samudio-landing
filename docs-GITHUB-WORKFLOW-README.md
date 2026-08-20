@@ -1,6 +1,6 @@
 # Workflow de GitHub Pages — Instrucción manual (permiso requerido)
 
-El agente intentó pushear `.github/workflows/pages.yml` pero la GitHub App de Arena no tiene permiso `workflows`.
+El workflow actual debe deployar únicamente desde `main`. Las ramas `arena/*` son ramas de trabajo y no deben publicar al environment protegido `github-pages`.
 
 **Para activar la generación garantizada de `sitemap.xml` / `robots.txt` / `feed.xml`:**
 
@@ -12,7 +12,7 @@ name: Deploy Jekyll site to Pages
 
 on:
   push:
-    branches: ["main", "arena/*"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -68,4 +68,4 @@ gem "jekyll-seo-tag"
 
 4. En `Settings` > `Pages` > `Build and deployment` > `Source: GitHub Actions`.
 
-Sin esto, el sitemap depende del build legacy de Pages y puede no publicarse (causa #1 de “no indexa”).
+Estado actualizado: el workflow ya está limitado a `main`; no vuelvas a agregar `arena/*` salvo que también cambies la protección del environment `github-pages`.

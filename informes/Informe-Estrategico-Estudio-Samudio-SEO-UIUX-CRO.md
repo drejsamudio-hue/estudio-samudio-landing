@@ -192,7 +192,7 @@ El posicionamiento “defensa del consumidor · planes de ahorro + bancario + fi
 <link rel="canonical" href="https://estudiosamudio.com.ar/">
 <meta property="og:title" content="Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones">
 <meta property="og:description" content="Evaluación gratuita y orientativa: planes de ahorro, reclamos bancarios, fintech y débitos duplicados. Posadas y toda Misiones.">
-<meta property="og:image" content="https://estudiosamudio.com.ar/assets/og-estudio-samudio-1200x630.jpg">
+<meta property="og:image" content="https://estudiosamudio.com.ar/assets/og-estudio-samudio.png">
 <meta property="og:url" content="https://estudiosamudio.com.ar/">
 <meta name="twitter:card" content="summary_large_image">
 ```
@@ -215,7 +215,7 @@ Incluir en `default.html`:
   "@context":"https://schema.org",
   "@type":"LegalService",
   "name":"Estudio Samudio — Derecho del Consumidor",
-  "image":"https://estudiosamudio.com.ar/assets/og-estudio-samudio-1200x630.jpg",
+  "image":"https://estudiosamudio.com.ar/assets/og-estudio-samudio.png",
   "telephone":"+54-376-435-3599",
   "email":"dr.ejsamudio@gmail.com",
   "address":{"@type":"PostalAddress","addressLocality":"Posadas","addressRegion":"Misiones","addressCountry":"AR"},
