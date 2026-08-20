@@ -33,7 +33,16 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-LTD1RWM91T', { anonymize_ip: true });
+  gtag('config', 'G-LTD1RWM91T', { 
+    anonymize_ip: true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  // Registrar eventos de conversión
+  gtag('event', 'page_view', {
+    'page_title': document.title,
+    'page_location': window.location.href
+  });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1089,6 +1098,18 @@ document.getElementById('reiniciar').addEventListener('click', () => {
     const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
     if(scrolled > 0.4) showSticky();
   }, {passive:true});
+  // ═══════════════════════════════════════════════════════════
+  // GA4 — Envío de eventos a Google Analytics
+  // ═══════════════════════════════════════════════════════════
+  function gv(eventName, eventParams = {}) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', eventName, eventParams);
+      console.log(`[GA4] Evento disparado: ${eventName}`, eventParams);
+    } else {
+      console.warn(`[GA4] gtag no disponible. No se envió: ${eventName}`);
+    }
+  }
+
   // ocultar sticky en dictamen
   const obs = new MutationObserver(()=>{
     if(document.getElementById('step4').classList.contains('active') && sticky) sticky.classList.remove('on');
