@@ -1,9 +1,0 @@
-fix: P24 - mover saveStatus a Foja IV para que el usuario vea la confirmacion
-
-El div #saveStatus vivia en step3 (Foja III). El script llamaba irA(step4)
-inmediatamente despues de escribir el mensaje de confirmacion, ocultando
-esa seccion. El usuario nunca veia "Tu evaluacion fue registrada".
-
-Fix: mover #saveStatus al inicio de step4 (Dictamen), antes de #resultBox.
-El mensaje ahora se muestra visible arriba del dictamen.
-Ajuste de estilo: margin-top -> margin-bottom:16px para separacion correcta.

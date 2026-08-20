@@ -4,22 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% seo %}
+<link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ '/assets/favicon.svg' | relative_url }}">
+<link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+<meta name="theme-color" content="#A8452A">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTD1RWM91T"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-LTD1RWM91T');
+  gtag('config', 'G-LTD1RWM91T', { anonymize_ip: true });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+{% if page.url == "/notas/" or page.layout == "post" %}
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "@id": "{{ '/' | absolute_url }}#legalservice",
+  "name": "Estudio Samudio — Derecho del Consumidor",
+  "url": "{{ '/' | absolute_url }}",
+  "image": "{{ '/assets/og-estudio-samudio-1200x630.svg' | absolute_url }}",
+  "telephone": "+54-376-435-3599",
+  "email": "dr.ejsamudio@gmail.com",
+  "priceRange": "Consulta inicial sin costo",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Posadas",
+    "addressRegion": "Misiones",
+    "addressCountry": "AR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -27.3671,
+    "longitude": -55.8961
+  },
+  "areaServed": ["Posadas","Oberá","Eldorado","Puerto Iguazú","Misiones"],
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "sameAs": []
+}
+</script>
 <style>
   :root{
     --papel:#FAF7F1; --papel2:#F2EDE3; --nieve:#FEFCF8;
     --tierra:#A8452A; --tierra-claro:#B44C2F; --tierra-oscuro:#8A3520; --tierra-suave:#F6E8E1;
-    --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#6B7382;
+    --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#8C93A0;
     --linea:#E3DCCF; --linea-fuerte:#D2C8B6;
     --serif:"Archivo",system-ui,sans-serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -75,11 +109,7 @@
   <div style="max-width:632px;margin:0 auto;padding:0 22px">
     <b style="color:#fff;font-weight:700">Estudio Samudio</b> — Derecho del Consumidor · <span style="color:#D9906F">Posadas y provincia de Misiones</span><br>
     <span style="font-family:var(--mono);font-size:13px;opacity:.75">Dr. Estanislao J. Samudio · Mat. CAM 4372 · Mat. STJM 4031</span><br>
-    <span style="font-size:14px;opacity:.8">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span><br>
-    <span style="font-size:13px;opacity:.75;margin-top:8px;display:inline-block">
-      <a href="{{ '/quien-soy/' | relative_url }}" style="color:#A9B6C8">Quién soy</a> ·
-      <a href="{{ '/privacidad/' | relative_url }}" style="color:#A9B6C8">Privacidad</a>
-    </span>
+    <span style="font-size:14px;opacity:.8">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span>
   </div>
 </footer>
 </body>
