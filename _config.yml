@@ -36,7 +36,6 @@ plugins:
 exclude:
   - README.md
   - DESIGN.md
-  - sitemap.xml
   - GA4_DIAGNOSTIC.md
   - docs-GITHUB-WORKFLOW-README.md
   - Gemfile
