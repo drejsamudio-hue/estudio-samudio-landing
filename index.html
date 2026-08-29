@@ -27,21 +27,34 @@
 <link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon.svg">
 <link rel="manifest" href="/estudio-samudio-landing/site.webmanifest">
 <meta name="theme-color" content="#A8452A">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LTD1RWM91T"></script>
+<!-- GA4 diferido — carga tras primer scroll/tap o a los 3s (elimina tarea larga de main thread) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LTD1RWM91T', {
-    anonymize_ip: true,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false
-  });
+  function loadGtag(){
+    if(window._gtagLoaded) return;
+    window._gtagLoaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LTD1RWM91T';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-LTD1RWM91T', {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+  }
+  window.addEventListener('scroll', loadGtag, {once:true, passive:true});
+  window.addEventListener('pointerdown', loadGtag, {once:true, passive:true});
+  setTimeout(loadGtag, 3000);
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap"></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -71,13 +84,22 @@
 }
 </script>
 <style>
+  /* Fallback calibrado para Archivo — reduce CLS al minimizar el layout shift en font-swap */
+  @font-face {
+    font-family: "Archivo-fallback";
+    src: local("Arial");
+    size-adjust: 103%;
+    ascent-override: 95%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
   :root{
     --papel:#FAF7F1; --papel2:#F2EDE3; --nieve:#FEFCF8;
     --tierra:#A8452A; --tierra-claro:#B44C2F; --tierra-oscuro:#8A3520; --tierra-suave:#F6E8E1;
     --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#5A6474;
     --linea:#E3DCCF; --linea-fuerte:#D2C8B6;
     --verde:#1e7d44; --amarillo:#c9891b; --rojo:#a33;
-    --display:"Archivo",system-ui,sans-serif;
+    --display:"Archivo","Archivo-fallback",system-ui,sans-serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     --mono:"IBM Plex Mono","JetBrains Mono","Fira Code",monospace;
     --margen:104px;
@@ -92,7 +114,7 @@
        -webkit-font-smoothing:antialiased}
 
   /* ── HOJA ── */
-  .hoja{max-width:880px;margin:0 auto;background:var(--papel);position:relative;min-height:100vh;
+  .hoja{max-width:880px;margin:0 auto;background:var(--papel);position:relative;
         box-shadow:0 0 0 1px rgba(24,18,10,.06), 0 30px 80px -40px rgba(24,18,10,.35)}
   .hoja::before{content:"";position:absolute;top:0;bottom:0;left:var(--margen);width:1px;
                 background:linear-gradient(180deg,transparent 0,var(--linea) 40px,var(--linea) calc(100% - 40px),transparent 100%)}
@@ -430,6 +452,13 @@
     </div>
   </div>
 
+  <div style="margin:0;padding:14px 22px 14px calc(var(--margen) + 40px);background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
+    <p style="margin:0;font-size:13.5px;line-height:1.5;color:var(--tinta-70);font-style:italic">
+      &ldquo;Pagué cuatro años y la cuota se me fue al doble. Me explicaron en criollo qué se podía reclamar.&rdquo;
+    </p>
+    <p style="margin:5px 0 0;font-size:12px;color:var(--tinta-45)">R. M. · Posadas · plan de ahorro de auto</p>
+  </div>
+
   <div class="foliado">
     <div class="in" id="foliado">
       <div class="folio on" data-s="1"><span class="num" data-n="I">I</span><span class="tx">Tu situación</span></div>
@@ -439,6 +468,10 @@
       <div class="folio" data-s="3"><span class="num" data-n="III">III</span><span class="tx">Tus datos</span></div>
     </div>
   </div>
+
+  <p style="text-align:center;font-size:12.5px;color:var(--tinta-45);margin:10px 0 0;letter-spacing:.3px">
+    4 preguntas · 30 segundos · sin registrarte
+  </p>
 
   <main class="cuerpo" id="main">
 
@@ -457,8 +490,7 @@
               <b>Plan de ahorro de auto</b>
               <span class="d">Cuota que se disparó, no te entregan el vehículo, integraciones o cargos sorpresa, trabas para dar de baja.</span>
             </span>
-            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="banco" type="button">
             <span class="vico">
@@ -468,8 +500,7 @@
               <b>Reclamo bancario</b>
               <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
             </span>
-            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="fintech" type="button">
             <span class="vico">
@@ -479,8 +510,7 @@
               <b>Fintech / préstamo digital</b>
               <span class="d">Préstamo que no pediste, cargo o membresía no autorizada en billetera digital o plataforma online.</span>
             </span>
-            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="debito" type="button">
             <span class="vico">
@@ -490,8 +520,7 @@
               <b>Débito duplicado</b>
               <span class="d">Pagaste manualmente y el proveedor igual ejecutó el débito automático, cobrándote dos veces.</span>
             </span>
-            <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
         </div>
       </div>
