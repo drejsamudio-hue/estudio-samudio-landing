@@ -1,3 +1,15 @@
+> # ⚠️ DOCUMENTO OBSOLETO — NO APLICAR
+>
+> **Este documento ya no describe la configuración vigente del sitio y no debe seguirse.**
+>
+> - El workflow `.github/workflows/pages.yml` que se describe más abajo **fue eliminado a propósito el 2026-09-02** (commit `fe59ce4`). Competía con el build legacy de GitHub Pages y producía **dos deployments por cada push**, ganando el último de forma no determinista.
+> - GitHub Pages debe permanecer en modo **"Deploy from a branch"** (builder legacy). El **paso 4** de este documento indica cambiar `Settings > Pages > Source` a "GitHub Actions": **hacer eso rompería el publicado actual.**
+> - La premisa del documento —que hacía falta un workflow propio para garantizar `sitemap.xml`, `robots.txt` y `feed.xml`— **quedó demostrada como falsa**. Los tres se generan correctamente bajo el builder legacy (verificado con drift cero).
+>
+> El contenido que sigue se conserva **únicamente como registro histórico**.
+
+---
+
 # Workflow de GitHub Pages — Instrucción manual (permiso requerido)
 
 El workflow actual debe deployar únicamente desde `main`. Las ramas `arena/*` son ramas de trabajo y no deben publicar al environment protegido `github-pages`.
