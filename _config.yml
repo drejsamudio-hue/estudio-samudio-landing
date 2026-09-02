@@ -27,9 +27,10 @@ kramdown:
   syntax_highlighter: rouge
 
 plugins:
-  # jekyll-sitemap deshabilitado: genera URLs relativas que Search Console no resuelve.
-  # Se usa sitemap.xml manual con URLs absolutas (ver raíz del repo).
-  # - jekyll-sitemap
+  # jekyll-sitemap genera URLs absolutas usando url + baseurl (ambos definidos arriba).
+  # El sitemap.xml manual se eliminó: obligaba a editar XML a mano por cada nota
+  # y ya provocó que /notas/ quedara fuera del índice.
+  - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-feed
 
