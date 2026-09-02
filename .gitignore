@@ -4,3 +4,7 @@ _site/
 .sass-cache/
 .bundle/
 vendor/
+archive-*/
+*.zip
+sitemap_check.txt
+fix_sitemap.py
