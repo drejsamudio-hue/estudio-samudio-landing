@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones</title>
-<meta name="description" content="Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos, reclamos bancarios, fintech y débitos duplicados. Posadas y toda la provincia de Misiones.">
+<meta name="description" content="Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Posadas y toda la provincia de Misiones.">
 <link rel="canonical" href="https://drejsamudio-hue.github.io/estudio-samudio-landing/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Estudio Samudio — Dr. Estanislao J. Samudio · Mat. CAM 4372 · STJM 4031">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Estudio Samudio — Derecho del Consumidor">
 <meta property="og:title" content="Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones">
-<meta property="og:description" content="4 preguntas en 30 segundos. Evaluación gratuita y orientativa por abogado matriculado. Planes de ahorro, bancos, fintech y débitos — Posadas y Misiones.">
+<meta property="og:description" content="4 preguntas en 30 segundos. Evaluación gratuita y orientativa por abogado matriculado. Planes de ahorro, bancos, fintech, débitos y descuentos sobre el sueldo — Posadas y Misiones.">
 <meta property="og:url" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/">
 <meta property="og:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Estudio Samudio — Evaluá tu caso sin compromiso — Posadas, Misiones">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Evaluá tu caso de consumo — Estudio Samudio · Posadas, Misiones">
-<meta name="twitter:description" content="Evaluación gratuita y orientativa: planes de ahorro, reclamos bancarios, fintech y débitos duplicados.">
+<meta name="twitter:description" content="Evaluación gratuita y orientativa: planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo.">
 <meta name="twitter:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png">
 <link rel="icon" href="/estudio-samudio-landing/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon.svg">
@@ -521,6 +521,16 @@
             </span>
             <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
+          <button class="vbtn" data-v="descuentos" type="button">
+            <span class="vico">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h3M15 14l3 3m0-3l-3 3"/></svg>
+            </span>
+            <span>
+              <b>Descuentos que se comen tu sueldo</b>
+              <span class="d">Entre cuotas de préstamos y débitos automáticos te queda muy poco del sueldo, o no te dejan frenar los débitos.</span>
+            </span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
         </div>
       </div>
     </section>
@@ -618,7 +628,7 @@
 
   <div class="cuerpo">
     <div style="padding:32px 0 0">
-      <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 14px">Planes de ahorro, reclamos bancarios, fintech y débitos duplicados. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
+      <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 14px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
       <p style="margin:0 0 24px;font-size:14.5px"><a href="/estudio-samudio-landing/notas/" style="color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
       <div style="border-top:1px solid var(--linea);padding-top:24px">
         <section class="voces" style="margin:0;padding:0;border:none">
@@ -768,7 +778,52 @@ const PREGUNTAS = {
            ["Un monto menor pero que se repitió más de una vez",1],
            ["Un monto muy chico / única vez",0]] }
     ]
+  },
+  descuentos: {
+    titulo: "Tus descuentos sobre el sueldo",
+    qs: [
+      { id:"consumo", t:"¿Los préstamos que te descuentan los sacaste para uso personal o familiar (no para tu negocio)?",
+        o:[["Sí, uso personal/familiar",2],["Fueron para mi actividad comercial/empresa",0]] },
+      { id:"problema", t:"¿Qué está pasando?",
+        o:[["Entre préstamos y débitos me queda muy poco del sueldo para vivir",2],
+           ["El banco me sigue dando préstamos aunque ya estoy muy endeudado/a",2],
+           ["Pedí frenar el débito automático (stop debit) y no me lo permiten",2],
+           ["Me descuentan cuotas que no reconozco",1]] },
+      { id:"prueba", t:"¿Podés mostrar cuánto cobrás y cuánto te descuentan?",
+        o:[["Sí: recibos de sueldo y resúmenes de la cuenta donde se ven los débitos",2],
+           ["Tengo una de las dos cosas",1],
+           ["No tengo nada a mano",0]] },
+      { id:"monto", t:"Después de todos los descuentos, ¿cuánto te queda del sueldo?",
+        o:[["Menos de la mitad",2],
+           ["Entre la mitad y tres cuartos",1],
+           ["Más de tres cuartos",0]] }
+    ]
   }
+};
+
+const NORMAS = {
+  base: [
+    'art. 4 LDC — deber de información',
+    'art. 37 LDC — cláusulas abusivas',
+    'art. 40 LDC — solidaridad en la cadena',
+    'art. 52 bis LDC — daño punitivo',
+    'art. 53 LDC — carga dinámica de la prueba'
+  ],
+  descuentos: [
+    'art. 14 bis CN — protección del salario',
+    'art. 42 CN — protección del consumidor',
+    'art. 36 LDC — operaciones de crédito para consumo',
+    'arts. 1710 y 1711 CCyCN — deber y acción de prevención del daño',
+    'art. 52 bis LDC — daño punitivo'
+  ]
+};
+
+const ETIQUETAS = {
+  ahorro:     { sheet:'Plan de ahorro', corto:'plan de ahorro',             largo:'Plan de ahorro' },
+  banco:      { sheet:'Bancario',       corto:'reclamo bancario',           largo:'Reclamo bancario' },
+  fintech:    { sheet:'Fintech',        corto:'fintech / préstamo digital', largo:'Fintech / préstamo digital' },
+  debito:     { sheet:'Débito duplicado', corto:'débito duplicado',         largo:'Débito duplicado' },
+  descuentos: { sheet:'Descuentos sobre sueldo', corto:'descuentos sobre el sueldo', largo:'Descuentos sobre el sueldo' }
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -887,7 +942,7 @@ async function guardarEnSheet(datos, resultado) {
   if (!CONFIG.sheetsWebhook) return;
   const payload = {
     fecha:     new Date().toISOString(),
-    vertical:  vertical === 'ahorro' ? 'Plan de ahorro' : vertical === 'banco' ? 'Bancario' : vertical === 'fintech' ? 'Fintech' : 'Débito duplicado',
+    vertical:  ETIQUETAS[vertical].sheet,
     nivel:     resultado.nivel,
     nombre:    datos.nombre,
     localidad: datos.localidad,
@@ -913,7 +968,7 @@ async function guardarEnSheet(datos, resultado) {
 }
 
 function buildWhatsAppMsg(datos, resultado) {
-  const verticalLabel = vertical === 'ahorro' ? 'plan de ahorro' : vertical === 'banco' ? 'reclamo bancario' : vertical === 'fintech' ? 'fintech / préstamo digital' : 'débito duplicado';
+  const verticalLabel = ETIQUETAS[vertical].corto;
   let msg = `Hola, soy ${datos.nombre || '[nombre]'} de ${datos.localidad || 'Misiones'}.\n`;
   msg += `Completé la evaluación online (${verticalLabel}) y me dio ${resultado.nivel}.\n`;
   if (datos.telefono) msg += `Mi teléfono: ${datos.telefono}\n`;
@@ -928,7 +983,7 @@ function buildWhatsAppMsg(datos, resultado) {
 }
 
 function buildMailtoMsg(datos, resultado) {
-  const verticalLabel = vertical === 'ahorro' ? 'Plan de ahorro' : vertical === 'banco' ? 'Reclamo bancario' : vertical === 'fintech' ? 'Fintech / préstamo digital' : 'Débito duplicado';
+  const verticalLabel = ETIQUETAS[vertical].largo;
   const subject = encodeURIComponent(`Evaluación de caso — ${verticalLabel} — ${resultado.nivel}`);
   let body = `Nombre: ${datos.nombre}\nLocalidad: ${datos.localidad}\n`;
   body += `Teléfono: ${datos.telefono}\nEmail: ${datos.email}\n`;
@@ -999,11 +1054,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
       <p><b>Dato que puede jugar a tu favor:</b> si conocés a otras personas con el mismo problema (mismo plan/administradora o mismo banco), presentarse en conjunto fortalece el reclamo y demuestra que no es un caso aislado.</p>
       <div class="normas-bloque">
         <span class="nb-label">Marco legal aplicable</span>
-        <span class="nb-item">art. 4 LDC — deber de información</span>
-        <span class="nb-item">art. 37 LDC — cláusulas abusivas</span>
-        <span class="nb-item">art. 40 LDC — solidaridad en la cadena</span>
-        <span class="nb-item">art. 52 bis LDC — daño punitivo</span>
-        <span class="nb-item">art. 53 LDC — carga dinámica de la prueba</span>
+        ${(NORMAS[vertical] || NORMAS.base).map(n => `<span class="nb-item">${n}</span>`).join('')}
       </div>
       <div class="ctas">
         <a class="cta wa" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Escribir por WhatsApp</a>
