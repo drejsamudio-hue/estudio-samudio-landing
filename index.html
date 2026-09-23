@@ -24,11 +24,21 @@
 <meta name="twitter:description" content="Evaluación gratuita y orientativa: planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo.">
 <meta name="twitter:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png">
 <link rel="icon" href="/estudio-samudio-landing/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon-192.png">
 <link rel="manifest" href="/estudio-samudio-landing/site.webmanifest">
 <meta name="theme-color" content="#A8452A">
-<!-- GA4 diferido — carga tras primer scroll/tap o a los 3s (elimina tarea larga de main thread) -->
+<!-- GA4 diferido — carga tras primer scroll/tap o a los 3s (elimina tarea larga de main thread).
+     La cola dataLayer se define de entrada: los eventos previos a la carga quedan encolados, no se pierden. -->
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-LTD1RWM91T', {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
   function loadGtag(){
     if(window._gtagLoaded) return;
     window._gtagLoaded = true;
@@ -36,15 +46,6 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LTD1RWM91T';
     s.async = true;
     document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', 'G-LTD1RWM91T', {
-      anonymize_ip: true,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false
-    });
   }
   window.addEventListener('scroll', loadGtag, {once:true, passive:true});
   window.addEventListener('pointerdown', loadGtag, {once:true, passive:true});
@@ -693,6 +694,21 @@ const CONFIG = {
 // ═══════════════════════════════════════════════════════════
 let vertical = null;
 let respuestas = {};
+let ultimoNivel = null;
+
+// ═══════════════════════════════════════════════════════════
+// GA4 — nunca enviar datos personales (nombre, teléfono, email)
+// ═══════════════════════════════════════════════════════════
+function gv(event, params){
+  try{
+    if(typeof gtag==='function') {
+      gtag('event', event, params || {});
+      if(window.location.search.includes('debug_ga4=1')) console.log(`[GA4] Evento disparado: ${event}`, params || {});
+    }
+  }catch(e){
+    if(window.location.search.includes('debug_ga4=1')) console.warn(`[GA4] No se pudo enviar: ${event}`, e);
+  }
+}
 
 // ═══════════════════════════════════════════════════════════
 // PREGUNTAS POR VERTICAL
@@ -1027,6 +1043,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   if (!document.getElementById('fConsent').checked) { marcarError('wConsent','fConsent'); return; }
 
   const resultado = clasificar();
+  ultimoNivel = resultado.nivel;
 
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>Procesando…';
@@ -1087,13 +1104,14 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   }
 
   irA(4);
+  gv('dictamen_view', { vertical, nivel: resultado.nivel });
 });
 
 // ═══════════════════════════════════════════════════════════
 // REINICIAR
 // ═══════════════════════════════════════════════════════════
 document.getElementById('reiniciar').addEventListener('click', () => {
-  vertical = null; respuestas = {};
+  vertical = null; respuestas = {}; ultimoNivel = null;
   document.querySelectorAll('.vbtn').forEach(x => x.classList.remove('sel'));
   document.getElementById('wizForm').innerHTML = '';
   ['fNombre','fLocalidad','fTel','fEmail'].forEach(id => document.getElementById(id).value = '');
@@ -1102,7 +1120,7 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.getElementById('saveStatus').innerHTML = '';
   document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
   try{localStorage.removeItem('es_wizard');}catch(e){}
-  if(typeof gtag==='function') gtag('event','reiniciar_wizard');
+  gv('reiniciar_wizard');
   irA(1);
 });
 
@@ -1148,17 +1166,6 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.addEventListener('change', persist);
   document.addEventListener('input', persist);
 
-  // GA4 helpers
-  function gv(event, params){
-    try{
-      if(typeof gtag==='function') {
-        gtag('event', event, params || {});
-        if(window.location.search.includes('debug_ga4=1')) console.log(`[GA4] Evento disparado: ${event}`, params || {});
-      }
-    }catch(e){
-      if(window.location.search.includes('debug_ga4=1')) console.warn(`[GA4] No se pudo enviar: ${event}`, e);
-    }
-  }
   // vertical_selected
   document.querySelectorAll('.vbtn').forEach(b=>{
     b.addEventListener('click', ()=> gv('vertical_selected',{vertical:b.dataset.v}));
@@ -1187,21 +1194,12 @@ document.getElementById('reiniciar').addEventListener('click', () => {
     if(document.getElementById('step4').classList.contains('active') && sticky) sticky.classList.remove('on');
   });
   obs.observe(document.getElementById('step4'),{attributes:true,attributeFilter:['class']});
-  // tracking dictamen + whatsapp/mail
-  const origVerResultado = document.getElementById('verResultado').onclick;
-  // interceptamos via evento ya existente: añadimos listener adicional
-  document.getElementById('verResultado').addEventListener('click', ()=>{
-    setTimeout(()=>{
-      const box=document.getElementById('resultBox');
-      const nivel = box.className.includes('d-verde') ? 'VERDE' : box.className.includes('d-amarillo') ? 'AMARILLO' : 'ROJO';
-      if(nivel!=='') gv('dictamen_view',{vertical,nivel});
-    }, 600);
-  });
+  // tracking whatsapp/mail — dictamen_view se dispara en el handler de verResultado.
+  // No se envía el href: el mensaje pre-llenado contiene nombre y teléfono.
   document.addEventListener('click', (e)=>{
-    const a=e.target.closest('a.cta.wa');
-    if(a){ gv('whatsapp_click',{vertical, url:a.href}); }
-    const m=e.target.closest('a.cta.mail');
-    if(m){ gv('mailto_click',{vertical}); }
+    if(e.target.closest('a.cta.wa')) gv('whatsapp_click',{vertical, nivel:ultimoNivel, origen:'dictamen'});
+    if(e.target.closest('a.sc-wa'))   gv('whatsapp_click',{vertical, origen:'sticky'});
+    if(e.target.closest('a.cta.mail')) gv('mailto_click',{vertical, nivel:ultimoNivel});
   });
 })();
 </script>
