@@ -132,12 +132,18 @@
   /* ── MASTHEAD ── */
   .cabecera{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;
             padding:14px 22px;border-bottom:1px solid var(--linea);background:var(--papel)}
-  .franja-voz{padding:14px 22px;background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
   @media(min-width:761px){
-    .cabecera,.franja-voz{padding-left:calc(var(--margen) + 40px);padding-right:44px}
+    .cabecera{padding-left:calc(var(--margen) + 40px);padding-right:44px}
   }
-  h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,8vw,72px);line-height:1.08;letter-spacing:-2px;
-     margin:26px 0 0;text-wrap:balance}
+  .hero{padding:20px 0 18px}
+  @media(min-width:761px){.hero{padding:34px 0 26px}}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,9vw,56px);line-height:1.04;letter-spacing:-1.5px;
+     margin:0;text-wrap:balance}
+  .hero-sub{font-size:16px;line-height:1.45;color:var(--tinta-70);margin:10px 0 0}
+  .cred-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px}
+  .cred-chips li{display:inline-flex;align-items:center;gap:6px;font-size:13px;line-height:1.3;font-weight:600;color:var(--tinta);
+                 background:var(--papel2);border:1px solid var(--linea);border-radius:999px;padding:6px 11px}
+  .cred-chips svg{flex:none;color:var(--tierra)}
   h1 em{font-style:normal;color:var(--tierra);font-weight:800}
 
   /* ── FOLIADO STICKY ── */
@@ -166,7 +172,8 @@
   .step.active{display:block;animation:enter .45s cubic-bezier(.2,.7,.3,1) both}
   @keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.step.active{animation:none}.rule i{transition:none}}
-  .anot{position:relative;padding-top:52px}
+  .anot{position:relative;padding-top:24px}
+  @media(min-width:761px){.anot{padding-top:52px}}
   .anot .marca{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:1.8px;text-transform:uppercase;
                color:var(--tierra-oscuro)}
   @media(min-width:761px){
@@ -175,7 +182,7 @@
   }
   h2{font-family:var(--display);font-weight:700;font-size:clamp(29px,4.8vw,40px);line-height:1.06;letter-spacing:-1.2px;
      margin:10px 0 12px;text-wrap:pretty}
-  p.lead{color:var(--tinta-70);margin:0 0 32px;font-size:17.5px;max-width:52ch;text-wrap:pretty}
+  p.lead{color:var(--tinta-70);margin:0 0 20px;font-size:17.5px;max-width:52ch;text-wrap:pretty}
 
   /* ── VERTICALES ── */
   .verticales{display:grid;grid-template-columns:1fr;gap:16px}
@@ -194,8 +201,28 @@
   .vbtn b{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.1;letter-spacing:-.5px;display:block;margin-bottom:8px}
   .vbtn .d{font-size:16px;color:var(--tinta-70);line-height:1.5;display:block}
   .vbtn .go{margin-top:auto;font-size:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--tierra);
-            display:flex;align-items:center;gap:7px;opacity:.85;transition:gap .18s}
+            display:flex;align-items:center;gap:5px;font-size:13px;white-space:nowrap;opacity:.85;transition:gap .18s}
   .vbtn:hover .go{gap:11px;opacity:1}
+  .vbtn .dc{display:none}
+  /* Mobile: tarjeta horizontal compacta (antes ~260px c/u, paso 1 de 1676px) */
+  @media(max-width:659px){
+    .verticales{gap:10px}
+    .vbtn{flex-direction:row;align-items:center;gap:14px;padding:14px 16px;min-height:76px}
+    .vbtn > span:nth-child(2){flex:1;min-width:0}
+    .vico{width:44px;height:44px}
+    .vico svg{width:22px;height:22px}
+    .vbtn b{font-size:19px;margin-bottom:3px;letter-spacing:-.3px}
+    .vbtn .d,.vbtn .go{display:none}
+    .vbtn .dc{display:block;font-size:14.5px;line-height:1.35;color:var(--tinta-70)}
+    .vbtn::after{content:"";flex:none;width:9px;height:9px;margin-right:4px;border-top:2px solid var(--tierra);
+                 border-right:2px solid var(--tierra);transform:rotate(45deg)}
+  }
+  /* Desktop: la 5.ª tarjeta ocupa las dos columnas, en horizontal */
+  @media(min-width:660px){
+    .vbtn:last-child{grid-column:1/-1;flex-direction:row;align-items:center;gap:20px}
+    .vbtn:last-child > span:nth-child(2){flex:1}
+    .vbtn:last-child .go{margin-top:0}
+  }
 
   /* ── PREGUNTAS ── */
   .q{margin:0 0 34px}
@@ -232,13 +259,20 @@
     background-repeat:no-repeat;background-position:right 17px center}
   .campo.err input,.campo.err select{border-color:var(--rojo);background:#FDF5F5}
   .emsg{display:none;margin-top:8px;font-size:15px;font-weight:600;color:var(--rojo)}
-  .campo.err .emsg{display:block}
+  .campo.err .emsg,.q.err .emsg{display:block}
   @media(min-width:660px){.fila{display:grid;grid-template-columns:1fr 1fr;gap:20px}}
   .consent{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:var(--tinta-70);
            background:var(--papel2);border:1px solid var(--linea);border-radius:9px;padding:17px;cursor:pointer;transition:background .15s}
   .consent:hover{background:#EFE9DD}
   .consent input{width:24px;height:24px;flex:none;margin:1px 0 0;accent-color:var(--tierra)}
   .campo.err .consent{border-color:var(--rojo);background:#FDF5F5}
+
+  .confianza{display:flex;gap:13px;align-items:flex-start;margin:4px 0 0;padding:15px 16px;border:1px solid var(--linea);
+             border-radius:9px;background:var(--nieve);font-size:15px;line-height:1.45;color:var(--tinta-70)}
+  .confianza .ini{width:40px;height:40px;flex:none;border-radius:50%;background:var(--tierra-suave);color:var(--tierra);
+                  display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;letter-spacing:.5px}
+  .confianza b{color:var(--tinta);font-weight:600}
+  #resultBox:focus{outline:none}
 
   /* ── BOTONES ── */
   .acciones{display:flex;flex-direction:column;gap:12px;margin-top:34px;padding-top:28px;border-top:1px solid var(--linea)}
@@ -283,10 +317,10 @@
   .cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
   .cta:active{transform:translateY(1px)}
   .nota{font-size:15.5px;color:var(--tinta-45);margin-top:18px}
-  .guardado{display:flex;gap:11px;align-items:flex-start;margin-top:18px;padding:15px;border:1px solid #BCDFC9;
+  .guardado{display:flex;gap:11px;align-items:flex-start;margin:0 0 18px;padding:15px;border:1px solid #BCDFC9;
             background:#EEF7F1;border-radius:9px;font-size:16px;font-weight:600;color:var(--verde)}
-  .pie-legal{font-size:13.5px;line-height:1.6;color:#5A6474;border-top:1px solid var(--linea);padding-top:20px;
-             margin-top:30px;max-width:62ch;font-family:var(--mono)}
+  .pie-legal{line-height:1.6;color:#5A6474;border-top:1px solid var(--linea);padding-top:20px;
+             margin-top:30px;max-width:62ch;font-family:var(--sans);font-size:14px}
   .pie-legal b{color:var(--tinta-70)}
   .reiniciar{background:none;border:none;padding:14px 2px;margin-top:6px;min-height:52px;font:inherit;font-size:16.5px;
              font-weight:600;color:var(--tierra);text-decoration:underline;text-underline-offset:4px;
@@ -378,32 +412,15 @@
   </div>
 
   <div class="cuerpo">
-    <div style="padding:22px 0 0">
-      <h1 style="font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-1.1px;margin:0">Evaluá tu caso <em style="font-style:normal;color:var(--tierra)">sin compromiso</em></h1>
-      <p style="font-size:15.5px;color:var(--tinta-70);margin:10px 0 0;max-width:52ch;line-height:1.5">4 preguntas en 30 segundos · Respuesta orientativa inmediata · Evaluación sin costo por abogado matriculado</p>
-    </div>
-
-    <div style="margin:22px 0 0;padding:16px 0;background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
-      <div style="display:flex;flex-direction:column;gap:9px">
-        <span style="display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-70)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tierra)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b style="font-weight:600;color:var(--tinta)">Abogado matriculado</b> · Colegio de Abogados de Misiones</span></span>
-        <span style="display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-70)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tierra)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b style="font-weight:600;color:var(--tinta)">Práctica concentrada</b> · derecho del consumidor</span></span>
-        <span style="display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-70)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tierra)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b style="font-weight:600;color:var(--tinta)">Evaluación sin costo</b> · primera lectura gratuita</span></span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="franja-voz">
-    <p style="margin:0;font-size:13.5px;line-height:1.5;color:var(--tinta-70);font-style:italic">
-      &ldquo;Pagué cuatro años y la cuota se me fue al doble. Me explicaron en criollo qué se podía reclamar.&rdquo;
-    </p>
-    <p style="margin:5px 0 0;font-size:12px;color:var(--tinta-45)">R. M. · Posadas · plan de ahorro de auto</p>
+    <header class="hero">
+      <h1>Evaluá tu caso <em>sin compromiso</em></h1>
+      <p class="hero-sub">4 preguntas · 30 segundos · sin registrarte</p>
+      <ul class="cred-chips" aria-label="Credenciales">
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mat. CAM 4372 · STJM 4031</li>
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sin costo</li>
+        <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Solo derecho del consumidor</li>
+      </ul>
+    </header>
   </div>
 
   <div class="foliado">
@@ -432,9 +449,10 @@
             </span>
             <span>
               <b>Plan de ahorro de auto</b>
+              <span class="dc">Cuota disparada, auto que no llega, baja trabada</span>
               <span class="d">Cuota que se disparó, no te entregan el vehículo, integraciones o cargos sorpresa, trabas para dar de baja.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="banco" type="button">
             <span class="vico">
@@ -442,9 +460,10 @@
             </span>
             <span>
               <b>Reclamo bancario</b>
+              <span class="dc">Seguros, comisiones o débitos que no pediste</span>
               <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="fintech" type="button">
             <span class="vico">
@@ -452,9 +471,10 @@
             </span>
             <span>
               <b>Fintech / préstamo digital</b>
+              <span class="dc">Préstamo o cargo que no pediste en una app</span>
               <span class="d">Préstamo que no pediste, cargo o membresía no autorizada en billetera digital o plataforma online.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="debito" type="button">
             <span class="vico">
@@ -462,9 +482,10 @@
             </span>
             <span>
               <b>Débito duplicado</b>
+              <span class="dc">Pagaste y te debitaron igual: cobro doble</span>
               <span class="d">Pagaste manualmente y el proveedor igual ejecutó el débito automático, cobrándote dos veces.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="descuentos" type="button">
             <span class="vico">
@@ -472,9 +493,10 @@
             </span>
             <span>
               <b>Descuentos que se comen tu sueldo</b>
+              <span class="dc">Préstamos y débitos que se comen el sueldo</span>
               <span class="d">Entre cuotas de préstamos y débitos automáticos te queda muy poco del sueldo, o no te dejan frenar los débitos.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
         </div>
       </div>
@@ -508,8 +530,8 @@
         <div class="fila">
           <div class="campo" id="wNombre">
             <label class="lb" for="fNombre">Nombre y apellido</label>
-            <input type="text" id="fNombre" autocomplete="name" required>
-            <div class="emsg">Completá tu nombre para continuar.</div>
+            <input type="text" id="fNombre" autocomplete="name" required aria-describedby="eNombre">
+            <div class="emsg" id="eNombre">Completá tu nombre para continuar.</div>
           </div>
           <div class="campo">
             <label class="lb" for="fLocalidad">Localidad</label>
@@ -519,8 +541,8 @@
         <div class="fila">
           <div class="campo" id="wTel">
             <label class="lb" for="fTel">WhatsApp / Teléfono</label>
-            <input type="tel" id="fTel" autocomplete="tel" inputmode="tel" required>
-            <div class="emsg">Necesitamos un teléfono o WhatsApp para contactarte.</div>
+            <input type="tel" id="fTel" autocomplete="tel" inputmode="tel" required aria-describedby="eTel">
+            <div class="emsg" id="eTel">Necesitamos un teléfono o WhatsApp para contactarte.</div>
           </div>
           <div class="campo">
             <label class="lb" for="fEmail">Email <span class="hint">(opcional)</span></label>
@@ -541,13 +563,17 @@
         </div>
         <div class="campo" id="wConsent">
           <label class="consent" for="fConsent">
-            <input type="checkbox" id="fConsent">
+            <input type="checkbox" id="fConsent" aria-describedby="eConsent">
             <span>Autorizo a ser contactado/a por el estudio y el tratamiento de mis datos personales conforme a la <a href="/estudio-samudio-landing/privacidad/" style="color:var(--tierra-oscuro)" target="_blank" rel="noopener">política de privacidad</a>, con el único fin de evaluar mi consulta.</span>
           </label>
-          <div class="emsg">Necesitamos tu consentimiento para poder contactarte.</div>
+          <div class="emsg" id="eConsent">Necesitamos tu consentimiento para poder contactarte.</div>
+        </div>
+        <div class="confianza">
+          <span class="ini" aria-hidden="true">ES</span>
+          <span>Tu consulta la lee <b>el Dr. Estanislao J. Samudio</b> (Mat. CAM 4372 · STJM 4031), no un call center. Tus datos se usan solo para esta evaluación.</span>
         </div>
         <div class="acciones">
-          <button class="btn" id="verResultado" type="button">Ver mi evaluación</button>
+          <button class="btn" id="verResultado" type="button">Ver mi resultado</button>
           <button class="volver" data-back="2" type="button">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
             Volver
@@ -561,7 +587,7 @@
       <div class="anot">
         <span class="marca">Dictamen</span>
         <div id="saveStatus"></div>
-        <div id="resultBox"></div>
+        <div id="resultBox" tabindex="-1"></div>
         <div class="pie-legal">
           Esta evaluación es <b>gratuita, automática y orientativa</b>. No constituye asesoramiento legal sobre un caso concreto ni garantiza resultado alguno. Cada situación requiere un análisis particular de la documentación. Estudio Samudio — Derecho del Consumidor, Posadas, Misiones.
         </div>
@@ -832,8 +858,8 @@ function renderWizard() {
   const f = document.getElementById('wizForm');
   f.innerHTML = data.qs.map(q => `
     <div class="q" id="q-${q.id}">
-      <span class="qt">${q.t}</span>
-      <div class="opts" role="radiogroup">
+      <span class="qt" id="qt-${q.id}">${q.t}</span>
+      <div class="opts" role="radiogroup" aria-labelledby="qt-${q.id}" aria-describedby="qe-${q.id}">
         ${q.o.map(op => `
           <label class="opt">
             <input type="radio" name="${q.id}" value="${op[1]}" data-q="${q.id}">
@@ -841,12 +867,15 @@ function renderWizard() {
             <span>${op[0]}</span>
           </label>`).join('')}
       </div>
+      <div class="emsg" id="qe-${q.id}">Elegí una opción para continuar.</div>
     </div>`).join('');
   f.querySelectorAll('input[type=radio]').forEach(r => {
     r.addEventListener('change', e => {
       respuestas[e.target.dataset.q] = parseInt(e.target.value);
       f.querySelectorAll(`input[name="${e.target.name}"]`).forEach(o => o.closest('.opt').classList.toggle('on', o.checked));
-      document.getElementById('q-' + e.target.dataset.q).classList.remove('err');
+      const qd = document.getElementById('q-' + e.target.dataset.q);
+      qd.classList.remove('err');
+      qd.querySelector('[role=radiogroup]').removeAttribute('aria-invalid');
     });
   });
 }
@@ -856,7 +885,9 @@ document.getElementById('toStep3').addEventListener('click', () => {
   let primerFalta = null;
   data.qs.forEach(q => {
     const falta = respuestas[q.id] === undefined;
-    document.getElementById('q-' + q.id).classList.toggle('err', falta);
+    const qd = document.getElementById('q-' + q.id);
+    qd.classList.toggle('err', falta);
+    qd.querySelector('[role=radiogroup]').toggleAttribute('aria-invalid', falta);
     if (falta && !primerFalta) primerFalta = q.id;
   });
   if (primerFalta) {
@@ -938,6 +969,8 @@ function buildWhatsAppMsg(datos, resultado) {
     msg += `Quiero avanzar con la evaluación de mi caso.`;
   } else if (resultado.nivel === 'AMARILLO') {
     msg += `Quiero saber qué me falta para poder avanzar.`;
+  } else {
+    msg += `Quisiera consultar mi caso de todos modos.`;
   }
   return encodeURIComponent(msg);
 }
@@ -959,15 +992,20 @@ function buildMailtoMsg(datos, resultado) {
 function marcarError(wrapId, inputId) {
   const w = document.getElementById(wrapId);
   w.classList.add('err');
+  document.getElementById(inputId).setAttribute('aria-invalid','true');
   window.scrollTo({ top: Math.max(0, w.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
   const el = document.getElementById(inputId);
   if (el) el.focus({ preventScroll: true });
 }
 ['fNombre','fTel'].forEach(id => {
-  document.getElementById(id).addEventListener('input', e => e.target.closest('.campo').classList.remove('err'));
+  document.getElementById(id).addEventListener('input', e => {
+    e.target.closest('.campo').classList.remove('err');
+    e.target.removeAttribute('aria-invalid');
+  });
 });
 document.getElementById('fConsent').addEventListener('change', () => {
   document.getElementById('wConsent').classList.remove('err');
+  document.getElementById('fConsent').removeAttribute('aria-invalid');
 });
 
 // ═══════════════════════════════════════════════════════════
@@ -982,6 +1020,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   const datos = getDatosFormulario();
 
   document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
+  document.querySelectorAll('#step3 [aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
   if (!datos.nombre)   { marcarError('wNombre','fNombre'); return; }
   if (!datos.telefono) { marcarError('wTel','fTel'); return; }
   if (!document.getElementById('fConsent').checked) { marcarError('wConsent','fConsent'); return; }
@@ -1000,7 +1039,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   }
 
   btn.disabled = false;
-  btn.textContent = 'Ver mi evaluación';
+  btn.textContent = 'Ver mi resultado';
 
   const box = document.getElementById('resultBox');
   const waUrl = `https://wa.me/${CONFIG.whatsapp}?text=${buildWhatsAppMsg(datos, resultado)}`;
@@ -1042,12 +1081,14 @@ document.getElementById('verResultado').addEventListener('click', async () => {
       <h3>Con esta información, no vemos una base sólida</h3>
       <p>${resultado.motivo || 'Por como está planteado, hoy no se ve una base firme para un reclamo de consumo. Esto no es definitivo: si cambia la situación o aparece documentación, puede reevaluarse.'}</p>
       <div class="ctas">
-        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Consultar de todos modos</a>
+        <a class="cta wa" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Consultar de todos modos</a>
+        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Enviar por email</a>
       </div>
       <p class="nota">Quedamos a disposición para cualquier duda.</p>`;
   }
 
   irA(4);
+  box.focus({ preventScroll: true });
   gv('dictamen_view', { vertical, nivel: resultado.nivel });
 });
 

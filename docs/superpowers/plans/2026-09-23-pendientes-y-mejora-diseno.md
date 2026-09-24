@@ -116,19 +116,19 @@ Orden pensado para que cada fase sea publicable sola. Fases 1–3 tocan solo `in
 - [x] F4: mostrar el sticky solo mientras el paso 1 está activo y el usuario scrolleó **más allá**
       de las tarjetas; ocultarlo en pasos 2–4.
 
-### Fase 2 — Primera pantalla mobile (el cambio de mayor impacto)
+### Fase 2 — Primera pantalla mobile (el cambio de mayor impacto) — ✅ EJECUTADA 2026-09-24
 
 **Objetivo medible:** en 390×844 la **primera tarjeta completa** visible sin scroll
 (bottom ≤ 844 px); en 360×740, al menos su título visible.
 
-- [ ] Hero con jerarquía real: H1 34–38 px mobile / 48–56 px desktop (usar la regla `h1` existente,
+- [x] Hero con jerarquía real: H1 34–38 px mobile / 48–56 px desktop (usar la regla `h1` existente,
       quitar el `style` inline). Bajada en una línea: "4 preguntas · 30 segundos · gratis y sin compromiso".
-- [ ] Credenciales como **una fila de 3 chips** compactos (`Mat. CAM 4372 · STJM 4031`,
+- [x] Credenciales como **una fila de 3 chips** compactos (`Mat. CAM 4372 · STJM 4031`,
       `Solo derecho del consumidor`, `Primera evaluación gratis`) en lugar de 3 renglones con fondo.
-- [ ] Sacar la franja de testimonio de arriba (se mueve al paso 3 en Fase 3).
-- [ ] `.anot{padding-top}` 52 → 24 px en mobile; "Foja I" inline junto al H2 (ya es así en mobile,
+- [x] Sacar la franja de testimonio de arriba (se mueve al paso 3 en Fase 3).
+- [x] `.anot{padding-top}` 52 → 24 px en mobile; "Foja I" inline junto al H2 (ya es así en mobile,
       solo ajustar margen).
-- [ ] Eliminar el microcopy duplicado bajo el foliado.
+- [x] Eliminar el microcopy duplicado bajo el foliado.
 
 Referencia de layout mobile (texto):
 
@@ -145,23 +145,37 @@ FOJA I  ¿Sobre qué es tu situación?
 ┌─[ico] Reclamo bancario           › ┐
 ```
 
-### Fase 3 — Tarjetas, paso 3 y dictamen
+### Fase 3 — Tarjetas, paso 3 y dictamen — ✅ EJECUTADA 2026-09-24
 
-- [ ] F3: en mobile (<660 px) tarjeta horizontal: ícono 40 px a la izquierda, título 19 px, bajada
+- [x] F3: en mobile (<660 px) tarjeta horizontal: ícono 40 px a la izquierda, título 19 px, bajada
       corta de una línea (ver heurística #4 del informe: "Cuota impagable · no entregan el auto"),
       chevron `›` a la derecha; ocultar la fila "ES MI CASO". Paso 1 objetivo: ≤ 800 px de alto.
       La bajada larga actual se mantiene en desktop.
-- [ ] F6: en desktop la 5.ª tarjeta ocupa las dos columnas en formato horizontal
+- [x] F6: en desktop la 5.ª tarjeta ocupa las dos columnas en formato horizontal
       (`.vbtn:last-child{grid-column:1/-1;flex-direction:row}`).
-- [ ] F5: bloque de confianza junto al formulario del paso 3: 1 testimonio corto + matrículas +
+- [x] F5: bloque de confianza junto al formulario del paso 3: 1 testimonio corto + matrículas +
       "Te contactamos solo por tu consulta · respuesta en 24 h hábiles".
-- [ ] CTA en primera persona: "Ver mi evaluación" → "Ver mi resultado" (informe, palanca C4).
-- [ ] Dictamen ROJO: agregar WhatsApp "Consultar de todos modos" además del email
+- [x] CTA en primera persona: "Ver mi evaluación" → "Ver mi resultado" (informe, palanca C4).
+- [x] Dictamen ROJO: agregar WhatsApp "Consultar de todos modos" además del email
       (hoy el lead frío solo puede escribir mail).
-- [ ] Accesibilidad del wizard: `aria-labelledby` en cada `radiogroup` apuntando a `.qt`;
+- [x] Accesibilidad del wizard: `aria-labelledby` en cada `radiogroup` apuntando a `.qt`;
       `aria-invalid` + `aria-describedby` en errores (`.emsg` con id); mover el foco al dictamen
       (`tabindex=-1` en `#resultBox`) al llegar al paso 4.
-- [ ] `.pie-legal` en Inter 14 px en lugar de mono 13.5 px (legibilidad; informe §7.2).
+- [x] `.pie-legal` en Inter 14 px en lugar de mono 13.5 px (legibilidad; informe §7.2).
+
+**Resultado medido (Playwright, build local):**
+
+| | Antes | Después |
+|---|---|---|
+| 1.ª tarjeta en 390×844 (top → bottom) | 794 → 1055 px | **542 → 656 px** |
+| 1.ª tarjeta en 360×740 | 794 px (fuera de pantalla) | **visible completa** |
+| Alto del paso 1 (390 px) | 1676 px | **≈780 px** |
+| H1 / H2 mobile | 26 / 29 px | **35 / 29 px** |
+
+**Desvíos respecto del plan:**
+- Chips del hero: "Mat. CAM 4372 · STJM 4031", "Sin costo", "Solo derecho del consumidor" (ordenados para ocupar 2 filas en mobile).
+- Bloque de confianza del paso 3: **sin testimonio** (ya está en "Consultas atendidas", se habría duplicado) y **sin promesa de "respuesta en 24 h hábiles"**, que es un compromiso de servicio que el estudio no fijó. Muestra quién lee la consulta, matrículas y uso de datos.
+- Se agregó `margin-bottom` al aviso "Tu evaluación fue registrada", que quedaba pegado al dictamen.
 
 ### Fase 4 — Sistema visual compartido (requiere decisión)
 
@@ -195,6 +209,6 @@ Script Playwright contra el build local:
 
 ## Decisiones abiertas
 
-1. ~~¿Ejecutar Fases 1–3 juntas o por separado?~~ **Decidido (Dr. Samudio, 2026-09-24):** Fase 1 sola; luego 2+3 juntas.
+1. ~~¿Ejecutar Fases 1–3 juntas o por separado?~~ **Decidido (Dr. Samudio, 2026-09-24):** Fase 1 sola; luego 2+3 juntas. Ambas ejecutadas.
 2. **Tokens compartidos**: include inline (recomendado) vs CSS externo.
 3. **Control A/A+/A++**: activarlo (recomendado) o borrar el CSS `data-escala`.
