@@ -101,20 +101,19 @@ Mediciones con Playwright sobre el build local (fuentes reales cargadas):
 
 Orden pensado para que cada fase sea publicable sola. Fases 1–3 tocan solo `index.html`.
 
-### Fase 1 — Defectos y limpieza (riesgo bajo, sin decisión de diseño)
+### Fase 1 — Defectos y limpieza (riesgo bajo, sin decisión de diseño) — ✅ EJECUTADA 2026-09-24
 
 **Files:** `index.html`, `_layouts/default.html`, `DESIGN.md`
 
-- [ ] D2: agregar `color:inherit` a `.vbtn`.
-- [ ] D1: pasar el header y la franja superior a la columna de contenido (`.cuerpo`) y hacer que
-      `.hoja::before/::after` arranquen debajo del header (`top: <alto header>`), o dar al header
-      `position:relative;z-index:1;background:var(--papel)`.
-- [ ] D4: franja de testimonio con el mismo padding que `.cuerpo` en mobile.
-- [ ] D5: `--tinta-45:#5A6474` en `default.html` (igual que index) y actualizar `DESIGN.md`.
+- [x] D2: agregar `color:inherit` a `.vbtn`.
+- [x] D1: header y franja superior alineados a la columna en desktop; el header (`.cabecera`,
+      `position:relative;z-index:1`) tapa la línea de margen.
+- [x] D4: franja de testimonio con el mismo padding que `.cuerpo` en mobile.
+- [x] D5: `--tinta-45:#5A6474` en `default.html` (igual que index) y actualizar `DESIGN.md`.
       Si se quiere conservar un gris más claro, solo para texto ≥18.66 px bold o decorativo.
-- [ ] F2: borrar `.credenciales` oculto, CSS `data-papel`/`.sello`/`.bajada`/`.lugar`, el segundo
+- [x] F2: borrar `.credenciales` oculto, CSS `data-papel`/`.sello`/`.bajada`/`.lugar`, el segundo
       "4 preguntas · 30 segundos". **No** borrar el CSS `data-escala` hasta decidir Fase 4.
-- [ ] F4: mostrar el sticky solo mientras el paso 1 está activo y el usuario scrolleó **más allá**
+- [x] F4: mostrar el sticky solo mientras el paso 1 está activo y el usuario scrolleó **más allá**
       de las tarjetas; ocultarlo en pasos 2–4.
 
 ### Fase 2 — Primera pantalla mobile (el cambio de mayor impacto)
@@ -196,7 +195,6 @@ Script Playwright contra el build local:
 
 ## Decisiones abiertas
 
-1. **¿Ejecutar Fases 1–3 juntas o por separado?** Recomendado: Fase 1 sola (cero riesgo), luego 2+3 juntas
-   porque ambas cambian la altura del paso 1 y conviene medirlas en conjunto.
+1. ~~¿Ejecutar Fases 1–3 juntas o por separado?~~ **Decidido (Dr. Samudio, 2026-09-24):** Fase 1 sola; luego 2+3 juntas.
 2. **Tokens compartidos**: include inline (recomendado) vs CSS externo.
 3. **Control A/A+/A++**: activarlo (recomendado) o borrar el CSS `data-escala`.

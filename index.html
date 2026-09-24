@@ -130,16 +130,15 @@
   }
 
   /* ── MASTHEAD ── */
-  .sello{display:flex;align-items:center;gap:11px;padding-top:46px;font-size:11px;letter-spacing:3.5px;
-         text-transform:uppercase;font-weight:600;color:var(--tierra);font-family:var(--mono)}
-  .sello svg{flex:none;opacity:.9}
+  .cabecera{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;
+            padding:14px 22px;border-bottom:1px solid var(--linea);background:var(--papel)}
+  .franja-voz{padding:14px 22px;background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  @media(min-width:761px){
+    .cabecera,.franja-voz{padding-left:calc(var(--margen) + 40px);padding-right:44px}
+  }
   h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,8vw,72px);line-height:1.08;letter-spacing:-2px;
      margin:26px 0 0;text-wrap:balance}
   h1 em{font-style:normal;color:var(--tierra);font-weight:800}
-  .bajada{font-size:19px;line-height:1.55;color:var(--tinta-70);max-width:46ch;margin:22px 0 0;text-wrap:pretty}
-  .lugar{margin:26px 0 38px;font-size:15px;letter-spacing:.4px;color:var(--tinta-45);display:flex;align-items:center;gap:9px}
-  .lugar svg{flex:none;color:var(--tierra)}
-  .lugar::after{content:"";flex:1;height:1px;background:var(--linea)}
 
   /* ── FOLIADO STICKY ── */
   .foliado{position:sticky;top:0;z-index:30;background:rgba(250,247,241,.88);backdrop-filter:saturate(1.4) blur(14px);
@@ -181,7 +180,7 @@
   /* ── VERTICALES ── */
   .verticales{display:grid;grid-template-columns:1fr;gap:16px}
   @media(min-width:660px){.verticales{grid-template-columns:1fr 1fr}}
-  .vbtn{position:relative;display:flex;flex-direction:column;gap:16px;align-items:flex-start;text-align:left;font:inherit;
+  .vbtn{position:relative;color:inherit;display:flex;flex-direction:column;gap:16px;align-items:flex-start;text-align:left;font:inherit;
         cursor:pointer;background:var(--nieve);border:1px solid var(--linea);border-radius:10px;padding:24px 22px 22px;
         min-height:56px;box-shadow:var(--sombra);transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s,background .18s}
   .vbtn:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:var(--linea-fuerte)}
@@ -305,13 +304,6 @@
   @keyframes spin{to{transform:rotate(360deg)}}
 
   /* ── PRUEBA SOCIAL ── */
-  .credenciales{display:grid;grid-template-columns:1fr;gap:2px;margin:0 0 40px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--linea)}
-  @media(min-width:660px){.credenciales{grid-template-columns:repeat(3,1fr)}}
-  .cred{background:var(--papel);padding:20px 4px 20px 0;display:flex;gap:12px;align-items:flex-start}
-  @media(min-width:660px){.cred{padding:22px 18px 22px 0}}
-  .cred svg{flex:none;color:var(--tierra);margin-top:2px}
-  .cred b{display:block;font-size:15px;font-weight:700;line-height:1.3;margin-bottom:3px;letter-spacing:-.2px}
-  .cred span{font-size:14.5px;color:var(--tinta-45);line-height:1.45;display:block}
 
   .voces{margin:8px 0 0;padding-top:40px;border-top:1px solid var(--linea)}
   .voces .tit{font-family:var(--display);font-size:clamp(24px,3.8vw,32px);line-height:1.1;letter-spacing:-1px;margin:8px 0 6px;font-weight:700}
@@ -339,36 +331,6 @@
   footer span[style]{display:block;margin-top:5px}
   a{color:var(--tierra)}
   a:hover{color:var(--tierra-oscuro)}
-  /* ── VARIANTES DE SUPERFICIE ── */
-
-  /* Papel — reencuadra toda la superficie */
-  html[data-papel="expediente"]{--papel:#F2ECDF;--papel2:#E9E1D0;--nieve:#FAF6EC;--linea:#DCD2BE;--linea-fuerte:#C8BBA1;
-    --sombra:0 1px 0 rgba(24,18,10,.06);--sombra-alta:0 1px 0 rgba(24,18,10,.10)}
-  html[data-papel="expediente"] body{background:#E6DECC;background-image:none}
-  html[data-papel="expediente"] .hoja{background-image:repeating-linear-gradient(180deg,transparent 0 33px,rgba(18,35,59,.05) 33px 34px)}
-  html[data-papel="expediente"] .vbtn,html[data-papel="expediente"] .opt,html[data-papel="expediente"] .dictamen,
-  html[data-papel="expediente"] .voz,html[data-papel="expediente"] input,html[data-papel="expediente"] select,
-  html[data-papel="expediente"] .btn,html[data-papel="expediente"] .volver,html[data-papel="expediente"] .cta,
-  html[data-papel="expediente"] .consent,html[data-papel="expediente"] .estampa{border-radius:2px}
-  html[data-papel="expediente"] .btn,html[data-papel="expediente"] .cta{background-image:none;box-shadow:none}
-  html[data-papel="expediente"] .btn{background-color:var(--tierra)}
-  html[data-papel="expediente"] .vbtn:hover{transform:none}
-  html[data-papel="expediente"] h1,html[data-papel="expediente"] h2,html[data-papel="expediente"] .dictamen h3{letter-spacing:-.2px}
-
-  html[data-papel="despacho"]{--papel:#FFFFFF;--papel2:#F5F5F3;--nieve:#FFFFFF;--linea:#EAE7E1;--linea-fuerte:#D9D5CD;
-    --sombra:0 2px 6px rgba(24,18,10,.04);--sombra-alta:0 10px 40px -14px rgba(24,18,10,.18)}
-  html[data-papel="despacho"] body{background:#F6F4F0;background-image:none}
-  html[data-papel="despacho"] .hoja::after{opacity:0}
-  html[data-papel="despacho"] .hoja::before{background:linear-gradient(180deg,transparent,rgba(0,0,0,.06),transparent)}
-  html[data-papel="despacho"] .anot{padding-top:76px}
-  html[data-papel="despacho"] .vbtn{padding:34px 30px 30px;border-radius:18px}
-  html[data-papel="despacho"] .opt{border-radius:14px;padding:17px 20px;min-height:66px}
-  html[data-papel="despacho"] .dictamen,html[data-papel="despacho"] .voz{border-radius:20px;padding:40px 34px}
-  html[data-papel="despacho"] .btn,html[data-papel="despacho"] .cta,html[data-papel="despacho"] .volver,
-  html[data-papel="despacho"] input,html[data-papel="despacho"] select,html[data-papel="despacho"] .consent{border-radius:14px}
-  html[data-papel="despacho"] .credenciales{gap:1px}
-  html[data-papel="despacho"] h1{letter-spacing:-2px}
-
   /* Escala de lectura */
   html[data-escala="grande"] body{font-size:19.5px}
   html[data-escala="grande"] .opt{font-size:19.5px;min-height:66px}
@@ -395,7 +357,6 @@
   html[data-escala="mayor"] .vbtn b{font-size:30px}
   html[data-escala="mayor"] .bajada{font-size:22.5px}
 
-  html[data-voces="off"] .voces{display:none}
 
   /* ── STICKY CTA ── */
   .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;gap:10px;align-items:center;justify-content:center;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(250,247,241,.96);backdrop-filter:blur(10px) saturate(1.4);border-top:1px solid var(--linea);box-shadow:0 -6px 24px rgba(24,18,10,.08);transform:translateY(100%);transition:transform .35s cubic-bezier(.2,.7,.3,1)}
@@ -411,7 +372,7 @@
 <body>
 <a class="skip" href="#main">Saltar al evaluador</a>
 <div class="hoja">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px;border-bottom:1px solid var(--linea);background:var(--papel)">
+  <div class="cabecera">
     <span style="font-family:var(--mono);font-size:10px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)">Estudio Samudio</span>
     <span style="font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)">Posadas · Misiones</span>
   </div>
@@ -436,23 +397,9 @@
       </div>
     </div>
 
-    <div class="credenciales" style="display:none;">
-      <div class="cred">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 21h14M7 7h10M6 7l-3 7h6zM18 7l3 7h-6z"/></svg>
-        <span><b>Abogado matriculado</b><span>Colegio de Abogados de Misiones · ejercicio en toda la provincia</span></span>
-      </div>
-      <div class="cred">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M14 4v6h6M8 14h7M8 17.5h5"/></svg>
-        <span><b>Práctica concentrada</b><span>Derecho del consumidor: planes de ahorro y reclamos bancarios</span></span>
-      </div>
-      <div class="cred">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.3L12 3 3.5 7.3v5c0 4.7 3.4 8 8.5 8.7 5.1-.7 8.5-4 8.5-8.7z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
-        <span><b>Evaluación sin costo</b><span>Primera lectura de tu caso gratuita y sin compromiso</span></span>
-      </div>
-    </div>
   </div>
 
-  <div style="margin:0;padding:14px 22px 14px calc(var(--margen) + 40px);background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
+  <div class="franja-voz">
     <p style="margin:0;font-size:13.5px;line-height:1.5;color:var(--tinta-70);font-style:italic">
       &ldquo;Pagué cuatro años y la cuota se me fue al doble. Me explicaron en criollo qué se podía reclamar.&rdquo;
     </p>
@@ -469,9 +416,6 @@
     </div>
   </div>
 
-  <p style="text-align:center;font-size:12.5px;color:var(--tinta-45);margin:10px 0 0;letter-spacing:.3px">
-    4 preguntas · 30 segundos · sin registrarte
-  </p>
 
   <main class="cuerpo" id="main">
 
@@ -1179,21 +1123,19 @@ document.getElementById('reiniciar').addEventListener('click', () => {
     const el=document.getElementById(id);
     if(el) el.addEventListener('focus', ()=> gv('form_start',{field:id}), {once:true});
   });
-  // sticky CTA: muestra tras 40% scroll o 8s
+  // sticky CTA: solo en el paso 1 y cuando el usuario ya pasó las tarjetas
+  // (antes aparecía a los 8 s y tapaba la primera tarjeta, o quedaba visible en los pasos 2-4)
   const sticky=document.getElementById('stickyCta');
-  let shown=false;
-  function showSticky(){ if(!shown && sticky){ sticky.classList.add('on'); shown=true; gv('sticky_cta_view'); } }
-  setTimeout(showSticky, 8000);
-  window.addEventListener('scroll', ()=>{
-    if(shown) return;
-    const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    if(scrolled > 0.4) showSticky();
-  }, {passive:true});
-  // ocultar sticky en dictamen
-  const obs = new MutationObserver(()=>{
-    if(document.getElementById('step4').classList.contains('active') && sticky) sticky.classList.remove('on');
-  });
-  obs.observe(document.getElementById('step4'),{attributes:true,attributeFilter:['class']});
+  const step1=document.getElementById('step1');
+  const tarjetas=step1.querySelector('.verticales');
+  let visto=false;
+  function actualizarSticky(){
+    const on = step1.classList.contains('active') && tarjetas.getBoundingClientRect().bottom < 0;
+    sticky.classList.toggle('on', on);
+    if(on && !visto && getComputedStyle(sticky).display!=='none'){ visto=true; gv('sticky_cta_view'); }
+  }
+  window.addEventListener('scroll', actualizarSticky, {passive:true});
+  new MutationObserver(actualizarSticky).observe(step1,{attributes:true,attributeFilter:['class']});
   // tracking whatsapp/mail — dictamen_view se dispara en el handler de verResultado.
   // No se envía el href: el mensaje pre-llenado contiene nombre y teléfono.
   document.addEventListener('click', (e)=>{
