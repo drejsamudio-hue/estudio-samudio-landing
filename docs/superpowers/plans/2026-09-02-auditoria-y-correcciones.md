@@ -2,6 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+> **ESTADO: EJECUTADO (verificado 2026-09-23 contra producción).** Todas las tareas están en `main`:
+> T1 `e17590e` · T2 `fe59ce4` · T3 `2d3e234` · T4 `efccfaf` · T5 `e33d460` · T6 `69daaba` · T7 `c48a615` (sitemap automático, 17 URLs, todas 200).
+> `docs/` no se publica (404). Quedan solo pasos manuales fuera del repo: confirmar GA4 en Tiempo real y reenviar el sitemap en Search Console.
+> Continúa en `2026-09-23-pendientes-y-mejora-diseno.md`.
+
 **Goal:** Cerrar las brechas verificadas entre lo que los commits dicen haber hecho y lo que realmente está publicado, y eliminar la causa raíz del churn de deploys.
 
 **Architecture:** Sitio Jekyll servido por GitHub Pages. La landing (`index.html`) es una página standalone con su propio `<head>`; las otras 16 páginas (índice de notas + 13 notas + quien-soy + privacidad) se renderizan vía `_layouts/default.html`. Las correcciones se concentran en `default.html`, que quedó fuera de las últimas dos iteraciones de performance.

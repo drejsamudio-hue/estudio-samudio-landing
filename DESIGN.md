@@ -16,7 +16,7 @@ Fuente única de verdad de los tokens. Están declarados en `_layouts/default.ht
 | `--tierra-suave` | `#F6E8E1` | fondos de acento |
 | `--tinta` | `#12233B` | texto principal, footer |
 | `--tinta-70` | `#5A6474` | bajadas, texto secundario |
-| `--tinta-45` | `#8C93A0` | metadatos, disclaimers |
+| `--tinta-45` | `#5A6474` | metadatos, disclaimers, nav. Igual a `--tinta-70`: el valor anterior `#8C93A0` daba 2.89:1 sobre `--papel` (falla WCAG AA). |
 | `--linea` | `#E3DCCF` | separadores |
 | `--linea-fuerte` | `#D2C8B6` | subrayado de enlaces |
 

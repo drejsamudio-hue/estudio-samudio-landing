@@ -24,11 +24,21 @@
 <meta name="twitter:description" content="Evaluación gratuita y orientativa: planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo.">
 <meta name="twitter:image" content="https://drejsamudio-hue.github.io/estudio-samudio-landing/assets/og-estudio-samudio.png">
 <link rel="icon" href="/estudio-samudio-landing/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/estudio-samudio-landing/assets/favicon-192.png">
 <link rel="manifest" href="/estudio-samudio-landing/site.webmanifest">
 <meta name="theme-color" content="#A8452A">
-<!-- GA4 diferido — carga tras primer scroll/tap o a los 3s (elimina tarea larga de main thread) -->
+<!-- GA4 diferido — carga tras primer scroll/tap o a los 3s (elimina tarea larga de main thread).
+     La cola dataLayer se define de entrada: los eventos previos a la carga quedan encolados, no se pierden. -->
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-LTD1RWM91T', {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
   function loadGtag(){
     if(window._gtagLoaded) return;
     window._gtagLoaded = true;
@@ -36,15 +46,6 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LTD1RWM91T';
     s.async = true;
     document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', 'G-LTD1RWM91T', {
-      anonymize_ip: true,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false
-    });
   }
   window.addEventListener('scroll', loadGtag, {once:true, passive:true});
   window.addEventListener('pointerdown', loadGtag, {once:true, passive:true});
@@ -108,37 +109,34 @@
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{margin:0;font-family:var(--sans);font-size:17.5px;line-height:1.62;color:var(--tinta);
-       background:#EFE9DE;
-       background-image:radial-gradient(1200px 600px at 50% -10%, #F7F1E6 0%, #EFE9DE 60%);
-       -webkit-font-smoothing:antialiased}
+       background:var(--papel);-webkit-font-smoothing:antialiased}
 
   /* ── HOJA ── */
-  .hoja{max-width:880px;margin:0 auto;background:var(--papel);position:relative;
-        box-shadow:0 0 0 1px rgba(24,18,10,.06), 0 30px 80px -40px rgba(24,18,10,.35)}
-  .hoja::before{content:"";position:absolute;top:0;bottom:0;left:var(--margen);width:1px;
+  /* Brief 1b: el papel ocupa todo el ancho; el contenido vive en una columna de 880px.
+     La línea de margen se ancla a esa columna, no al borde de la ventana. */
+  .hoja{background:var(--papel);position:relative}
+  .hoja::before{content:"";position:absolute;top:0;bottom:0;left:calc(max(0px, (100% - 880px) / 2) + var(--margen));width:1px;
                 background:linear-gradient(180deg,transparent 0,var(--linea) 40px,var(--linea) calc(100% - 40px),transparent 100%)}
-  .hoja::after{content:"";position:absolute;top:0;bottom:0;left:calc(var(--margen) - 5px);width:1.5px;
+  .hoja::after{content:"";position:absolute;top:0;bottom:0;left:calc(max(0px, (100% - 880px) / 2) + var(--margen) - 5px);width:1.5px;
                background:linear-gradient(180deg,transparent 0,rgba(168,69,42,.32) 40px,rgba(168,69,42,.32) calc(100% - 40px),transparent 100%)}
-  .cuerpo{padding:0 44px 0 calc(var(--margen) + 40px)}
+  .cuerpo{max-width:880px;margin-inline:auto;padding:0 44px 0 calc(var(--margen) + 40px)}
   @media(max-width:760px){
     :root{--margen:0px}
-    body{background:var(--papel)}
-    .hoja{box-shadow:none}
     .hoja::before,.hoja::after{display:none}
     .cuerpo{padding:0 22px}
   }
 
   /* ── MASTHEAD ── */
-  .sello{display:flex;align-items:center;gap:11px;padding-top:46px;font-size:11px;letter-spacing:3.5px;
-         text-transform:uppercase;font-weight:600;color:var(--tierra);font-family:var(--mono)}
-  .sello svg{flex:none;opacity:.9}
-  h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,8vw,72px);line-height:1.08;letter-spacing:-2px;
-     margin:26px 0 0;text-wrap:balance}
+  .cabecera{position:relative;z-index:1;border-bottom:1px solid var(--linea);background:var(--papel)}
+  .cabecera .cuerpo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+  .cabecera .marca-estudio{font-family:var(--mono);font-size:10px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)}
+  .cabecera .lugar-estudio{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)}
+  .hero{padding-top:22px;padding-bottom:20px}
+  @media(min-width:761px){.hero{padding-top:30px;padding-bottom:24px}}
+  /* Título corto (brief 1b): ~26px mobile / ~32px desktop, una sola línea de copy */
+  h1{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-1.1px;margin:0;text-wrap:balance}
+  @media(min-width:761px){h1{font-size:32px}}
   h1 em{font-style:normal;color:var(--tierra);font-weight:800}
-  .bajada{font-size:19px;line-height:1.55;color:var(--tinta-70);max-width:46ch;margin:22px 0 0;text-wrap:pretty}
-  .lugar{margin:26px 0 38px;font-size:15px;letter-spacing:.4px;color:var(--tinta-45);display:flex;align-items:center;gap:9px}
-  .lugar svg{flex:none;color:var(--tierra)}
-  .lugar::after{content:"";flex:1;height:1px;background:var(--linea)}
 
   /* ── FOLIADO STICKY ── */
   .foliado{position:sticky;top:0;z-index:30;background:rgba(250,247,241,.88);backdrop-filter:saturate(1.4) blur(14px);
@@ -180,7 +178,7 @@
   /* ── VERTICALES ── */
   .verticales{display:grid;grid-template-columns:1fr;gap:16px}
   @media(min-width:660px){.verticales{grid-template-columns:1fr 1fr}}
-  .vbtn{position:relative;display:flex;flex-direction:column;gap:16px;align-items:flex-start;text-align:left;font:inherit;
+  .vbtn{position:relative;color:inherit;display:flex;flex-direction:column;gap:16px;align-items:flex-start;text-align:left;font:inherit;
         cursor:pointer;background:var(--nieve);border:1px solid var(--linea);border-radius:10px;padding:24px 22px 22px;
         min-height:56px;box-shadow:var(--sombra);transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s,background .18s}
   .vbtn:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:var(--linea-fuerte)}
@@ -304,27 +302,24 @@
   @keyframes spin{to{transform:rotate(360deg)}}
 
   /* ── PRUEBA SOCIAL ── */
-  .credenciales{display:grid;grid-template-columns:1fr;gap:2px;margin:0 0 40px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--linea)}
-  @media(min-width:660px){.credenciales{grid-template-columns:repeat(3,1fr)}}
-  .cred{background:var(--papel);padding:20px 4px 20px 0;display:flex;gap:12px;align-items:flex-start}
-  @media(min-width:660px){.cred{padding:22px 18px 22px 0}}
-  .cred svg{flex:none;color:var(--tierra);margin-top:2px}
-  .cred b{display:block;font-size:15px;font-weight:700;line-height:1.3;margin-bottom:3px;letter-spacing:-.2px}
-  .cred span{font-size:14.5px;color:var(--tinta-45);line-height:1.45;display:block}
 
   .voces{margin:8px 0 0;padding-top:40px;border-top:1px solid var(--linea)}
   .voces .tit{font-family:var(--display);font-size:clamp(24px,3.8vw,32px);line-height:1.1;letter-spacing:-1px;margin:8px 0 6px;font-weight:700}
   .voces .sub{font-size:16.5px;color:var(--tinta-70);margin:0 0 26px;max-width:50ch}
   .grid-voces{display:grid;grid-template-columns:1fr;gap:16px}
   @media(min-width:660px){.grid-voces{grid-template-columns:1fr 1fr}}
-  .voz{background:var(--nieve);border:1px solid var(--linea);border-radius:11px;padding:30px 24px;box-shadow:var(--sombra);position:relative}
-  .voz .comilla{font-family:var(--display);font-size:56px;line-height:.6;color:var(--tierra);opacity:.28;display:block;margin-bottom:12px}
-  .voz p{font-family:var(--sans);font-size:18px;line-height:1.58;margin:0 0 20px;text-wrap:pretty;color:var(--tinta)}
-  .voz .quien{display:flex;align-items:center;gap:11px;border-top:1px solid var(--linea);padding-top:14px}
-  .voz .ini{width:40px;height:40px;flex:none;border-radius:50%;background:var(--tierra-suave);color:var(--tierra);
-            display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;letter-spacing:.5px}
-  .voz .quien div{font-size:14.5px;line-height:1.35;color:var(--tinta-45)}
-  .voz .quien b{display:block;color:var(--tinta);font-size:15.5px;font-weight:600}
+  .voz{background:var(--nieve);border:1px solid var(--linea);border-radius:11px;padding:20px;box-shadow:var(--sombra);position:relative}
+  .voz .comilla{font-family:var(--display);font-size:44px;line-height:.6;color:var(--tierra);opacity:.28;display:block;margin-bottom:8px}
+  .voz p{font-family:var(--sans);font-size:16px;line-height:1.55;margin:0 0 14px;text-wrap:pretty;color:var(--tinta)}
+  .voz .atrib{font-family:var(--mono);font-size:12.5px;line-height:1.4;letter-spacing:.3px;color:var(--tinta-45);
+              border-top:1px solid var(--linea);padding-top:12px;margin:0}
+
+  /* ── CREDENCIALES (barra, después del wizard) ── */
+  .cred-barra{position:relative;z-index:1;margin-top:36px;background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cred-barra ul{list-style:none;margin-top:0;margin-bottom:0;padding-top:16px;padding-bottom:16px;display:flex;flex-direction:column;gap:9px}
+  .cred-barra li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-45)}
+  .cred-barra li svg{flex:none;margin-top:3px;color:var(--tierra)}
+  .cred-barra li b{font-weight:600;color:var(--tinta)}
   .marco{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
   .chip{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:var(--tinta-70);
         background:var(--papel2);border:1px solid var(--linea);border-radius:999px;padding:9px 15px}
@@ -338,36 +333,6 @@
   footer span[style]{display:block;margin-top:5px}
   a{color:var(--tierra)}
   a:hover{color:var(--tierra-oscuro)}
-  /* ── VARIANTES DE SUPERFICIE ── */
-
-  /* Papel — reencuadra toda la superficie */
-  html[data-papel="expediente"]{--papel:#F2ECDF;--papel2:#E9E1D0;--nieve:#FAF6EC;--linea:#DCD2BE;--linea-fuerte:#C8BBA1;
-    --sombra:0 1px 0 rgba(24,18,10,.06);--sombra-alta:0 1px 0 rgba(24,18,10,.10)}
-  html[data-papel="expediente"] body{background:#E6DECC;background-image:none}
-  html[data-papel="expediente"] .hoja{background-image:repeating-linear-gradient(180deg,transparent 0 33px,rgba(18,35,59,.05) 33px 34px)}
-  html[data-papel="expediente"] .vbtn,html[data-papel="expediente"] .opt,html[data-papel="expediente"] .dictamen,
-  html[data-papel="expediente"] .voz,html[data-papel="expediente"] input,html[data-papel="expediente"] select,
-  html[data-papel="expediente"] .btn,html[data-papel="expediente"] .volver,html[data-papel="expediente"] .cta,
-  html[data-papel="expediente"] .consent,html[data-papel="expediente"] .estampa{border-radius:2px}
-  html[data-papel="expediente"] .btn,html[data-papel="expediente"] .cta{background-image:none;box-shadow:none}
-  html[data-papel="expediente"] .btn{background-color:var(--tierra)}
-  html[data-papel="expediente"] .vbtn:hover{transform:none}
-  html[data-papel="expediente"] h1,html[data-papel="expediente"] h2,html[data-papel="expediente"] .dictamen h3{letter-spacing:-.2px}
-
-  html[data-papel="despacho"]{--papel:#FFFFFF;--papel2:#F5F5F3;--nieve:#FFFFFF;--linea:#EAE7E1;--linea-fuerte:#D9D5CD;
-    --sombra:0 2px 6px rgba(24,18,10,.04);--sombra-alta:0 10px 40px -14px rgba(24,18,10,.18)}
-  html[data-papel="despacho"] body{background:#F6F4F0;background-image:none}
-  html[data-papel="despacho"] .hoja::after{opacity:0}
-  html[data-papel="despacho"] .hoja::before{background:linear-gradient(180deg,transparent,rgba(0,0,0,.06),transparent)}
-  html[data-papel="despacho"] .anot{padding-top:76px}
-  html[data-papel="despacho"] .vbtn{padding:34px 30px 30px;border-radius:18px}
-  html[data-papel="despacho"] .opt{border-radius:14px;padding:17px 20px;min-height:66px}
-  html[data-papel="despacho"] .dictamen,html[data-papel="despacho"] .voz{border-radius:20px;padding:40px 34px}
-  html[data-papel="despacho"] .btn,html[data-papel="despacho"] .cta,html[data-papel="despacho"] .volver,
-  html[data-papel="despacho"] input,html[data-papel="despacho"] select,html[data-papel="despacho"] .consent{border-radius:14px}
-  html[data-papel="despacho"] .credenciales{gap:1px}
-  html[data-papel="despacho"] h1{letter-spacing:-2px}
-
   /* Escala de lectura */
   html[data-escala="grande"] body{font-size:19.5px}
   html[data-escala="grande"] .opt{font-size:19.5px;min-height:66px}
@@ -394,7 +359,6 @@
   html[data-escala="mayor"] .vbtn b{font-size:30px}
   html[data-escala="mayor"] .bajada{font-size:22.5px}
 
-  html[data-voces="off"] .voces{display:none}
 
   /* ── STICKY CTA ── */
   .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;gap:10px;align-items:center;justify-content:center;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(250,247,241,.96);backdrop-filter:blur(10px) saturate(1.4);border-top:1px solid var(--linea);box-shadow:0 -6px 24px rgba(24,18,10,.08);transform:translateY(100%);transition:transform .35s cubic-bezier(.2,.7,.3,1)}
@@ -410,52 +374,15 @@
 <body>
 <a class="skip" href="#main">Saltar al evaluador</a>
 <div class="hoja">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px;border-bottom:1px solid var(--linea);background:var(--papel)">
-    <span style="font-family:var(--mono);font-size:10px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)">Estudio Samudio</span>
-    <span style="font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)">Posadas · Misiones</span>
-  </div>
-
-  <div class="cuerpo">
-    <div style="padding:22px 0 0">
-      <h1 style="font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-1.1px;margin:0">Evaluá tu caso <em style="font-style:normal;color:var(--tierra)">sin compromiso</em></h1>
-      <p style="font-size:15.5px;color:var(--tinta-70);margin:10px 0 0;max-width:52ch;line-height:1.5">4 preguntas en 30 segundos · Respuesta orientativa inmediata · Evaluación sin costo por abogado matriculado</p>
-    </div>
-
-    <div style="margin:22px 0 0;padding:16px 0;background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
-      <div style="display:flex;flex-direction:column;gap:9px">
-        <span style="display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-70)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tierra)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b style="font-weight:600;color:var(--tinta)">Abogado matriculado</b> · Colegio de Abogados de Misiones</span></span>
-        <span style="display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-70)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tierra)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b style="font-weight:600;color:var(--tinta)">Práctica concentrada</b> · derecho del consumidor</span></span>
-        <span style="display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;color:var(--tinta-70)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tierra)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b style="font-weight:600;color:var(--tinta)">Evaluación sin costo</b> · primera lectura gratuita</span></span>
-      </div>
-    </div>
-
-    <div class="credenciales" style="display:none;">
-      <div class="cred">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 21h14M7 7h10M6 7l-3 7h6zM18 7l3 7h-6z"/></svg>
-        <span><b>Abogado matriculado</b><span>Colegio de Abogados de Misiones · ejercicio en toda la provincia</span></span>
-      </div>
-      <div class="cred">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M14 4v6h6M8 14h7M8 17.5h5"/></svg>
-        <span><b>Práctica concentrada</b><span>Derecho del consumidor: planes de ahorro y reclamos bancarios</span></span>
-      </div>
-      <div class="cred">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.3L12 3 3.5 7.3v5c0 4.7 3.4 8 8.5 8.7 5.1-.7 8.5-4 8.5-8.7z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
-        <span><b>Evaluación sin costo</b><span>Primera lectura de tu caso gratuita y sin compromiso</span></span>
-      </div>
+  <div class="cabecera">
+    <div class="cuerpo">
+      <span class="marca-estudio">Estudio Samudio</span>
+      <span class="lugar-estudio">Posadas · Misiones</span>
     </div>
   </div>
 
-  <div style="margin:0;padding:14px 22px 14px calc(var(--margen) + 40px);background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
-    <p style="margin:0;font-size:13.5px;line-height:1.5;color:var(--tinta-70);font-style:italic">
-      &ldquo;Pagué cuatro años y la cuota se me fue al doble. Me explicaron en criollo qué se podía reclamar.&rdquo;
-    </p>
-    <p style="margin:5px 0 0;font-size:12px;color:var(--tinta-45)">R. M. · Posadas · plan de ahorro de auto</p>
+  <div class="cuerpo hero">
+    <h1>Evaluá tu caso <em>sin compromiso</em></h1>
   </div>
 
   <div class="foliado">
@@ -468,9 +395,6 @@
     </div>
   </div>
 
-  <p style="text-align:center;font-size:12.5px;color:var(--tinta-45);margin:10px 0 0;letter-spacing:.3px">
-    4 preguntas · 30 segundos · sin registrarte
-  </p>
 
   <main class="cuerpo" id="main">
 
@@ -602,7 +526,7 @@
           <div class="emsg">Necesitamos tu consentimiento para poder contactarte.</div>
         </div>
         <div class="acciones">
-          <button class="btn" id="verResultado" type="button">Ver mi evaluación</button>
+          <button class="btn" id="verResultado" type="button">Ver mi resultado</button>
           <button class="volver" data-back="2" type="button">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
             Volver
@@ -626,8 +550,16 @@
 
   </main>
 
+  <div class="cred-barra">
+    <ul class="cuerpo" aria-label="Credenciales">
+      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Abogado matriculado</b> · Colegio de Abogados de Misiones</span></li>
+      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Práctica concentrada</b> · derecho del consumidor</span></li>
+      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Evaluación sin costo</b> · primera lectura gratuita</span></li>
+    </ul>
+  </div>
+
   <div class="cuerpo">
-    <div style="padding:32px 0 0">
+    <div style="padding:28px 0 0">
       <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 14px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
       <p style="margin:0 0 24px;font-size:14.5px"><a href="/estudio-samudio-landing/notas/" style="color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
       <div style="border-top:1px solid var(--linea);padding-top:24px">
@@ -639,18 +571,12 @@
         <div class="voz">
           <span class="comilla" aria-hidden="true">&ldquo;</span>
           <p>Pagué el plan cuatro años y la cuota se me fue al doble. Pensé que no había nada que hacer. Me explicaron en criollo qué papeles juntar y qué se podía reclamar.</p>
-          <div class="quien">
-            <span class="ini">R.M.</span>
-            <div><b>R. M.</b>Posadas · plan de ahorro de auto</div>
-          </div>
+          <p class="atrib">R. M. · Posadas · plan de ahorro de auto</p>
         </div>
         <div class="voz">
           <span class="comilla" aria-hidden="true">&ldquo;</span>
           <p>Me descontaban un seguro que nunca pedí. Fui al banco tres veces y nada. Acá me dijeron con qué resúmenes empezar y cómo dejar el reclamo por escrito.</p>
-          <div class="quien">
-            <span class="ini">S.A.</span>
-            <div><b>S. A.</b>Oberá · reclamo bancario</div>
-          </div>
+          <p class="atrib">S. A. · Oberá · reclamo bancario</p>
         </div>
       </div>
       <div class="marco">
@@ -693,6 +619,21 @@ const CONFIG = {
 // ═══════════════════════════════════════════════════════════
 let vertical = null;
 let respuestas = {};
+let ultimoNivel = null;
+
+// ═══════════════════════════════════════════════════════════
+// GA4 — nunca enviar datos personales (nombre, teléfono, email)
+// ═══════════════════════════════════════════════════════════
+function gv(event, params){
+  try{
+    if(typeof gtag==='function') {
+      gtag('event', event, params || {});
+      if(window.location.search.includes('debug_ga4=1')) console.log(`[GA4] Evento disparado: ${event}`, params || {});
+    }
+  }catch(e){
+    if(window.location.search.includes('debug_ga4=1')) console.warn(`[GA4] No se pudo enviar: ${event}`, e);
+  }
+}
 
 // ═══════════════════════════════════════════════════════════
 // PREGUNTAS POR VERTICAL
@@ -1027,6 +968,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   if (!document.getElementById('fConsent').checked) { marcarError('wConsent','fConsent'); return; }
 
   const resultado = clasificar();
+  ultimoNivel = resultado.nivel;
 
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>Procesando…';
@@ -1039,7 +981,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   }
 
   btn.disabled = false;
-  btn.textContent = 'Ver mi evaluación';
+  btn.textContent = 'Ver mi resultado';
 
   const box = document.getElementById('resultBox');
   const waUrl = `https://wa.me/${CONFIG.whatsapp}?text=${buildWhatsAppMsg(datos, resultado)}`;
@@ -1087,13 +1029,14 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   }
 
   irA(4);
+  gv('dictamen_view', { vertical, nivel: resultado.nivel });
 });
 
 // ═══════════════════════════════════════════════════════════
 // REINICIAR
 // ═══════════════════════════════════════════════════════════
 document.getElementById('reiniciar').addEventListener('click', () => {
-  vertical = null; respuestas = {};
+  vertical = null; respuestas = {}; ultimoNivel = null;
   document.querySelectorAll('.vbtn').forEach(x => x.classList.remove('sel'));
   document.getElementById('wizForm').innerHTML = '';
   ['fNombre','fLocalidad','fTel','fEmail'].forEach(id => document.getElementById(id).value = '');
@@ -1102,7 +1045,7 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.getElementById('saveStatus').innerHTML = '';
   document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
   try{localStorage.removeItem('es_wizard');}catch(e){}
-  if(typeof gtag==='function') gtag('event','reiniciar_wizard');
+  gv('reiniciar_wizard');
   irA(1);
 });
 
@@ -1148,17 +1091,6 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.addEventListener('change', persist);
   document.addEventListener('input', persist);
 
-  // GA4 helpers
-  function gv(event, params){
-    try{
-      if(typeof gtag==='function') {
-        gtag('event', event, params || {});
-        if(window.location.search.includes('debug_ga4=1')) console.log(`[GA4] Evento disparado: ${event}`, params || {});
-      }
-    }catch(e){
-      if(window.location.search.includes('debug_ga4=1')) console.warn(`[GA4] No se pudo enviar: ${event}`, e);
-    }
-  }
   // vertical_selected
   document.querySelectorAll('.vbtn').forEach(b=>{
     b.addEventListener('click', ()=> gv('vertical_selected',{vertical:b.dataset.v}));
@@ -1172,37 +1104,42 @@ document.getElementById('reiniciar').addEventListener('click', () => {
     const el=document.getElementById(id);
     if(el) el.addEventListener('focus', ()=> gv('form_start',{field:id}), {once:true});
   });
-  // sticky CTA: muestra tras 40% scroll o 8s
+  // sticky CTA: solo en el paso 1 y cuando el usuario ya pasó las tarjetas
+  // (antes aparecía a los 8 s y tapaba la primera tarjeta, o quedaba visible en los pasos 2-4)
   const sticky=document.getElementById('stickyCta');
-  let shown=false;
-  function showSticky(){ if(!shown && sticky){ sticky.classList.add('on'); shown=true; gv('sticky_cta_view'); } }
-  setTimeout(showSticky, 8000);
-  window.addEventListener('scroll', ()=>{
-    if(shown) return;
-    const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    if(scrolled > 0.4) showSticky();
-  }, {passive:true});
-  // ocultar sticky en dictamen
-  const obs = new MutationObserver(()=>{
-    if(document.getElementById('step4').classList.contains('active') && sticky) sticky.classList.remove('on');
-  });
-  obs.observe(document.getElementById('step4'),{attributes:true,attributeFilter:['class']});
-  // tracking dictamen + whatsapp/mail
-  const origVerResultado = document.getElementById('verResultado').onclick;
-  // interceptamos via evento ya existente: añadimos listener adicional
-  document.getElementById('verResultado').addEventListener('click', ()=>{
-    setTimeout(()=>{
-      const box=document.getElementById('resultBox');
-      const nivel = box.className.includes('d-verde') ? 'VERDE' : box.className.includes('d-amarillo') ? 'AMARILLO' : 'ROJO';
-      if(nivel!=='') gv('dictamen_view',{vertical,nivel});
-    }, 600);
-  });
+  const step1=document.getElementById('step1');
+  const tarjetas=step1.querySelector('.verticales');
+  let visto=false;
+  function actualizarSticky(){
+    const on = step1.classList.contains('active') && tarjetas.getBoundingClientRect().bottom < 0;
+    sticky.classList.toggle('on', on);
+    if(on && !visto && getComputedStyle(sticky).display!=='none'){ visto=true; gv('sticky_cta_view'); }
+  }
+  window.addEventListener('scroll', actualizarSticky, {passive:true});
+  new MutationObserver(actualizarSticky).observe(step1,{attributes:true,attributeFilter:['class']});
+  // tracking whatsapp/mail — dictamen_view se dispara en el handler de verResultado.
+  // No se envía el href: el mensaje pre-llenado contiene nombre y teléfono.
   document.addEventListener('click', (e)=>{
-    const a=e.target.closest('a.cta.wa');
-    if(a){ gv('whatsapp_click',{vertical, url:a.href}); }
-    const m=e.target.closest('a.cta.mail');
-    if(m){ gv('mailto_click',{vertical}); }
+    if(e.target.closest('a.cta.wa')) gv('whatsapp_click',{vertical, nivel:ultimoNivel, origen:'dictamen'});
+    if(e.target.closest('a.sc-wa'))   gv('whatsapp_click',{vertical, origen:'sticky'});
+    if(e.target.closest('a.cta.mail')) gv('mailto_click',{vertical, nivel:ultimoNivel});
   });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// PRESELECCIÓN POR ?vertical= (restaura la Fase 5.5 del 11/08, commit 1da0aad)
+// El querystring gana sobre el progreso guardado: es una intención nueva
+// (desde una nota o un anuncio), no una sesión vieja.
+// ═══════════════════════════════════════════════════════════
+(function(){
+  const verticalQS = new URLSearchParams(location.search).get('vertical');
+  if (!verticalQS || !PREGUNTAS[verticalQS]) return;
+  vertical = verticalQS;
+  respuestas = {};
+  document.querySelectorAll('.vbtn').forEach(x => x.classList.toggle('sel', x.dataset.v === vertical));
+  renderWizard();
+  try { localStorage.setItem('es_wizard', JSON.stringify({ vertical, respuestas, datos: {} })); } catch(e) {}
+  irA(2);
 })();
 </script>
 

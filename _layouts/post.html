@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article class="nota" itemscope itemtype="https://schema.org/Article">
+<article class="nota"{% if page.date %} itemscope itemtype="https://schema.org/Article"{% endif %}>
 <style>
   .nota .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
                  color:var(--tierra);font-weight:600;margin:0 0 14px;opacity:.85}
@@ -37,13 +37,15 @@ layout: default
   .nota .meta{font-family:var(--mono);font-size:12px;color:#5A6474;margin:-8px 0 22px}
 </style>
 
+{% if page.vertical %}
 <nav class="breadcrumb" aria-label="Miga de pan">
   <a href="{{ '/' | relative_url }}">Inicio</a> · <a href="{{ '/notas/' | relative_url }}">Notas</a> · {{ page.vertical }}
 </nav>
 <p class="eyebrow">{{ page.vertical }}</p>
+{% endif %}
 <h1 itemprop="headline">{{ page.h1 | default: page.title }}</h1>
 {% if page.description %}<p class="dek" itemprop="description">{{ page.description }}</p>{% endif %}
-<p class="meta">Por <span itemprop="author">Estudio Samudio — Dr. Estanislao J. Samudio · Mat. CAM 4372 · STJM 4031</span> · <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time> · Posadas, Misiones</p>
+{% if page.date %}<p class="meta">Por <span itemprop="author">Estudio Samudio — Dr. Estanislao J. Samudio · Mat. CAM 4372 · STJM 4031</span> · <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time> · Posadas, Misiones</p>{% endif %}
 
 <div itemprop="articleBody">
 {{ content }}
@@ -58,14 +60,15 @@ layout: default
     {% for item in page.faq %}
     {
       "@type": "Question",
-      "name": "{{ item.q | escape }}",
-      "acceptedAnswer": { "@type": "Answer", "text": "{{ item.a | escape }}" }
+      "name": {{ item.q | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | jsonify }} }
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ]
 }
 </script>
 {% endif %}
+{% if page.vertical %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -73,8 +76,9 @@ layout: default
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Inicio","item":"{{ '/' | absolute_url }}"},
     {"@type":"ListItem","position":2,"name":"Notas","item":"{{ '/notas/' | absolute_url }}"},
-    {"@type":"ListItem","position":3,"name":"{{ page.title | escape }}","item":"{{ page.url | absolute_url }}"}
+    {"@type":"ListItem","position":3,"name":{{ page.title | jsonify }},"item":"{{ page.url | absolute_url }}"}
   ]
 }
 </script>
+{% endif %}
 </article>
