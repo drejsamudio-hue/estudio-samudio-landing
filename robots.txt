@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 
 # Sitemap absoluto (exigencia Search Console). Tras migrar a dominio propio,
-# cambiá la línea por: Sitemap: https://estudiosamudio.com.ar/sitemap.xml
+# cambiá la línea por: Sitemap: https://consumidormisiones.com.ar/sitemap.xml
 Sitemap: https://drejsamudio-hue.github.io/estudio-samudio-landing/sitemap.xml

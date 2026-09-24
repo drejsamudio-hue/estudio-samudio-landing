@@ -8,7 +8,7 @@ future: true
 
 # --- SEO / Social ---
 # Cuando migres a dominio propio, cambiá solo url y baseurl:
-# url: "https://estudiosamudio.com.ar"
+# url: "https://consumidormisiones.com.ar"   (dominio decidido 23/08/2026, P29)
 # baseurl: ""
 # y dejá el resto igual. El canonical se regenera solo.
 logo: "/assets/og-estudio-samudio.png"

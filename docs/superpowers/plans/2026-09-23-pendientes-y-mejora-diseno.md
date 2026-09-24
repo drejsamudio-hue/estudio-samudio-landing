@@ -42,7 +42,7 @@ un solo `dictamen_view`, cero PII en `dataLayer`, cero errores JS.
 - [ ] Search Console: reenviar `sitemap.xml`.
 - [ ] Google Business Profile "Estudio Samudio — Posadas" → pegar la URL en `sameAs` (hoy `[]` en ambos JSON-LD).
 - [ ] Foto profesional (retrato + despacho) para `/quien-soy/` y `og:image`.
-- [ ] Dominio propio (`url`/`baseurl` en `_config.yml`, `robots.txt`, URLs absolutas de `index.html`).
+- [ ] Dominio propio **`consumidormisiones.com.ar`** (decisión del 23/08, P29 en `PROJECT_STATE.md` del repo privado): `url`/`baseurl` en `_config.yml`, `robots.txt`, URLs absolutas de `index.html`.
 
 ---
 
@@ -212,3 +212,28 @@ Script Playwright contra el build local:
 1. ~~¿Ejecutar Fases 1–3 juntas o por separado?~~ **Decidido (Dr. Samudio, 2026-09-24):** Fase 1 sola; luego 2+3 juntas. Ambas ejecutadas.
 2. **Tokens compartidos**: include inline (recomendado) vs CSS externo.
 3. **Control A/A+/A++**: activarlo (recomendado) o borrar el CSS `data-escala`.
+
+
+---
+
+## Actualización 2026-09-24 — Fases 2 y 3 reemplazadas por el brief 1b
+
+Al correr el pre-sesión sobre el repo privado apareció `docs/BRIEF_REDESIGN_WIZARD_FIRST.md`
+(06/09), una directiva cerrada para este mismo `index.html` que contradecía las Fases 2 y 3
+de este plan (credenciales antes del wizard, H1 grande, CSS del wizard reescrito, JS nuevo).
+**Decisión del Dr. Samudio (24/09): opción (a) — rehacer según el brief**, conservando las
+correcciones de bugs (GA4, `post.html`, Fase 1).
+
+- Las Fases 2 y 3 descritas arriba quedan **DESCARTADAS** (commit `9f47f6b` revertido en `index.html`).
+  Sus mejoras que el brief no contempla — tarjetas compactas en mobile, bloque de confianza en
+  el paso 3, WhatsApp en dictamen ROJO, ARIA del wizard, foco al dictamen — quedan como
+  **propuesta pendiente de aprobación**, no ejecutadas.
+- Aplicado el brief 1b: cabecera de una línea → H1 corto (26/32 px) → wizard → barra de
+  credenciales → párrafo + guías → testimonios compactos (atribución mono) → footer.
+  Papel a ancho completo, columna interna de 880 px, línea de margen anclada a la columna.
+- **Regresión corregida:** el commit `a845567` (19/08) había reemplazado el `index.html` de la
+  v8 y perdido la preselección `?vertical=` (Fase 5.5, `1da0aad`) y "Ver mi resultado".
+  Ambas restauradas. P33 (`?vertical=` en los CTA de las notas) queda desbloqueado.
+- Desvío del brief, justificado: el título es `<h1>` (no `<h2>`) porque es el único encabezado
+  principal de la página (requisito SEO del fix de indexación de agosto). El brief menciona
+  "4 tarjetas"; hoy son 5 (vertical *descuentos*, `7100cd4`, posterior al brief).
