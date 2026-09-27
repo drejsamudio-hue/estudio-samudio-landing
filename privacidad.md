@@ -20,6 +20,8 @@ Exclusivamente para evaluar tu caso y contactarte por ese motivo. No los usamos 
 
 Los datos del formulario se guardan en una planilla de Google Sheets de uso exclusivo del estudio, protegida por las medidas de seguridad estándar de esa plataforma.
 
+Mientras completás la evaluación, tu propio navegador guarda un borrador para que no pierdas lo avanzado si recargás la página: las respuestas quedan en el dispositivo hasta que empieces una evaluación nueva; tus datos de contacto solo hasta cerrar la pestaña o enviar la evaluación. Ese borrador no se envía a ningún lado.
+
 ## Analítica del sitio
 
 Usamos Google Analytics (GA4) para entender cómo se usa el sitio, de forma agregada y sin identificarte individualmente.
