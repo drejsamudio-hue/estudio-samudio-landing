@@ -1,4 +1,5 @@
-title: "Derecho del Consumidor — Estudio Samudio"
+title: "Estudio Samudio"
+# Sufijo corto en <title> de las notas (jekyll-seo-tag agrega " | title"): mantiene los títulos ~60-75 caracteres
 description: "Evaluación gratuita y orientativa de tu caso de consumo: planes de ahorro de autos, reclamos bancarios, fintech y débitos duplicados. Posadas y toda la provincia de Misiones."
 url: "https://consumidormisiones.com.ar"
 baseurl: ""
