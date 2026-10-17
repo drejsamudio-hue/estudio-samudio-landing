@@ -4,6 +4,7 @@ title: "Cuota de plan de ahorro disparada: qué podés hacer"
 h1: "La cuota de tu plan de ahorro se disparó: hasta dónde puede subir y qué podés hacer"
 description: "Cómo distinguir un ajuste legítimo de uno abusivo, verificarlo vos mismo en 20 minutos y qué hacer antes de dejar de pagar. Guía práctica. Posadas y Misiones."
 vertical: "Planes de ahorro"
+wizard_vertical: ahorro
 slug: aumento-cuota-plan-ahorro
 date: 2026-08-10 10:00:00 -0300
 ---
@@ -66,7 +67,7 @@ En Misiones, los reclamos judiciales de consumo gozan de gratuidad y tramitan po
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

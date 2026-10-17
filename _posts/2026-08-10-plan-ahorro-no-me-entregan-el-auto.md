@@ -4,6 +4,7 @@ title: "Adjudicado y sin auto: abusos en planes de ahorro"
 h1: "Adjudicado y sin auto: los abusos más comunes en los planes de ahorro"
 description: "Rechazo de garantes sin explicación, integración retenida, cuotas que siguen corriendo sin entrega del auto. Conocé tus derechos como adjudicado. Posadas y Misiones."
 vertical: "Planes de ahorro"
+wizard_vertical: ahorro
 slug: plan-ahorro-no-me-entregan-el-auto
 date: 2026-08-10 09:00:00 -0300
 ---
@@ -51,7 +52,7 @@ Si te reconociste en más de una de estas señales, tu situación merece una eva
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

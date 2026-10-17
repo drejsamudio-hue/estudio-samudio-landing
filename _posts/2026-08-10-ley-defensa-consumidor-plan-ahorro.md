@@ -4,6 +4,7 @@ title: "Ley de Defensa del Consumidor y tu plan de ahorro"
 h1: "Qué dice la Ley de Defensa del Consumidor sobre tu plan de ahorro (y qué podés reclamar)"
 description: "Carga de la prueba a favor tuyo, responsabilidad solidaria de administradora y concesionaria, daño punitivo y gratuidad del reclamo. Tus derechos en criollo. Misiones."
 vertical: "Planes de ahorro"
+wizard_vertical: ahorro
 slug: ley-defensa-consumidor-plan-ahorro
 date: 2026-08-10 09:30:00 -0300
 ---
@@ -56,7 +57,7 @@ Si tu administradora rechazó garantes sin fundamento, retuvo tu integración o 
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

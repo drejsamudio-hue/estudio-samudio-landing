@@ -4,6 +4,7 @@ title: "Cuenta bancaria bloqueada o cerrada sin explicación"
 h1: "Te bloquearon o cerraron la cuenta sin explicación: qué puede y qué no puede hacer el banco"
 description: "Cuenta bancaria bloqueada sin aviso, sueldo inaccesible, derivaciones sin respuesta: qué puede hacer el banco, qué no, y cómo construir la prueba. Posadas y Misiones."
 vertical: "Bancario"
+wizard_vertical: banco
 slug: bloqueo-cierre-cuenta-bancaria
 date: 2026-08-03 09:00:00 -0300
 ---
@@ -82,7 +83,7 @@ El banco puede tener motivos legítimos para restringir o cerrar una cuenta. Lo 
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

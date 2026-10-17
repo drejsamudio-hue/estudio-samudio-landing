@@ -4,6 +4,7 @@ title: "Baja del plan de ahorro: qué te tienen que devolver"
 h1: "Diste de baja el plan de ahorro y no te devuelven: qué corresponde"
 description: "Devolución de plan de ahorro cancelado: qué pueden descontarte, qué no, y por qué haber dado de baja no te deja afuera de reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
+wizard_vertical: ahorro
 slug: baja-plan-ahorro-devolucion
 date: 2026-08-03 09:00:00 -0300
 ---
@@ -74,7 +75,7 @@ Darte de baja no significa regalar lo que pusiste. Si la devolución no llega, l
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>
