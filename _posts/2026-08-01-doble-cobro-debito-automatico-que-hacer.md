@@ -4,6 +4,7 @@ title: "Doble cobro por débito automático: reclamo en Misiones"
 h1: "Te cobraron dos veces la misma factura: por qué es ilegal y cómo reclamarlo"
 description: "Pagaste una factura por transferencia o en el local y el débito automático te la cobró igual. Cómo reclamar el doble cobro y la devolución completa. Posadas y Misiones."
 vertical: "Débito duplicado"
+wizard_vertical: debito
 slug: doble-cobro-debito-automatico-que-hacer
 date: 2026-08-06 09:00:00 -0300
 ---
@@ -66,7 +67,7 @@ Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de l
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>

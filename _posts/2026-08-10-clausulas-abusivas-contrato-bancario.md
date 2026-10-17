@@ -4,6 +4,7 @@ title: "Cláusulas abusivas en contratos bancarios"
 h1: "Cláusulas abusivas en contratos bancarios: qué dice la ley (y por qué el banco no siempre tiene razón)"
 description: "Que esté en el contrato no lo hace legal. Qué son las cláusulas abusivas, quién debe probar y cuándo corresponde daño punitivo frente al banco. Posadas y Misiones."
 vertical: "Bancario"
+wizard_vertical: banco
 slug: clausulas-abusivas-contrato-bancario
 date: 2026-08-10 11:00:00 -0300
 ---
@@ -60,7 +61,7 @@ Firmar un contrato de adhesión no es renunciar a tus derechos. Si tu banco te c
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Los montos de toda condena los determina exclusivamente el juez. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

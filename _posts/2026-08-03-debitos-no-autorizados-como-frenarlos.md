@@ -4,6 +4,7 @@ title: "Débitos no autorizados en Misiones: cómo frenarlos"
 h1: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te cobraron"
 description: "Servicio dado de baja que sigue cobrando, o débito de algo que nunca contrataste: cómo frenarlo y reclamar todo lo cobrado sin tu consentimiento. Posadas y Misiones."
 vertical: "Bancario"
+wizard_vertical: banco
 slug: debitos-no-autorizados-como-frenarlos
 date: 2026-08-06 09:00:00 -0300
 ---
@@ -81,7 +82,7 @@ Un débito sin consentimiento no se vuelve legítimo porque nadie lo reclame. Re
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

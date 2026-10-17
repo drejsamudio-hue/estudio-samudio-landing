@@ -4,6 +4,7 @@ title: "Comisiones bancarias no autorizadas: cómo detectarlas"
 h1: "Comisiones que no autorizaste: cómo detectarlas en tu resumen bancario"
 description: "Seguros que no contrataste, cargos sin aviso, comisiones sin servicio real: guía práctica para revisar tu resumen bancario y saber si tenés un reclamo. Misiones."
 vertical: "Bancario"
+wizard_vertical: banco
 slug: comisiones-bancarias-no-autorizadas
 date: 2026-08-10 10:30:00 -0300
 ---
@@ -57,7 +58,7 @@ Un detalle que los bancos conocen bien: la enorme mayoría de los clientes nunca
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

@@ -4,6 +4,7 @@ title: "Préstamo no solicitado: tus derechos en Misiones"
 h1: "Préstamos que no pediste y cargos que no reconocés: tus derechos frente a las apps financieras"
 description: "Préstamos no solicitados, membresías que nunca contrataste, cargos que no reconocés en billeteras y apps: tus derechos como usuario de fintech en Argentina. Posadas y Misiones."
 vertical: "Fintech"
+wizard_vertical: fintech
 slug: prestamo-no-solicitado-fintech-derechos
 date: 2026-08-01 09:00:00 -0300
 ---
@@ -69,7 +70,7 @@ Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de l
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>

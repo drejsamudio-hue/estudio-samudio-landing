@@ -4,6 +4,7 @@ title: "Intereses abusivos en tarjetas: la deuda que no baja"
 h1: "La deuda que nunca baja: intereses abusivos y capitalización en tarjetas y préstamos"
 description: "Tasa desproporcionada, intereses sobre intereses, punitorios apilados: por qué tu deuda no baja aunque pagués, y qué dice la ley al respecto. Posadas y Misiones."
 vertical: "Bancario"
+wizard_vertical: banco
 slug: intereses-abusivos-tarjeta-credito
 date: 2026-08-10 11:30:00 -0300
 ---
@@ -65,7 +66,7 @@ En Misiones el reclamo judicial de consumo es gratuito para el consumidor y tram
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal ni financiero sobre un caso concreto, ni promesa de resultado. Los montos de toda condena los determina exclusivamente el juez. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

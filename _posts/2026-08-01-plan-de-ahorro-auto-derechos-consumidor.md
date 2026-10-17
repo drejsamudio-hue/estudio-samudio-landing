@@ -4,6 +4,7 @@ title: "Plan de ahorro de auto en Misiones: tus derechos"
 h1: "Plan de ahorro de autos: tus derechos cuando la cuota se dispara o el vehículo no llega"
 description: "Guía clara sobre tus derechos como suscriptor de un plan de ahorro en Argentina: ajustes de cuota, cancelación, entrega del auto y qué reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
+wizard_vertical: ahorro
 slug: plan-de-ahorro-auto-derechos-consumidor
 date: 2026-08-01 09:00:00 -0300
 ---
@@ -59,7 +60,7 @@ Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de l
 
 <div class="cta-caja">
 <p>Cada situación es distinta y no todas terminan en un reclamo viable. Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
 </div>
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>
