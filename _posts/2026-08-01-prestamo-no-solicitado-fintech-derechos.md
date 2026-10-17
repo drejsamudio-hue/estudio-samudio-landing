@@ -2,7 +2,7 @@
 layout: post
 title: "Préstamo no solicitado: tus derechos en Misiones"
 h1: "Préstamos que no pediste y cargos que no reconocés: tus derechos frente a las apps financieras"
-description: "Préstamos no solicitados, membresías que nunca contrataste, cargos que no reconocés en billeteras y apps: tus derechos como usuario de fintech en Argentina. Posadas y Misiones."
+description: "Préstamos que no pediste, membresías que no contrataste, cargos que no reconocés en apps y billeteras: tus derechos frente a la fintech. Misiones."
 vertical: "Fintech"
 wizard_vertical: fintech
 slug: prestamo-no-solicitado-fintech-derechos

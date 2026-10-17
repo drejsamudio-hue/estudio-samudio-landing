@@ -2,7 +2,7 @@
 layout: post
 title: "Doble cobro por débito automático: reclamo en Misiones"
 h1: "Te cobraron dos veces la misma factura: por qué es ilegal y cómo reclamarlo"
-description: "Pagaste una factura por transferencia o en el local y el débito automático te la cobró igual. Cómo reclamar el doble cobro y la devolución completa. Posadas y Misiones."
+description: "Pagaste la factura y el débito automático te la cobró igual. Cómo reclamar el doble cobro y la devolución completa. Posadas y Misiones."
 vertical: "Débito duplicado"
 wizard_vertical: debito
 slug: doble-cobro-debito-automatico-que-hacer

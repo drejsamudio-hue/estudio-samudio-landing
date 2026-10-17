@@ -2,7 +2,7 @@
 layout: post
 title: "Comisiones bancarias no autorizadas: cómo detectarlas"
 h1: "Comisiones que no autorizaste: cómo detectarlas en tu resumen bancario"
-description: "Seguros que no contrataste, cargos sin aviso, comisiones sin servicio real: guía práctica para revisar tu resumen bancario y saber si tenés un reclamo. Misiones."
+description: "Seguros que no contrataste, cargos sin aviso, comisiones sin servicio: cómo revisar tu resumen y saber si tenés un reclamo. Posadas y Misiones."
 vertical: "Bancario"
 wizard_vertical: banco
 slug: comisiones-bancarias-no-autorizadas

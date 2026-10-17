@@ -2,7 +2,7 @@
 layout: post
 title: "Débitos no autorizados en Misiones: cómo frenarlos"
 h1: "Débitos que no autorizaste: cómo frenarlos y cómo recuperar lo que ya te cobraron"
-description: "Servicio dado de baja que sigue cobrando, o débito de algo que nunca contrataste: cómo frenarlo y reclamar todo lo cobrado sin tu consentimiento. Posadas y Misiones."
+description: "Un servicio dado de baja que sigue cobrando o un débito que nunca autorizaste: cómo frenarlo y recuperar lo cobrado. Posadas y Misiones."
 vertical: "Bancario"
 wizard_vertical: banco
 slug: debitos-no-autorizados-como-frenarlos

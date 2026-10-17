@@ -2,7 +2,7 @@
 layout: post
 title: "Adjudicado y sin auto: abusos en planes de ahorro"
 h1: "Adjudicado y sin auto: los abusos más comunes en los planes de ahorro"
-description: "Rechazo de garantes sin explicación, integración retenida, cuotas que siguen corriendo sin entrega del auto. Conocé tus derechos como adjudicado. Posadas y Misiones."
+description: "Te adjudicaron y el auto no llega: garantes rechazados, integración retenida, cuotas que siguen corriendo. Tus derechos. Posadas y Misiones."
 vertical: "Planes de ahorro"
 wizard_vertical: ahorro
 slug: plan-ahorro-no-me-entregan-el-auto

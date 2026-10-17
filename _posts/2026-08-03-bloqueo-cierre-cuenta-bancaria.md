@@ -2,7 +2,7 @@
 layout: post
 title: "Cuenta bancaria bloqueada o cerrada sin explicación"
 h1: "Te bloquearon o cerraron la cuenta sin explicación: qué puede y qué no puede hacer el banco"
-description: "Cuenta bancaria bloqueada sin aviso, sueldo inaccesible, derivaciones sin respuesta: qué puede hacer el banco, qué no, y cómo construir la prueba. Posadas y Misiones."
+description: "Cuenta bloqueada sin aviso y sueldo inaccesible: qué puede hacer el banco, qué no, y cómo armar la prueba de tu reclamo. Posadas y Misiones."
 vertical: "Bancario"
 wizard_vertical: banco
 slug: bloqueo-cierre-cuenta-bancaria

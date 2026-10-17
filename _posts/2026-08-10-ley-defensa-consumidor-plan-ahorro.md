@@ -2,7 +2,7 @@
 layout: post
 title: "Ley de Defensa del Consumidor y tu plan de ahorro"
 h1: "Qué dice la Ley de Defensa del Consumidor sobre tu plan de ahorro (y qué podés reclamar)"
-description: "Carga de la prueba a favor tuyo, responsabilidad solidaria de administradora y concesionaria, daño punitivo y gratuidad del reclamo. Tus derechos en criollo. Misiones."
+description: "Carga de la prueba a tu favor, responsabilidad solidaria de administradora y concesionaria, daño punitivo y reclamo gratuito. Misiones."
 vertical: "Planes de ahorro"
 wizard_vertical: ahorro
 slug: ley-defensa-consumidor-plan-ahorro
