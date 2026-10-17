@@ -80,9 +80,6 @@ Un débito sin consentimiento no se vuelve legítimo porque nadie lo reclame. Re
 </ul>
 </div>
 
-<div class="cta-caja">
-<p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
-</div>
+{% include cta-caso.html vertical="banco" texto="Evaluar mi caso de débitos no autorizados" intro="¿Siguen debitando después de la baja o hay cargos que no reconocés? Empezá por una evaluación orientativa." %}
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

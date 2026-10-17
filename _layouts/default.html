@@ -20,6 +20,7 @@
     allow_ad_personalization_signals: false
   });
   window.addEventListener('load', function () {
+    if (!/^(www\.)?consumidormisiones\.com\.ar$/.test(location.hostname)) return;
     var s = document.createElement('script');
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LTD1RWM91T';
     s.async = true;
@@ -82,6 +83,7 @@
   @media(min-width:700px){.cuerpo{padding:0 64px}}
   @media(max-width:760px){.hoja{box-shadow:none;background:var(--papel)}}
 </style>
+<script src="{{ '/assets/cta-measurement.js' | relative_url }}" defer></script>
 </head>
 <body>
 <div class="hoja">
@@ -103,7 +105,7 @@
   <nav class="top">
     <a href="{{ '/notas/' | relative_url }}">Notas</a>
     <a href="{{ '/quien-soy/' | relative_url }}">Quién soy</a>
-    <a href="{{ site.estudio.wizard_url }}?{% if page.wizard_vertical %}vertical={{ page.wizard_vertical }}&amp;{% endif %}utm_source=notas&amp;utm_medium=nav&amp;utm_campaign={{ page.slug | default: 'listado' }}">Evaluar mi caso →</a>
+    <a href="{{ '/' | relative_url }}" data-cta-id="nav_evaluar" data-placement="nav" data-destination="evaluador" data-content-slug="{{ page.slug | default: 'listado' }}">Evaluar mi caso →</a>
   </nav>
 </div>
 
@@ -116,6 +118,7 @@
 
 <footer style="background:var(--tinta);color:#A9B6C8;font-size:15px;line-height:1.6;padding:38px 0;margin-top:20px">
   <div style="max-width:632px;margin:0 auto;padding:0 22px">
+    <p><a href="{{ '/' | relative_url }}" data-cta-id="footer_evaluar" data-placement="footer" data-destination="evaluador" data-content-slug="{{ page.slug | default: 'listado' }}" style="color:#fff;font-weight:600">Iniciar mi evaluación orientativa →</a></p>
     <b style="color:#fff;font-weight:700">Estudio Samudio</b> — Derecho del Consumidor · <span style="color:#D9906F">Posadas y provincia de Misiones</span><br>
     <span style="font-family:var(--mono);font-size:13px;opacity:.75">Dr. Estanislao J. Samudio · Mat. CAM 4372 · Mat. STJM 4031</span><br>
     <span style="font-size:14px;opacity:.8">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span><br>

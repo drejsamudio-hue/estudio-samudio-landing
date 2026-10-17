@@ -40,6 +40,7 @@
     allow_ad_personalization_signals: false
   });
   function loadGtag(){
+    if (!/^(www\.)?consumidormisiones\.com\.ar$/.test(location.hostname)) return;
     if(window._gtagLoaded) return;
     window._gtagLoaded = true;
     var s = document.createElement('script');
@@ -370,6 +371,7 @@
   .skip:focus{left:12px;top:12px;width:auto;height:auto;background:var(--tierra);color:#fff;padding:10px 14px;border-radius:6px;z-index:100}
 
 </style>
+<script src="/assets/cta-measurement.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al evaluador</a>
@@ -592,8 +594,8 @@
 </div>
 
 <div class="sticky-cta" id="stickyCta" role="region" aria-label="Acciones rápidas">
-  <a class="sc-wa" href="https://wa.me/5493764353599?text=Hola%2C%20quiero%20evaluar%20mi%20caso%20de%20consumo" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a>
-  <button class="sc-cta" type="button" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth'})">Evaluar mi caso →</button>
+  <a class="sc-wa" data-cta-id="sticky_whatsapp" data-placement="sticky" data-destination="whatsapp" href="https://wa.me/5493764353599?text=Hola%2C%20quiero%20evaluar%20mi%20caso%20de%20consumo" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a>
+  <button class="sc-cta" data-cta-id="sticky_evaluar" data-placement="sticky" data-destination="evaluador" type="button" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth'})">Evaluar mi caso →</button>
 </div>
 <footer>
   <div class="in">
@@ -628,7 +630,8 @@ let claveEnviada = null;
 function gv(event, params){
   try{
     if(typeof gtag==='function') {
-      gtag('event', event, params || {});
+      if (window.samudioTrack) window.samudioTrack(event, params || {});
+      else gtag('event', event, params || {});
       if(window.location.search.includes('debug_ga4=1')) console.log(`[GA4] Evento disparado: ${event}`, params || {});
     }
   }catch(e){
@@ -918,30 +921,13 @@ async function guardarEnSheet(datos, resultado) {
   }
 }
 
-function buildWhatsAppMsg(datos, resultado) {
-  const verticalLabel = ETIQUETAS[vertical].corto;
-  let msg = `Hola, soy ${datos.nombre || '[nombre]'} de ${datos.localidad || 'Misiones'}.\n`;
-  msg += `Completé la evaluación online (${verticalLabel}) y me dio ${resultado.nivel}.\n`;
-  if (datos.telefono) msg += `Mi teléfono: ${datos.telefono}\n`;
-  if (datos.email) msg += `Mi email: ${datos.email}\n`;
-  if (datos.situacion) msg += `Situación: ${datos.situacion}\n`;
-  if (resultado.nivel === 'VERDE') {
-    msg += `Quiero avanzar con la evaluación de mi caso.`;
-  } else if (resultado.nivel === 'AMARILLO') {
-    msg += `Quiero saber qué me falta para poder avanzar.`;
-  }
-  return encodeURIComponent(msg);
+// Los destinos de contacto no incluyen datos del formulario, respuestas ni nivel.
+// Evita que la medición automática de enlaces envíe datos personales a GA4.
+function buildWhatsAppMsg() {
+  return encodeURIComponent('Hola, completé el evaluador de Estudio Samudio y quiero consultar sobre mi caso de consumo.');
 }
-
-function buildMailtoMsg(datos, resultado) {
-  const verticalLabel = ETIQUETAS[vertical].largo;
-  const subject = encodeURIComponent(`Evaluación de caso — ${verticalLabel} — ${resultado.nivel}`);
-  let body = `Nombre: ${datos.nombre}\nLocalidad: ${datos.localidad}\n`;
-  body += `Teléfono: ${datos.telefono}\nEmail: ${datos.email}\n`;
-  if (datos.situacion) body += `Situación: ${datos.situacion}\n`;
-  body += `Vertical: ${verticalLabel}\nResultado: ${resultado.nivel}\n`;
-  if (resultado.motivo) body += `Detalle: ${resultado.motivo}\n`;
-  return `mailto:${CONFIG.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+function buildMailtoMsg() {
+  return `mailto:${CONFIG.email}?subject=${encodeURIComponent('Consulta de consumo — Estudio Samudio')}&body=${encodeURIComponent('Hola, completé el evaluador y quiero consultar sobre mi caso de consumo.')}`;
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1020,10 +1006,10 @@ document.getElementById('verResultado').addEventListener('click', async () => {
         ${(NORMAS[vertical] || NORMAS.base).map(n => `<span class="nb-item">${n}</span>`).join('')}
       </div>
       <div class="ctas">
-        <a class="cta wa" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Escribir por WhatsApp</a>
-        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Enviar por email</a>
+        <a class="cta wa" data-cta-id="resultado_whatsapp" data-placement="dictamen" data-destination="whatsapp" data-vertical="${vertical}" data-nivel="${resultado.nivel}" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Consultar mi caso por WhatsApp</a>
+        <a class="cta mail" data-cta-id="resultado_email" data-placement="dictamen" data-destination="email" data-vertical="${vertical}" data-nivel="${resultado.nivel}" href="${mailUrl}">${ICO_MAIL} Consultar por email</a>
       </div>
-      <p class="nota">Sin compromiso. Evaluamos tu documentación y te confirmamos si conviene avanzar.</p>`;
+      <p class="nota">El botón abre tu aplicación de contacto; la consulta se envía cuando vos confirmás allí. No incluye tus datos del formulario.</p>`;
 
   } else if (resultado.nivel === 'AMARILLO') {
     box.className = 'dictamen d-amarillo';
@@ -1032,10 +1018,10 @@ document.getElementById('verResultado').addEventListener('click', async () => {
       <h3>Tu caso podría avanzar, pero falta un paso</h3>
       <p>${resultado.motivo || 'Hay elementos a favor, pero necesitamos completar información o reunir documentación antes de confirmar si conviene avanzar.'}</p>
       <div class="ctas">
-        <a class="cta wa" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Consultar qué me falta</a>
-        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Enviar por email</a>
+        <a class="cta wa" data-cta-id="resultado_whatsapp" data-placement="dictamen" data-destination="whatsapp" data-vertical="${vertical}" data-nivel="${resultado.nivel}" href="${waUrl}" target="_blank" rel="noopener">${ICO_WA} Consultar qué documentación me falta</a>
+        <a class="cta mail" data-cta-id="resultado_email" data-placement="dictamen" data-destination="email" data-vertical="${vertical}" data-nivel="${resultado.nivel}" href="${mailUrl}">${ICO_MAIL} Consultar por email</a>
       </div>
-      <p class="nota">Reunir la documentación suele ser suficiente para pasar a la siguiente etapa.</p>`;
+      <p class="nota">El botón abre tu aplicación de contacto. Contanos allí qué documentación tenés; no se adjuntan tus datos automáticamente.</p>`;
 
   } else {
     box.className = 'dictamen d-rojo';
@@ -1044,7 +1030,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
       <h3>Con esta información, no vemos una base sólida</h3>
       <p>${resultado.motivo || 'Por como está planteado, hoy no se ve una base firme para un reclamo de consumo. Esto no es definitivo: si cambia la situación o aparece documentación, puede reevaluarse.'}</p>
       <div class="ctas">
-        <a class="cta mail" href="${mailUrl}">${ICO_MAIL} Consultar de todos modos</a>
+        <a class="cta mail" data-cta-id="resultado_email" data-placement="dictamen" data-destination="email" data-vertical="${vertical}" data-nivel="${resultado.nivel}" href="${mailUrl}">${ICO_MAIL} Consultar de todos modos</a>
       </div>
       <p class="nota">Quedamos a disposición para cualquier duda.</p>`;
   }
@@ -1124,9 +1110,12 @@ document.getElementById('reiniciar').addEventListener('click', () => {
     if(!falta) gv('step2_completed',{vertical});
     else gv('step2_error',{vertical});
   });
-  ['fNombre','fTel','fEmail','fLocalidad'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el) el.addEventListener('focus', ()=> gv('form_start',{field:id}), {once:true});
+  // Evento propio para no duplicar el form_start automático de GA4.
+  let formularioIniciado = false;
+  document.getElementById('step3').addEventListener('focusin', (e)=>{
+    if (formularioIniciado || !CAMPOS.includes(e.target.id)) return;
+    formularioIniciado = true;
+    gv('wizard_form_start', {vertical, form_id:'evaluador_consumo'});
   });
   // sticky CTA: solo en el paso 1 y cuando el usuario ya pasó las tarjetas
   // (antes aparecía a los 8 s y tapaba la primera tarjeta, o quedaba visible en los pasos 2-4)
@@ -1141,13 +1130,7 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   }
   window.addEventListener('scroll', actualizarSticky, {passive:true});
   new MutationObserver(actualizarSticky).observe(step1,{attributes:true,attributeFilter:['class']});
-  // tracking whatsapp/mail — dictamen_view se dispara en el handler de verResultado.
-  // No se envía el href: el mensaje pre-llenado contiene nombre y teléfono.
-  document.addEventListener('click', (e)=>{
-    if(e.target.closest('a.cta.wa')) gv('whatsapp_click',{vertical, nivel:ultimoNivel, origen:'dictamen'});
-    if(e.target.closest('a.sc-wa'))   gv('whatsapp_click',{vertical, origen:'sticky'});
-    if(e.target.closest('a.cta.mail')) gv('mailto_click',{vertical, nivel:ultimoNivel});
-  });
+  // Los clics se miden una sola vez en assets/cta-measurement.js.
 })();
 
 // ═══════════════════════════════════════════════════════════

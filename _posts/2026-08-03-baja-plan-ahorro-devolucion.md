@@ -73,9 +73,6 @@ Darte de baja no significa regalar lo que pusiste. Si la devolución no llega, l
 </ul>
 </div>
 
-<div class="cta-caja">
-<p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
-</div>
+{% include cta-caso.html vertical="ahorro" texto="Evaluar la devolución de mi plan" intro="¿Diste de baja el plan y tenés dudas sobre la devolución? Empezá por una evaluación orientativa." %}
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

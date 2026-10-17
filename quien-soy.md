@@ -23,5 +23,5 @@ Posadas y toda la provincia de Misiones — Oberá, Eldorado, Puerto Iguazú y e
 
 <div class="cta-caja">
 <p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?utm_source=quien-soy&amp;utm_medium=cta">Evaluar mi caso →</a>
+<a class="cta-btn" href="{{ '/' | relative_url }}" data-cta-id="perfil_evaluar" data-placement="perfil_final" data-destination="evaluador">Evaluar mi caso →</a>
 </div>

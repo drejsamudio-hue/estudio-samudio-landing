@@ -81,9 +81,6 @@ El banco puede tener motivos legítimos para restringir o cerrar una cuenta. Lo 
 </ul>
 </div>
 
-<div class="cta-caja">
-<p>Podés hacer una <strong>evaluación gratuita y orientativa</strong> de tu caso: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
-</div>
+{% include cta-caso.html vertical="banco" texto="Evaluar mi caso de cuenta bloqueada" intro="¿Tu cuenta está bloqueada o fue cerrada? Respondé el evaluador para orientar tu consulta." %}
 
 <p class="disclaimer-final">Este artículo tiene fines informativos y educativos. No constituye asesoramiento legal sobre un caso concreto ni promesa de resultado. Cada situación debe evaluarse individualmente con un profesional matriculado.</p>

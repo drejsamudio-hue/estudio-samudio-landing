@@ -65,9 +65,6 @@ Atendemos consultas de Posadas, Oberá, Eldorado, Puerto Iguazú y el resto de l
 </ul>
 </div>
 
-<div class="cta-caja">
-<p>Podés hacer una <strong>evaluación gratuita y orientativa</strong>: unas pocas preguntas y te devolvemos una primera lectura sobre si conviene avanzar.</p>
-<a class="cta-btn" href="{{ site.estudio.wizard_url }}?vertical={{ page.wizard_vertical }}&amp;utm_source=notas&amp;utm_medium=cta&amp;utm_campaign={{ page.slug }}">Evaluar mi caso →</a>
-</div>
+{% include cta-caso.html vertical="debito" texto="Evaluar mi caso de doble cobro" intro="¿Pagaste y te volvieron a debitar? Respondé el evaluador para orientar los próximos pasos." %}
 
 <p class="disclaimer-final">Estudio Samudio — Derecho del consumidor. Posadas y toda la provincia de Misiones. Información general; no constituye asesoramiento legal sobre un caso concreto.</p>
