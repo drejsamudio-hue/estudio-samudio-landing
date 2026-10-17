@@ -2,7 +2,7 @@
 layout: post
 title: "Cláusulas abusivas en contratos bancarios"
 h1: "Cláusulas abusivas en contratos bancarios: qué dice la ley (y por qué el banco no siempre tiene razón)"
-description: "Que esté en el contrato no lo hace legal. Qué son las cláusulas abusivas, quién debe probar y cuándo corresponde daño punitivo frente al banco. Posadas y Misiones."
+description: "Que esté en el contrato no lo hace legal: qué son las cláusulas abusivas, quién prueba y cuándo hay daño punitivo contra el banco. Misiones."
 vertical: "Bancario"
 wizard_vertical: banco
 slug: clausulas-abusivas-contrato-bancario

@@ -2,7 +2,7 @@
 layout: post
 title: "Intereses abusivos en tarjetas: la deuda que no baja"
 h1: "La deuda que nunca baja: intereses abusivos y capitalización en tarjetas y préstamos"
-description: "Tasa desproporcionada, intereses sobre intereses, punitorios apilados: por qué tu deuda no baja aunque pagués, y qué dice la ley al respecto. Posadas y Misiones."
+description: "Tasas desproporcionadas, intereses sobre intereses y punitorios: por qué tu deuda no baja aunque pagues y qué dice la ley. Posadas y Misiones."
 vertical: "Bancario"
 wizard_vertical: banco
 slug: intereses-abusivos-tarjeta-credito

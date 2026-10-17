@@ -2,7 +2,7 @@
 layout: post
 title: "Plan de ahorro de auto en Misiones: tus derechos"
 h1: "Plan de ahorro de autos: tus derechos cuando la cuota se dispara o el vehículo no llega"
-description: "Guía clara sobre tus derechos como suscriptor de un plan de ahorro en Argentina: ajustes de cuota, cancelación, entrega del auto y qué reclamar. Posadas y Misiones."
+description: "Tus derechos como suscriptor de un plan de ahorro: ajustes de cuota, cancelación, entrega del auto y qué reclamar. Posadas y Misiones."
 vertical: "Planes de ahorro"
 wizard_vertical: ahorro
 slug: plan-de-ahorro-auto-derechos-consumidor

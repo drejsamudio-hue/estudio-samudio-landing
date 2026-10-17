@@ -2,7 +2,7 @@
 layout: post
 title: "Cuota de plan de ahorro disparada: qué podés hacer"
 h1: "La cuota de tu plan de ahorro se disparó: hasta dónde puede subir y qué podés hacer"
-description: "Cómo distinguir un ajuste legítimo de uno abusivo, verificarlo vos mismo en 20 minutos y qué hacer antes de dejar de pagar. Guía práctica. Posadas y Misiones."
+description: "Cómo distinguir un ajuste de cuota legítimo de uno abusivo, verificarlo en 20 minutos y qué hacer antes de dejar de pagar. Posadas y Misiones."
 vertical: "Planes de ahorro"
 wizard_vertical: ahorro
 slug: aumento-cuota-plan-ahorro

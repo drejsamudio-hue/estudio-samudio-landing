@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Notas — Derecho del Consumidor"
-description: "Guías sobre derechos del consumidor en Argentina: planes de ahorro, bancos, fintech y débito automático."
+description: "Guías gratuitas sobre tus derechos como consumidor en Misiones: planes de ahorro, bancos, fintech y débitos automáticos. Explicadas en criollo."
 permalink: /notas/
 ---
 
