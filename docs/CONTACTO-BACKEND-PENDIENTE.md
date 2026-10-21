@@ -1,3 +1,41 @@
+# Contacto: backend confirmado y CORS activado
+
+## Estado actual
+
+Se actualizó la implementación web existente a **versión 5**, conservando URL/ID, cuenta ejecutora `dr.ejsamudio@gmail.com`, acceso «Cualquier usuario», planilla y hoja `Intakes`. No se crearon endpoints ni se alteraron las asociaciones de Analytics o Search Console.
+
+El backend devuelve `{ "ok": true, "confirmed": true }` únicamente después de persistir y ejecutar `SpreadsheetApp.flush()`. Valida el payload, toma un bloqueo y deduplica por `submissionId` en la nueva columna O, `Submission ID`. Conserva A:M y deja N («Primer contacto») para uso manual. No se corrigieron ni reordenaron los encabezados históricos (la hoja ya tenía el texto de varios encabezados agrupado en A1). La notificación VERDE se conserva, pero un fallo de correo no convierte un guardado en rechazo.
+
+## Prueba real del backend
+
+Desde `https://consumidormisiones.com.ar/`, con POST `text/plain;charset=UTF-8` y `mode: cors`:
+
+- Payload inválido: HTTP 200, respuesta `cors`, JSON `ok:false, confirmed:false, error:invalid_nombre`.
+- Payload sintético `cue-e2e-20261021-0256`: HTTP 200, respuesta `cors`, JSON `ok:true, confirmed:true, duplicate:false`.
+- Fila verificada en `Intakes!O27`, buscador de Sheets «1 de 1».
+- Reenvío idéntico: HTTP 200 y `duplicate:true`; mismo ID presente una sola vez.
+- Datos de prueba marcados **NO CONTACTAR**, sin persona real.
+
+Frontend actualizado en main mediante commit `812af41f34dfc5f5e4744d3195b7c9aeddef28e9`: `sheetsResponseMode: 'cors'`. El webhook y los IDs de medición se conservan. Publicación comprobada en el dominio real. Recorrido íntegro del formulario: backend HTTP 200, mensaje «Tu evaluación fue registrada», ID `48944821-c94e-48de-b6e3-a1221e0219b8` persistido en `Intakes!O28` y encontrado una sola vez. El frontend emitió exactamente un `contacto_intento` y un `contacto_confirmado`; Analytics Estani (548273838) recibió ambos, con recuento 1, en Resumen en tiempo real. No se abrieron ni enviaron mensajes de WhatsApp/email. La fila sintética está marcada «PRUEBA CUE FORMULARIO V5 20261021 NO CONTACTAR».
+
+## Conversión en Analytics
+
+`contacto_confirmado` se registró como evento clave (crear con código, ya emitido por el frontend), sin valor monetario y una vez por evento. `dictamen_view` se desmarcó como evento clave y se conserva como evento normal: ver un dictamen no prueba que exista un contacto persistido. `purchase` predeterminado se dejó intacto. No se crearon reglas sin código, conversiones de Google Ads ni vinculaciones nuevas. La tabla administrativa puede tardar en mostrar el flujo aunque el evento ya conste en tiempo real. Los datos históricos no se borran.
+
+## Código y pruebas
+
+Código preparado y desplegado: `docs/apps-script-contacto-produccion.gs` (el editor web puede normalizar indentación). Pruebas: `node --test tests/contact-submit.test.cjs tests/apps-script-contacto.test.cjs`, **17/17 aprobadas**. Las pruebas unitarias no sustituyen las comprobaciones reales anteriores.
+
+Capturas locales: `/workspace/contacto-evidencia/backend-v5-publicado.png`, `/workspace/contacto-evidencia/sheets-fila27-id-unico.png`, `/workspace/contacto-evidencia/frontend-commit-cors.png`.
+
+## Reversión
+
+Si es necesario, editar **esa misma implementación** y seleccionar su versión 2 anterior, sin cambiar URL, permisos ni cuenta. Revertir el frontend a `no-cors` para no afirmar confirmación. No borrar las filas ni los IDs de prueba o producción. No modificar las otras implementaciones activas v3/v4.
+
+---
+
+## Antecedentes históricos (anteriores al cierre; no describen el estado actual)
+
 # Contacto: estado de confirmación y backend pendiente
 
 ## Comportamiento preparado en frontend
