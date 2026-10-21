@@ -615,9 +615,9 @@ const CONFIG = {
   whatsapp: "5493764353599",
   email: "dr.ejsamudio@gmail.com",
   sheetsWebhook: "https://script.google.com/macros/s/AKfycbz-XG0rlbO8VasHte_wbmrInRBeyC7hyHiyVrwJ7pxPIaOwDA9S4ra1EQcCUO5KbsWt/exec",
-  // El endpoint activo sigue en no-cors y no puede confirmar persistencia.
-  // Cambiar a 'cors' solo tras desplegar y probar un backend compatible.
-  sheetsResponseMode: 'no-cors'
+  // Backend v5: acuse JSON tras persistir; CORS y deduplicación verificados.
+  // Se conserva la implementación y la planilla existentes.
+  sheetsResponseMode: 'cors'
 };
 
 // ═══════════════════════════════════════════════════════════
