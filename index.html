@@ -606,6 +606,7 @@
   </div>
 </footer>
 
+<script src="/assets/contact-submit.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════
 // CONFIG
@@ -613,7 +614,10 @@
 const CONFIG = {
   whatsapp: "5493764353599",
   email: "dr.ejsamudio@gmail.com",
-  sheetsWebhook: "https://script.google.com/macros/s/AKfycbz-XG0rlbO8VasHte_wbmrInRBeyC7hyHiyVrwJ7pxPIaOwDA9S4ra1EQcCUO5KbsWt/exec"
+  sheetsWebhook: "https://script.google.com/macros/s/AKfycbz-XG0rlbO8VasHte_wbmrInRBeyC7hyHiyVrwJ7pxPIaOwDA9S4ra1EQcCUO5KbsWt/exec",
+  // El endpoint activo sigue en no-cors y no puede confirmar persistencia.
+  // Cambiar a 'cors' solo tras desplegar y probar un backend compatible.
+  sheetsResponseMode: 'no-cors'
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -623,6 +627,8 @@ let vertical = null;
 let respuestas = {};
 let ultimoNivel = null;
 let claveEnviada = null;
+let contactoIntentado = false;
+let submissionIdPendiente = null;
 
 // ═══════════════════════════════════════════════════════════
 // GA4 — nunca enviar datos personales (nombre, teléfono, email)
@@ -883,11 +889,12 @@ function getDatosFormulario() {
   };
 }
 
-// Con no-cors la respuesta es opaca: solo se detecta la falla de red o el timeout, no un error
-// dentro del Apps Script. Devuelve false en esos casos para no afirmar "registrada".
-async function guardarEnSheet(datos, resultado) {
-  if (!CONFIG.sheetsWebhook) return false;
+// No-cors conserva el envío histórico, pero nunca prueba que la fila se guardó.
+// Solo una respuesta CORS legible con confirmed:true autoriza el estado confirmado.
+async function guardarEnSheet(datos, resultado, submissionId) {
+  if (!CONFIG.sheetsWebhook) return { status: 'unconfirmed', reason: 'endpoint_missing' };
   const payload = {
+    submissionId,
     fecha:     new Date().toISOString(),
     vertical:  ETIQUETAS[vertical].sheet,
     nivel:     resultado.nivel,
@@ -902,23 +909,10 @@ async function guardarEnSheet(datos, resultado) {
     situacion: datos.situacion,
     origen:    (new URLSearchParams(location.search).get('utm_campaign') || document.referrer || 'directo')
   };
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 15000);
-  try {
-    await fetch(CONFIG.sheetsWebhook, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: ctrl.signal
-    });
-    return true;
-  } catch (e) {
-    console.warn('No se pudo guardar en la planilla:', e);
-    return false;
-  } finally {
-    clearTimeout(timer);
-  }
+  return ContactoSubmit.submitContact(CONFIG.sheetsWebhook, payload, {
+    mode: CONFIG.sheetsResponseMode,
+    timeoutMs: 15000
+  });
 }
 
 // Los destinos de contacto no incluyen datos del formulario, respuestas ni nivel.
@@ -969,23 +963,45 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>Procesando…';
 
-  // Volver del dictamen al paso 3 y reenviar sin cambios no debe duplicar la fila en la planilla.
+  // Un reenvío ambiguo puede haber llegado al backend: no repetir la misma carga.
   const clave = JSON.stringify({ vertical, respuestas, datos });
-  let guardado = clave === claveEnviada;
-  if (!guardado) {
-    guardado = await guardarEnSheet(datos, resultado);
-    if (guardado) {
+  let estadoEnvio = clave === claveEnviada ? { status: 'confirmed' } : null;
+  if (!estadoEnvio && contactoIntentado) {
+    estadoEnvio = { status: 'unconfirmed', reason: 'already_attempted' };
+  }
+  if (!estadoEnvio) {
+    if (!submissionIdPendiente) {
+      submissionIdPendiente = window.crypto && typeof window.crypto.randomUUID === 'function'
+        ? window.crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    }
+    contactoIntentado = true;
+    try {
+      sessionStorage.setItem('es_contacto_attempted', '1');
+      sessionStorage.setItem('es_contacto_submission_id', submissionIdPendiente);
+    } catch (e) {}
+    gv('contacto_intento', { vertical });
+    estadoEnvio = await guardarEnSheet(datos, resultado, submissionIdPendiente);
+    if (estadoEnvio.status === 'confirmed') {
       claveEnviada = clave;
+      contactoIntentado = false;
+      submissionIdPendiente = null;
       try { sessionStorage.removeItem('es_contacto'); } catch (e) {}
+      try { sessionStorage.removeItem('es_contacto_attempted'); } catch (e) {}
+      try { sessionStorage.removeItem('es_contacto_submission_id'); } catch (e) {}
+      gv('contacto_confirmado', { vertical });
+    } else if (estadoEnvio.status === 'failed') {
+      gv('contacto_falla', { vertical, motivo: estadoEnvio.reason });
     } else {
-      gv('sheet_error', { vertical });
+      gv('contacto_no_confirmado', { vertical, motivo: estadoEnvio.reason });
     }
   }
+  const guardado = estadoEnvio.status === 'confirmed';
 
   const status = document.getElementById('saveStatus');
   status.innerHTML = guardado
     ? '<div class="guardado"><span>✓</span><span>Tu evaluación fue registrada. Te contactamos pronto.</span></div>'
-    : '<div class="guardado fallo"><span>!</span><span>No pudimos registrar tu evaluación. Para que no se pierda tu consulta, escribinos con los botones de abajo.</span></div>';
+    : '<div class="guardado fallo"><span>!</span><span>No podemos confirmar si tu evaluación quedó registrada. Para evitar reenviarla y posibles duplicados, escribinos con los botones de abajo.</span></div>';
 
   btn.disabled = false;
   btn.textContent = 'Ver mi resultado';
@@ -1044,6 +1060,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
 // ═══════════════════════════════════════════════════════════
 document.getElementById('reiniciar').addEventListener('click', () => {
   vertical = null; respuestas = {}; ultimoNivel = null; claveEnviada = null;
+  contactoIntentado = false; submissionIdPendiente = null;
   document.querySelectorAll('.vbtn').forEach(x => x.classList.remove('sel'));
   document.getElementById('wizForm').innerHTML = '';
   ['fNombre','fLocalidad','fTel','fEmail'].forEach(id => document.getElementById(id).value = '');
@@ -1053,6 +1070,8 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
   try{localStorage.removeItem('es_wizard');}catch(e){}
   try{sessionStorage.removeItem('es_contacto');}catch(e){}
+  try{sessionStorage.removeItem('es_contacto_attempted');}catch(e){}
+  try{sessionStorage.removeItem('es_contacto_submission_id');}catch(e){}
   gv('reiniciar_wizard');
   irA(1);
 });
@@ -1089,9 +1108,19 @@ document.getElementById('reiniciar').addEventListener('click', () => {
     const c = JSON.parse(sessionStorage.getItem('es_contacto') || 'null');
     if(c) CAMPOS.forEach(id=>{ if(c[id]) document.getElementById(id).value=c[id]; });
   }catch(e){}
+  try{
+    contactoIntentado = sessionStorage.getItem('es_contacto_attempted') === '1';
+    submissionIdPendiente = sessionStorage.getItem('es_contacto_submission_id') || null;
+  }catch(e){}
   function persist(e){
     try{ localStorage.setItem('es_wizard', JSON.stringify({vertical,respuestas})); }catch(err){}
     if(!e || !e.target || !CAMPOS.includes(e.target.id)) return;
+    if(contactoIntentado){
+      contactoIntentado = false;
+      submissionIdPendiente = null;
+      try{ sessionStorage.removeItem('es_contacto_attempted'); }catch(err){}
+      try{ sessionStorage.removeItem('es_contacto_submission_id'); }catch(err){}
+    }
     try{
       const c={};
       CAMPOS.forEach(id=>{ c[id]=document.getElementById(id).value; });
