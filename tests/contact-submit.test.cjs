@@ -60,6 +60,9 @@ test('el modo no-cors predeterminado nunca confirma ni una respuesta simulada le
     }
   });
   assert.equal(request.mode, 'no-cors');
+  assert.equal(request.headers['Content-Type'], 'text/plain;charset=UTF-8');
+  assert.equal(request.method, 'POST');
+  assert.equal(request.body, JSON.stringify(payload));
   assert.deepEqual(result, { status: 'unconfirmed', reason: 'no_cors_unverifiable' });
 });
 

@@ -25,10 +25,10 @@
       const response = await fetchImpl(url, {
         method: 'POST',
         mode,
-        // Mantiene el contrato actual del endpoint activo en no-cors. El modo
-        // CORS opt-in usa un tipo simple para evitar preflight; el backend debe
-        // devolver JSON legible con confirmación explícita.
-        headers: { 'Content-Type': mode === 'cors' ? 'text/plain;charset=UTF-8' : 'application/json' },
+        // Tipo permitido en no-cors y simple en CORS para evitar preflight.
+        // El cuerpo sigue siendo JSON: Apps Script parsea postData.contents.
+        // Esto no vuelve legible una respuesta opaca ni confirma persistencia.
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
         body: JSON.stringify(payload),
         signal: controller.signal
       });

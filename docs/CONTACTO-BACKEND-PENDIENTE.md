@@ -22,12 +22,14 @@ Ejecutar `node --test tests/contact-submit.test.cjs`. Las pruebas ejercitan conf
 
 ## Acceso a Search Console: conservar la vinculación existente
 
-Analytics «Estani» (548273838) ya está asociado a la propiedad de dominio `consumidormisiones.com.ar` mediante el flujo «consumo» (15373028859). No duplicar ni sustituir este enlace. La cuenta `dr.ejsamudio@gmail.com` sí tiene acceso como propietario verificado a `https://consumidormisiones.com.ar/`, pero al abrir la propiedad de dominio recibe un aviso de falta de acceso.
+**Resuelto:** la cuenta `dr.ejsamudio@gmail.com` ya puede abrir la propiedad de dominio `consumidormisiones.com.ar`. En Ajustes → Verificación de la propiedad, Google muestra «Propietario verificado» y «Proveedor de nombres de dominio: Se ha verificado correctamente». Se comprobó después de pulsar «Verificar la propiedad» y recargar la página. No hizo falta entrar a Cloudflare ni añadir, sustituir o eliminar registros DNS: el TXT de verificación ya estaba publicado.
 
-1. Iniciar sesión con una cuenta que sea propietaria de la propiedad **de dominio** `consumidormisiones.com.ar` en Search Console.
-2. Seleccionar esa propiedad, no la de prefijo HTTPS. Ir a **Ajustes → Usuarios y permisos → Añadir usuario** y conceder a `dr.ejsamudio@gmail.com` acceso completo. Si necesita administrar propietarios, el propietario verificado debe otorgarle además el rol de propietario delegado desde la gestión de permisos.
-3. Si no se dispone de una cuenta propietaria, abrir la propiedad de dominio con `dr.ejsamudio@gmail.com` y pulsar **Verificar la propiedad**. Copiar el registro TXT que Google muestre y añadirlo en el proveedor DNS del dominio; no sustituir otros registros ni tokens de verificación.
-4. Volver a Search Console y pulsar **Verificar** cuando el TXT sea visible. Conservar ese registro después de verificar. Esta vía requiere acceso al proveedor DNS; no basta con la etiqueta de Analytics ni con ser propietario del prefijo HTTPS.
-5. Confirmar que se puede abrir la propiedad de dominio. No tocar la asociación existente en Analytics.
+Analytics «Estani» (548273838) sigue asociado a esa propiedad de dominio mediante el flujo «consumo» (15373028859). No se duplicó ni sustituyó el enlace. Search Console también muestra «Asociaciones: Google Analytics» en los ajustes del dominio.
+
+Acceso directo: https://search.google.com/search-console?resource_id=sc-domain%3Aconsumidormisiones.com.ar
+
+Captura de confirmación: `/workspace/contacto-evidencia/search-console-dominio-verificado.png`.
+
+La corrección del formulario sigue preparada, no desplegada. La verificación de Search Console no resuelve la respuesta opaca ni confirma por sí sola la persistencia de contactos. Cualquier despliegue en el sitio o actualización de la implementación Apps Script requiere aprobación específica y debe conservar la URL existente.
 
 Fuente: [Ayuda oficial de Google: verificar la propiedad y solicitar acceso a otro propietario](https://support.google.com/webmasters/answer/9008080?hl=es).
