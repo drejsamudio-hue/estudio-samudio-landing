@@ -12,7 +12,7 @@ permalink: /notas/
   .item{border-top:1px solid var(--linea);padding:24px 0}
   .item:first-of-type{border-top:none}
   .item .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
-                  color:var(--tierra);font-weight:600;margin:0 0 8px;opacity:.85}
+                  color:var(--tierra);font-weight:600;margin:0 0 8px}
   .item h2{font-family:var(--serif);font-weight:700;font-size:23px;letter-spacing:-.5px;margin:0 0 8px}
   .item h2 a{color:var(--tinta);text-decoration:none}
   .item h2 a:hover{color:var(--tierra-oscuro)}
