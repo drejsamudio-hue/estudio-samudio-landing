@@ -132,8 +132,8 @@
   /* ── MASTHEAD ── */
   .cabecera{position:relative;z-index:1;border-bottom:1px solid var(--linea);background:var(--papel)}
   .cabecera .cuerpo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
-  .cabecera .marca-estudio{font-family:var(--mono);font-size:10px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)}
-  .cabecera .lugar-estudio{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)}
+  .cabecera .marca-estudio{font-family:var(--mono);font-size:12px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)}
+  .cabecera .lugar-estudio{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)}
   .hero{padding-top:22px;padding-bottom:20px}
   @media(min-width:761px){.hero{padding-top:30px;padding-bottom:24px}}
   /* Título corto (brief 1b): ~26px mobile / ~32px desktop, una sola línea de copy */
@@ -172,7 +172,7 @@
                color:var(--tierra-oscuro)}
   @media(min-width:761px){
     .anot .marca{position:absolute;left:calc(-1 * (var(--margen) + 40px) + 18px);top:60px;width:calc(var(--margen) - 30px);
-                 text-align:right;font-size:11px;letter-spacing:1.4px;line-height:1.35;color:var(--tinta-45);opacity:1;font-family:var(--mono)}
+                 text-align:right;font-size:12px;letter-spacing:1px;line-height:1.35;color:var(--tinta-45);opacity:1;font-family:var(--mono)}
   }
   h2{font-family:var(--display);font-weight:700;font-size:clamp(29px,4.8vw,40px);line-height:1.06;letter-spacing:-1.2px;
      margin:10px 0 12px;text-wrap:pretty}
@@ -227,7 +227,7 @@
     transition:border-color .15s,box-shadow .15s,background .15s}
   input::placeholder{color:#B0A896}
   input:hover,select:hover{border-color:#C0B49F}
-  input:focus,select:focus{outline:none;background:#fff;border-color:var(--tierra);box-shadow:0 0 0 4px rgba(168,69,42,.13)}
+  input:focus,select:focus{outline:2px solid var(--tierra);outline-offset:2px;background:#fff;border-color:var(--tierra);box-shadow:0 0 0 4px rgba(168,69,42,.13)}
   select{appearance:none;padding-right:46px;cursor:pointer;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23A8452A' stroke-width='2' stroke-linecap='round'/></svg>");
     background-repeat:no-repeat;background-position:right 17px center}
@@ -297,7 +297,7 @@
 
   /* ── NORMAS EN DICTAMEN ── */
   .normas-bloque{margin:20px 0 8px;padding:18px 20px;background:var(--papel2);border:1px solid var(--linea);border-radius:4px}
-  .normas-bloque .nb-label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;
+  .normas-bloque .nb-label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
                             color:var(--tinta-45);margin-bottom:10px}
   .normas-bloque .nb-item{display:block;font-family:var(--mono);font-size:14.5px;color:var(--tierra);line-height:1.8;font-weight:600}
 
