@@ -99,6 +99,7 @@
     --papel:#FAF7F1; --papel2:#F2EDE3; --nieve:#FEFCF8;
     --tierra:#A8452A; --tierra-claro:#B44C2F; --tierra-oscuro:#8A3520; --tierra-suave:#F6E8E1;
     --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#5A6474;
+    --pie-texto:#A9B6C8;
     --linea:#E3DCCF; --linea-fuerte:#D2C8B6;
     --verde:#1e7d44; --amarillo:#c9891b; --rojo:#a33;
     --display:"Archivo","Archivo-fallback",system-ui,sans-serif;
@@ -328,12 +329,16 @@
         background:var(--papel2);border:1px solid var(--linea);border-radius:999px;padding:9px 15px}
   .chip svg{color:var(--tierra);flex:none}
 
-  footer{background:var(--tinta);color:#A9B6C8;font-size:15px;line-height:1.6;padding:38px 0}
+  footer{background:var(--tinta);color:var(--pie-texto);font-size:15px;line-height:1.6;padding:38px 0 26px}
   footer .in{max-width:880px;margin:0 auto;padding:0 22px}
   @media(min-width:761px){footer .in{padding-left:calc(var(--margen) + 40px);padding-right:44px}}
   footer b{color:#fff;font-weight:700;letter-spacing:-.2px}
   footer .t{color:#D9906F}
-  footer span[style]{display:block;margin-top:5px}
+  footer .pie-mat,footer .pie-aviso{display:block;margin-top:5px}
+  footer .pie-mat{font-family:var(--mono);font-size:13px}
+  footer .pie-aviso{font-size:14px}
+  footer .pie-links{display:flex;flex-wrap:wrap;gap:0 24px;margin-top:6px}
+  footer .pie-links a{display:inline-block;padding:12px 0;font-size:14px;color:var(--pie-texto)}
   a{color:var(--tierra)}
   a:hover{color:var(--tierra-oscuro)}
   /* Escala de lectura */
@@ -564,8 +569,8 @@
 
   <div class="cuerpo">
     <div style="padding:28px 0 0">
-      <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 14px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
-      <p style="margin:0 0 24px;font-size:14.5px"><a href="/notas/" style="color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
+      <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 5px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
+      <p style="margin:0 0 15px;font-size:14.5px"><a href="/notas/" style="display:inline-block;padding:9px 0;color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
       <div style="border-top:1px solid var(--linea);padding-top:24px">
         <section class="voces" style="margin:0;padding:0;border:none">
       <span class="marca" style="font-family:var(--display);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra)">Consultas atendidas</span>
@@ -602,9 +607,9 @@
 <footer>
   <div class="in">
     <b>Estudio Samudio</b> — Derecho del Consumidor · <span class="t">Posadas y provincia de Misiones</span><br>
-    <span style="font-family:var(--mono);font-size:13px;opacity:.75">Dr. Estanislao J. Samudio · Mat. CAM 4372 · Mat. STJM 4031</span><br>
-    <span style="font-size:14px;opacity:.8">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span><br>
-    <span style="font-size:13px;margin-top:10px;display:inline-block;opacity:.7"><a href="/notas/" style="color:#A9B6C8">Notas</a> · <a href="/quien-soy/" style="color:#A9B6C8">Quién soy</a> · <a href="/privacidad/" style="color:#A9B6C8">Privacidad</a></span>
+    <span class="pie-mat">Dr. Estanislao J. Samudio · Mat. CAM 4372 · Mat. STJM 4031</span><br>
+    <span class="pie-aviso">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span><br>
+    <nav class="pie-links" aria-label="Enlaces del sitio"><a href="/notas/">Notas</a><a href="/quien-soy/">Quién soy</a><a href="/privacidad/">Privacidad</a></nav>
   </div>
 </footer>
 
