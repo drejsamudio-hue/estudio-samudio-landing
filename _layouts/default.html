@@ -101,14 +101,25 @@
   nav.top a{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;
             color:var(--tinta-45);text-decoration:none;font-weight:600;display:inline-block;padding:10px 0}
   nav.top a:hover{color:var(--tierra)}
+  @media(max-width:560px){
+    .sello-mini{letter-spacing:1.6px}
+    nav.top{gap:16px}
+    nav.top .solo-ancho,nav.top .largo{display:none}
+  }
+  @media(max-width:359px){
+    .masthead{gap:12px}
+    .sello-mini{letter-spacing:.6px}
+    nav.top{gap:12px}
+    nav.top a{letter-spacing:.4px}
+  }
 </style>
 
 <div class="masthead">
-  <a class="sello-mini" href="{{ '/notas/' | relative_url }}">Estudio Samudio · Derecho del Consumidor</a>
-  <nav class="top">
+  <a class="sello-mini" href="{{ '/notas/' | relative_url }}" aria-label="Estudio Samudio, Derecho del Consumidor. Ir a las notas">Estudio Samudio</a>
+  <nav class="top" aria-label="Principal">
     <a href="{{ '/notas/' | relative_url }}">Notas</a>
-    <a href="{{ '/quien-soy/' | relative_url }}">Quién soy</a>
-    <a href="{{ '/' | relative_url }}" data-cta-id="nav_evaluar" data-placement="nav" data-destination="evaluador" data-content-slug="{{ page.slug | default: 'listado' }}">Evaluar mi caso →</a>
+    <a class="solo-ancho" href="{{ '/quien-soy/' | relative_url }}">Quién soy</a>
+    <a href="{{ '/' | relative_url }}" data-cta-id="nav_evaluar" data-placement="nav" data-destination="evaluador" data-content-slug="{{ page.slug | default: 'listado' }}">Evaluar<span class="largo"> mi caso</span> →</a>
   </nav>
 </div>
 
