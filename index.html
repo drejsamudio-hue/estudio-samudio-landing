@@ -41,6 +41,8 @@
   });
   function loadGtag(){
     if (!/^(www\.)?consumidormisiones\.com\.ar$/.test(location.hostname)) return;
+    // Navegadores automatizados (Lighthouse, robots) no se miden: ensucian GA4 con poco tráfico.
+    if (navigator.webdriver || /HeadlessChrome|Lighthouse|PageSpeed|bot|crawler|spider/i.test(navigator.userAgent)) return;
     if(window._gtagLoaded) return;
     window._gtagLoaded = true;
     var s = document.createElement('script');

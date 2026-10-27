@@ -51,6 +51,19 @@ layout: default
 {{ content }}
 </div>
 
+{% if page.wizard_vertical %}
+{% comment %}Notas del mismo tema en rotación (las siguientes a esta), sin repetir los enlaces del cuerpo. Fintech, débito y banco forman un solo grupo.{% endcomment %}
+{% if page.wizard_vertical == "ahorro" %}{% assign rel = site.posts | where: "wizard_vertical", "ahorro" %}{% else %}{% assign rel = site.posts | where_exp: "p", "p.wizard_vertical != 'ahorro'" %}{% endif %}
+{% assign idx = 0 %}{% for p in rel %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+{% capture items %}{% assign n = 0 %}{% for i in (1..rel.size) %}{% assign j = idx | plus: i | modulo: rel.size %}{% assign p = rel[j] %}{% if n < 4 and p.url != page.url %}{% unless content contains p.url %}<li><a href="{{ p.url | relative_url }}">{{ p.h1 | default: p.title }}</a></li>{% assign n = n | plus: 1 %}{% endunless %}{% endif %}{% endfor %}{% endcapture %}
+{% if n > 0 %}
+<nav class="relacionadas" aria-label="Más notas">
+<p class="rel-t">Más notas{% if page.vertical %} · {{ page.vertical }}{% endif %}</p>
+<ul>{{ items }}</ul>
+</nav>
+{% endif %}
+{% endif %}
+
 {% if page.faq %}
 <script type="application/ld+json">
 {
