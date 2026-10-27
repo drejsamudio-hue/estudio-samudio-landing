@@ -134,6 +134,15 @@
   .cabecera .cuerpo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
   .cabecera .marca-estudio{font-family:var(--mono);font-size:12px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)}
   .cabecera .lugar-estudio{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)}
+  .cabecera .cab-der{display:flex;align-items:center;gap:24px}
+  .cabecera .cab-nav{display:none}
+  @media(min-width:761px){
+    .cabecera .cuerpo{padding-top:4px;padding-bottom:4px}
+    .cabecera .cab-nav{display:flex;gap:20px}
+    .cabecera .cab-nav a{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;
+                         color:var(--tinta-45);text-decoration:none;display:inline-block;padding:10px 0}
+    .cabecera .cab-nav a:hover{color:var(--tierra)}
+  }
   .hero{padding-top:22px;padding-bottom:20px}
   @media(min-width:761px){.hero{padding-top:30px;padding-bottom:24px}}
   /* Título corto (brief 1b): ~26px mobile / ~32px desktop, una sola línea de copy */
@@ -197,6 +206,19 @@
   .vbtn .go{margin-top:auto;font-size:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--tierra);
             display:flex;align-items:center;gap:7px;transition:gap .18s}
   .vbtn:hover .go{gap:11px;opacity:1}
+  .vbtn > span:nth-child(2){flex:1}
+  @media(min-width:660px){
+    .verticales .vbtn:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row;align-items:center;gap:22px}
+    .verticales .vbtn:last-child:nth-child(odd) .go{margin:0 0 0 auto}
+  }
+  @media(max-width:659px){
+    .verticales{gap:10px}
+    .vbtn{display:grid;grid-template-columns:44px 1fr auto;align-items:center;column-gap:14px;padding:14px 16px;min-height:76px}
+    .vico{width:44px;height:44px}
+    .vbtn b{font-size:19px;margin-bottom:3px}
+    .vbtn .d{font-size:15px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .vbtn .go-tx{display:none}
+  }
 
   /* ── CONFIANZA (paso 3) ── */
   .confianza{margin:0 0 26px;padding:14px 18px;background:var(--papel2);border:1px solid var(--linea);border-radius:4px;
@@ -330,6 +352,7 @@
   .chip svg{color:var(--tierra);flex:none}
 
   footer{background:var(--tinta);color:var(--pie-texto);font-size:15px;line-height:1.6;padding:38px 0 26px}
+  @media(max-width:760px){footer{padding-bottom:calc(26px + 76px + env(safe-area-inset-bottom))}}
   footer .in{max-width:880px;margin:0 auto;padding:0 22px}
   @media(min-width:761px){footer .in{padding-left:calc(var(--margen) + 40px);padding-right:44px}}
   footer b{color:#fff;font-weight:700;letter-spacing:-.2px}
@@ -386,7 +409,10 @@
   <div class="cabecera">
     <div class="cuerpo">
       <span class="marca-estudio">Estudio Samudio</span>
-      <span class="lugar-estudio">Posadas · Misiones</span>
+      <div class="cab-der">
+        <nav class="cab-nav" aria-label="Principal"><a href="/notas/">Guías</a><a href="/quien-soy/">Quién soy</a></nav>
+        <span class="lugar-estudio">Posadas · Misiones</span>
+      </div>
     </div>
   </div>
 
@@ -422,7 +448,7 @@
               <b>Plan de ahorro de auto</b>
               <span class="d">Cuota que se disparó, no te entregan el vehículo, integraciones o cargos sorpresa, trabas para dar de baja.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="banco" type="button">
             <span class="vico">
@@ -432,7 +458,7 @@
               <b>Reclamo bancario</b>
               <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="fintech" type="button">
             <span class="vico">
@@ -442,7 +468,7 @@
               <b>Fintech / préstamo digital</b>
               <span class="d">Préstamo que no pediste, cargo o membresía no autorizada en billetera digital o plataforma online.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="debito" type="button">
             <span class="vico">
@@ -452,7 +478,7 @@
               <b>Débito duplicado</b>
               <span class="d">Pagaste manualmente y el proveedor igual ejecutó el débito automático, cobrándote dos veces.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="descuentos" type="button">
             <span class="vico">
@@ -462,7 +488,7 @@
               <b>Descuentos que se comen tu sueldo</b>
               <span class="d">Entre cuotas de préstamos y débitos automáticos te queda muy poco del sueldo, o no te dejan frenar los débitos.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
         </div>
       </div>
