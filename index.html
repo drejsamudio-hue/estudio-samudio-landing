@@ -99,6 +99,7 @@
     --papel:#FAF7F1; --papel2:#F2EDE3; --nieve:#FEFCF8;
     --tierra:#A8452A; --tierra-claro:#B44C2F; --tierra-oscuro:#8A3520; --tierra-suave:#F6E8E1;
     --tinta:#12233B; --tinta-70:#5A6474; --tinta-45:#5A6474;
+    --pie-texto:#A9B6C8;
     --linea:#E3DCCF; --linea-fuerte:#D2C8B6;
     --verde:#1e7d44; --amarillo:#c9891b; --rojo:#a33;
     --display:"Archivo","Archivo-fallback",system-ui,sans-serif;
@@ -131,8 +132,17 @@
   /* ── MASTHEAD ── */
   .cabecera{position:relative;z-index:1;border-bottom:1px solid var(--linea);background:var(--papel)}
   .cabecera .cuerpo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
-  .cabecera .marca-estudio{font-family:var(--mono);font-size:10px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)}
-  .cabecera .lugar-estudio{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)}
+  .cabecera .marca-estudio{font-family:var(--mono);font-size:12px;letter-spacing:2.2px;text-transform:uppercase;font-weight:600;color:var(--tierra)}
+  .cabecera .lugar-estudio{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--tinta-45)}
+  .cabecera .cab-der{display:flex;align-items:center;gap:24px}
+  .cabecera .cab-nav{display:none}
+  @media(min-width:761px){
+    .cabecera .cuerpo{padding-top:4px;padding-bottom:4px}
+    .cabecera .cab-nav{display:flex;gap:20px}
+    .cabecera .cab-nav a{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;
+                         color:var(--tinta-45);text-decoration:none;display:inline-block;padding:10px 0}
+    .cabecera .cab-nav a:hover{color:var(--tierra)}
+  }
   .hero{padding-top:22px;padding-bottom:20px}
   @media(min-width:761px){.hero{padding-top:30px;padding-bottom:24px}}
   /* Título corto (brief 1b): ~26px mobile / ~32px desktop, una sola línea de copy */
@@ -171,7 +181,7 @@
                color:var(--tierra-oscuro)}
   @media(min-width:761px){
     .anot .marca{position:absolute;left:calc(-1 * (var(--margen) + 40px) + 18px);top:60px;width:calc(var(--margen) - 30px);
-                 text-align:right;font-size:11px;letter-spacing:1.4px;line-height:1.35;color:var(--tinta-45);opacity:1;font-family:var(--mono)}
+                 text-align:right;font-size:12px;letter-spacing:1px;line-height:1.35;color:var(--tinta-45);opacity:1;font-family:var(--mono)}
   }
   h2{font-family:var(--display);font-weight:700;font-size:clamp(29px,4.8vw,40px);line-height:1.06;letter-spacing:-1.2px;
      margin:10px 0 12px;text-wrap:pretty}
@@ -196,6 +206,26 @@
   .vbtn .go{margin-top:auto;font-size:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--tierra);
             display:flex;align-items:center;gap:7px;transition:gap .18s}
   .vbtn:hover .go{gap:11px;opacity:1}
+  .vbtn > span:nth-child(2){flex:1}
+  @media(min-width:660px){
+    .verticales .vbtn:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row;align-items:center;gap:22px}
+    .verticales .vbtn:last-child:nth-child(odd) .go{margin:0 0 0 auto}
+  }
+  @media(max-width:659px){
+    .verticales{gap:10px}
+    .vbtn{display:grid;grid-template-columns:44px 1fr auto;align-items:center;column-gap:14px;padding:14px 16px;min-height:76px}
+    .vico{width:44px;height:44px}
+    .vbtn b{font-size:19px;margin-bottom:3px}
+    .vbtn .d{font-size:15px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .vbtn .go-tx{display:none}
+  }
+
+  /* ── CONFIANZA (paso 3) ── */
+  .confianza{margin:0 0 26px;padding:14px 18px;background:var(--papel2);border:1px solid var(--linea);border-radius:4px;
+             font-size:15px;line-height:1.5;color:var(--tinta-70)}
+  .confianza b{display:block;font-family:var(--mono);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+               color:var(--tierra-oscuro);margin-bottom:4px}
+  .confianza a{color:var(--tierra-oscuro)}
 
   /* ── PREGUNTAS ── */
   .q{margin:0 0 34px}
@@ -226,7 +256,7 @@
     transition:border-color .15s,box-shadow .15s,background .15s}
   input::placeholder{color:#B0A896}
   input:hover,select:hover{border-color:#C0B49F}
-  input:focus,select:focus{outline:none;background:#fff;border-color:var(--tierra);box-shadow:0 0 0 4px rgba(168,69,42,.13)}
+  input:focus,select:focus{outline:2px solid var(--tierra);outline-offset:2px;background:#fff;border-color:var(--tierra);box-shadow:0 0 0 4px rgba(168,69,42,.13)}
   select{appearance:none;padding-right:46px;cursor:pointer;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23A8452A' stroke-width='2' stroke-linecap='round'/></svg>");
     background-repeat:no-repeat;background-position:right 17px center}
@@ -296,7 +326,7 @@
 
   /* ── NORMAS EN DICTAMEN ── */
   .normas-bloque{margin:20px 0 8px;padding:18px 20px;background:var(--papel2);border:1px solid var(--linea);border-radius:4px}
-  .normas-bloque .nb-label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;
+  .normas-bloque .nb-label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
                             color:var(--tinta-45);margin-bottom:10px}
   .normas-bloque .nb-item{display:block;font-family:var(--mono);font-size:14.5px;color:var(--tierra);line-height:1.8;font-weight:600}
 
@@ -309,13 +339,6 @@
   .voces{margin:8px 0 0;padding-top:40px;border-top:1px solid var(--linea)}
   .voces .tit{font-family:var(--display);font-size:clamp(24px,3.8vw,32px);line-height:1.1;letter-spacing:-1px;margin:8px 0 6px;font-weight:700}
   .voces .sub{font-size:16.5px;color:var(--tinta-70);margin:0 0 26px;max-width:50ch}
-  .grid-voces{display:grid;grid-template-columns:1fr;gap:16px}
-  @media(min-width:660px){.grid-voces{grid-template-columns:1fr 1fr}}
-  .voz{background:var(--nieve);border:1px solid var(--linea);border-radius:11px;padding:20px;box-shadow:var(--sombra);position:relative}
-  .voz .comilla{font-family:var(--display);font-size:44px;line-height:.6;color:var(--tierra);opacity:.28;display:block;margin-bottom:8px}
-  .voz p{font-family:var(--sans);font-size:16px;line-height:1.55;margin:0 0 14px;text-wrap:pretty;color:var(--tinta)}
-  .voz .atrib{font-family:var(--mono);font-size:12.5px;line-height:1.4;letter-spacing:.3px;color:var(--tinta-45);
-              border-top:1px solid var(--linea);padding-top:12px;margin:0}
 
   /* ── CREDENCIALES (barra, después del wizard) ── */
   .cred-barra{position:relative;z-index:1;margin-top:36px;background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
@@ -328,12 +351,17 @@
         background:var(--papel2);border:1px solid var(--linea);border-radius:999px;padding:9px 15px}
   .chip svg{color:var(--tierra);flex:none}
 
-  footer{background:var(--tinta);color:#A9B6C8;font-size:15px;line-height:1.6;padding:38px 0}
+  footer{background:var(--tinta);color:var(--pie-texto);font-size:15px;line-height:1.6;padding:38px 0 26px}
+  @media(max-width:760px){footer{padding-bottom:calc(26px + 76px + env(safe-area-inset-bottom))}}
   footer .in{max-width:880px;margin:0 auto;padding:0 22px}
   @media(min-width:761px){footer .in{padding-left:calc(var(--margen) + 40px);padding-right:44px}}
   footer b{color:#fff;font-weight:700;letter-spacing:-.2px}
   footer .t{color:#D9906F}
-  footer span[style]{display:block;margin-top:5px}
+  footer .pie-mat,footer .pie-aviso{display:block;margin-top:5px}
+  footer .pie-mat{font-family:var(--mono);font-size:13px}
+  footer .pie-aviso{font-size:14px}
+  footer .pie-links{display:flex;flex-wrap:wrap;gap:0 24px;margin-top:6px}
+  footer .pie-links a{display:inline-block;padding:12px 0;font-size:14px;color:var(--pie-texto)}
   a{color:var(--tierra)}
   a:hover{color:var(--tierra-oscuro)}
   /* Escala de lectura */
@@ -381,7 +409,10 @@
   <div class="cabecera">
     <div class="cuerpo">
       <span class="marca-estudio">Estudio Samudio</span>
-      <span class="lugar-estudio">Posadas · Misiones</span>
+      <div class="cab-der">
+        <nav class="cab-nav" aria-label="Principal"><a href="/notas/">Guías</a><a href="/quien-soy/">Quién soy</a></nav>
+        <span class="lugar-estudio">Posadas · Misiones</span>
+      </div>
     </div>
   </div>
 
@@ -417,7 +448,7 @@
               <b>Plan de ahorro de auto</b>
               <span class="d">Cuota que se disparó, no te entregan el vehículo, integraciones o cargos sorpresa, trabas para dar de baja.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="banco" type="button">
             <span class="vico">
@@ -427,7 +458,7 @@
               <b>Reclamo bancario</b>
               <span class="d">Seguro no solicitado, comisiones o cargos que no reconocés, débitos automáticos no autorizados.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="fintech" type="button">
             <span class="vico">
@@ -437,7 +468,7 @@
               <b>Fintech / préstamo digital</b>
               <span class="d">Préstamo que no pediste, cargo o membresía no autorizada en billetera digital o plataforma online.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="debito" type="button">
             <span class="vico">
@@ -447,7 +478,7 @@
               <b>Débito duplicado</b>
               <span class="d">Pagaste manualmente y el proveedor igual ejecutó el débito automático, cobrándote dos veces.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="vbtn" data-v="descuentos" type="button">
             <span class="vico">
@@ -457,7 +488,7 @@
               <b>Descuentos que se comen tu sueldo</b>
               <span class="d">Entre cuotas de préstamos y débitos automáticos te queda muy poco del sueldo, o no te dejan frenar los débitos.</span>
             </span>
-            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap">Es mi caso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="go" style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;white-space:nowrap"><span class="go-tx">Es mi caso</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </button>
         </div>
       </div>
@@ -488,6 +519,10 @@
         <span class="marca">Foja III</span>
         <h2>Dejanos tus datos para enviarte la evaluación</h2>
         <p class="lead">Te contactamos solo por tu consulta. No enviamos publicidad.</p>
+        <div class="confianza">
+          <b>Quién lee tu consulta</b>
+          <span>La revisa el Dr. Estanislao J. Samudio, abogado matriculado (Mat. CAM 4372 · Mat. STJM 4031). Usamos tus datos solo para evaluar tu caso y contactarte. <a href="/privacidad/" target="_blank" rel="noopener">Política de privacidad</a>.</span>
+        </div>
         <div class="fila">
           <div class="campo" id="wNombre">
             <label class="lb" for="fNombre">Nombre y apellido</label>
@@ -564,25 +599,13 @@
 
   <div class="cuerpo">
     <div style="padding:28px 0 0">
-      <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 14px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
-      <p style="margin:0 0 24px;font-size:14.5px"><a href="/notas/" style="color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
+      <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 5px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
+      <p style="margin:0 0 15px;font-size:14.5px"><a href="/notas/" style="display:inline-block;padding:9px 0;color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
       <div style="border-top:1px solid var(--linea);padding-top:24px">
         <section class="voces" style="margin:0;padding:0;border:none">
-      <span class="marca" style="font-family:var(--display);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra)">Consultas atendidas</span>
-      <h2 class="tit">Gente de Misiones que dio el primer paso</h2>
-      <p class="sub">Comentarios de personas que consultaron al estudio. Publicados con su autorización; iniciales y localidad para preservar la identidad.</p>
-      <div class="grid-voces">
-        <div class="voz">
-          <span class="comilla" aria-hidden="true">&ldquo;</span>
-          <p>Pagué el plan cuatro años y la cuota se me fue al doble. Pensé que no había nada que hacer. Me explicaron en criollo qué papeles juntar y qué se podía reclamar.</p>
-          <p class="atrib">R. M. · Posadas · plan de ahorro de auto</p>
-        </div>
-        <div class="voz">
-          <span class="comilla" aria-hidden="true">&ldquo;</span>
-          <p>Me descontaban un seguro que nunca pedí. Fui al banco tres veces y nada. Acá me dijeron con qué resúmenes empezar y cómo dejar el reclamo por escrito.</p>
-          <p class="atrib">S. A. · Oberá · reclamo bancario</p>
-        </div>
-      </div>
+      <span class="marca" style="font-family:var(--display);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra)">Experiencia del estudio</span>
+      <h2 class="tit">Experiencia positiva en casos del estudio</h2>
+      <p class="sub">El estudio acompaña reclamos de planes de ahorro, bancos, fintech y débitos automáticos, y la experiencia en estos casos ha sido positiva. Cada situación se analiza por separado y ningún resultado está garantizado.</p>
       <div class="marco">
         <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Atención por WhatsApp, sin turno previo</span>
         <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Trato directo con el abogado, no con un call center</span>
@@ -602,9 +625,9 @@
 <footer>
   <div class="in">
     <b>Estudio Samudio</b> — Derecho del Consumidor · <span class="t">Posadas y provincia de Misiones</span><br>
-    <span style="font-family:var(--mono);font-size:13px;opacity:.75">Dr. Estanislao J. Samudio · Mat. CAM 4372 · Mat. STJM 4031</span><br>
-    <span style="font-size:14px;opacity:.8">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span><br>
-    <span style="font-size:13px;margin-top:10px;display:inline-block;opacity:.7"><a href="/notas/" style="color:#A9B6C8">Notas</a> · <a href="/quien-soy/" style="color:#A9B6C8">Quién soy</a> · <a href="/privacidad/" style="color:#A9B6C8">Privacidad</a></span>
+    <span class="pie-mat">Dr. Estanislao J. Samudio · Mat. CAM 4372 · Mat. STJM 4031</span><br>
+    <span class="pie-aviso">Información general al consumidor. No constituye asesoramiento legal sobre un caso concreto.</span><br>
+    <nav class="pie-links" aria-label="Enlaces del sitio"><a href="/notas/">Notas</a><a href="/quien-soy/">Quién soy</a><a href="/privacidad/">Privacidad</a></nav>
   </div>
 </footer>
 

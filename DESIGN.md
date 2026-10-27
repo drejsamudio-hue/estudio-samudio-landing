@@ -16,7 +16,8 @@ Fuente única de verdad de los tokens. Están declarados en `_layouts/default.ht
 | `--tierra-suave` | `#F6E8E1` | fondos de acento |
 | `--tinta` | `#12233B` | texto principal, footer |
 | `--tinta-70` | `#5A6474` | bajadas, texto secundario |
-| `--tinta-45` | `#5A6474` | metadatos, disclaimers, nav. Igual a `--tinta-70`: el valor anterior `#8C93A0` daba 2.89:1 sobre `--papel` (falla WCAG AA). |
+| `--tinta-45` | `#5A6474` | metadatos, disclaimers, nav. **Hoy es idéntico a `--tinta-70`** (se conserva el nombre por compatibilidad): el valor anterior `#8C93A0` daba 2.89:1 sobre `--papel` (falla WCAG AA). |
+| `--pie-texto` | `#A9B6C8` | texto y enlaces del pie sobre `--tinta` (≈ 7,6:1). Color sólido: no bajarlo con `opacity`. |
 | `--linea` | `#E3DCCF` | separadores |
 | `--linea-fuerte` | `#D2C8B6` | subrayado de enlaces |
 
@@ -31,12 +32,22 @@ Fondo exterior: `#EFE9DE` con `radial-gradient(1200px 600px at 50% -10%, #F7F1E6
 | `--mono` | IBM Plex Mono 400/600 | eyebrows, matrículas, disclaimers, navegación |
 
 Los eyebrows van en mono, uppercase, `letter-spacing` 2.2–3.5px, color `--tierra`.
+Ningún texto baja de **12px**.
 
 ## Layout
 
 - Ancho de lectura: `.hoja` máx. **760px**; párrafos y bajadas limitados a `52ch`.
 - Padding lateral: 32px móvil / 64px desde 700px.
 - La sombra de `.hoja` se desactiva por debajo de 760px.
+
+## Accesibilidad
+
+- **Objetivos táctiles:** todo enlace o botón aislado mide al menos 24px de alto (WCAG 2.2, 2.5.8), con 8px o más
+  hasta el siguiente. Se logra con `padding` en un `inline-block`, no agrandando la letra. Los enlaces del pie
+  apuntan a 44px. Los enlaces dentro de un párrafo están exentos.
+- **Contraste:** 4.5:1 como mínimo para texto, calculado sobre el fondo efectivo (gradientes y `opacity` incluidos).
+- **Foco:** `:focus-visible` con `outline` de 2px en `--tierra` y `outline-offset`. Los inputs lo muestran además del
+  cambio de borde; no depender solo del color.
 
 ## Reglas
 

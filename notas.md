@@ -11,7 +11,7 @@ permalink: /notas/
   .listado .lead{color:var(--tinta-70);margin:0 0 32px;font-size:16.5px;max-width:52ch}
   .item{border-top:1px solid var(--linea);padding:24px 0}
   .item:first-of-type{border-top:none}
-  .item .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
+  .item .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2.2px;text-transform:uppercase;
                   color:var(--tierra);font-weight:600;margin:0 0 8px}
   .item h2{font-family:var(--serif);font-weight:700;font-size:23px;letter-spacing:-.5px;margin:0 0 8px}
   .item h2 a{color:var(--tinta);text-decoration:none}

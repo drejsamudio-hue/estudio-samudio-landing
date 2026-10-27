@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="nota"{% if page.date %} itemscope itemtype="https://schema.org/Article"{% endif %}>
 <style>
-  .nota .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  .nota .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
                  color:var(--tierra);font-weight:600;margin:0 0 14px}
   .nota h1{font-family:var(--serif);font-weight:800;font-size:clamp(32px,6vw,46px);line-height:1.05;
             letter-spacing:-1.2px;color:var(--tinta);margin:0 0 16px;text-wrap:balance}
@@ -20,19 +20,23 @@ layout: default
                      border-top:1px solid var(--linea);padding-top:18px;margin-top:32px;line-height:1.6}
   .cta-caja{background:var(--papel2);border:1px solid var(--linea);border-radius:4px;padding:22px 24px;margin:30px 0}
   .cta-caja p{margin:0 0 14px;font-size:16px}
+  .cta-medio{padding:18px 22px;margin:28px 0}
+  .cta-medio p{margin:0 0 12px}
   .cta-btn{display:inline-block;background:linear-gradient(180deg,var(--tierra-claro),var(--tierra));
            color:#fff !important;text-decoration:none;font-weight:600;padding:13px 22px;border-radius:9px;
            font-size:16px;box-shadow:0 10px 22px -12px rgba(168,69,42,.7)}
   .cta-btn:hover{filter:brightness(1.06)}
   .relacionadas{border-top:1px solid var(--linea);margin:34px 0 0;padding-top:18px}
-  .relacionadas .rel-t{font-family:var(--mono);font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
+  .relacionadas .rel-t{font-family:var(--mono);font-size:12px;letter-spacing:2.2px;text-transform:uppercase;
                        color:#5A6474;font-weight:600;margin:0 0 10px}
   .relacionadas ul{list-style:none;margin:0;padding:0}
   .relacionadas li{margin:0 0 8px;font-size:15.5px;line-height:1.5}
-  .relacionadas a{color:var(--tierra-oscuro);text-decoration:none;border-bottom:1px solid var(--linea-fuerte)}
-  .relacionadas a:hover{color:var(--tierra);border-bottom-color:var(--tierra)}
-  .breadcrumb{font-family:var(--mono);font-size:11px;letter-spacing:.6px;color:#5A6474;margin:0 0 18px}
-  .breadcrumb a{color:#5A6474;text-decoration:none;border-bottom:1px solid var(--linea)}
+  .relacionadas a{color:var(--tierra-oscuro);text-decoration:underline;text-decoration-color:var(--linea-fuerte);text-underline-offset:3px;
+                  display:inline-block;padding:3px 0}
+  .relacionadas a:hover{color:var(--tierra);text-decoration-color:var(--tierra)}
+  .breadcrumb{font-family:var(--mono);font-size:12px;letter-spacing:.6px;color:#5A6474;margin:0 0 4px}
+  .breadcrumb a{color:#5A6474;text-decoration:underline;text-decoration-color:var(--linea-fuerte);text-underline-offset:3px;
+                display:inline-block;padding:7px 0}
   .breadcrumb a:hover{color:var(--tierra)}
   .nota .meta{font-family:var(--mono);font-size:12px;color:#5A6474;margin:-8px 0 22px}
 </style>
@@ -48,7 +52,10 @@ layout: default
 {% if page.date %}<p class="meta">Por <span itemprop="author">Estudio Samudio — Dr. Estanislao J. Samudio · Mat. CAM 4372 · STJM 4031</span> · <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time> · Posadas, Misiones</p>{% endif %}
 
 <div itemprop="articleBody">
+{% assign partes = content | split: '<h2' %}
+{% if page.wizard_vertical and partes.size > 5 %}{% for parte in partes %}{% unless forloop.first %}{% if forloop.index == 4 %}{% include cta-medio.html %}{% endif %}<h2{% endunless %}{{ parte }}{% endfor %}{% else %}
 {{ content }}
+{% endif %}
 </div>
 
 {% if page.wizard_vertical %}
