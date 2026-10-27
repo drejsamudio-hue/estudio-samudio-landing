@@ -47,6 +47,7 @@ exclude:
   - informes
   - docs
   - scripts
+  - tests
 
 # Defaults para que cada nota herede SEO completo sin repetir front matter
 defaults:
