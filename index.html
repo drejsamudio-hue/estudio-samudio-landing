@@ -140,7 +140,7 @@
     .cabecera .cuerpo{padding-top:4px;padding-bottom:4px}
     .cabecera .cab-nav{display:flex;gap:20px}
     .cabecera .cab-nav a{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;
-                         color:var(--tinta-45);text-decoration:none;display:inline-block;padding:10px 0}
+                         color:var(--tinta-45);text-decoration:none;display:inline-block;padding:15px 0}
     .cabecera .cab-nav a:hover{color:var(--tierra)}
   }
   .hero{padding-top:22px;padding-bottom:20px}
@@ -161,6 +161,7 @@
               display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;
               color:var(--tinta-45);background:var(--nieve);transition:.35s}
   .folio .tx{display:none}
+  .folio.on .tx{display:inline}
   @media(min-width:600px){.folio .tx{display:inline}}
   .folio.on{color:var(--tinta);font-weight:600}
   .folio.on .num{border-color:var(--tierra);background:var(--tierra);color:#fff;box-shadow:0 0 0 4px rgba(168,69,42,.12)}
@@ -269,6 +270,17 @@
   .consent:hover{background:#EFE9DD}
   .consent input{width:24px;height:24px;flex:none;margin:1px 0 0;accent-color:var(--tierra)}
   .campo.err .consent{border-color:var(--rojo);background:#FDF5F5}
+  .q .emsg{margin:12px 0 0}
+  .q.err .emsg{display:block}
+  .resumen-err{margin:0 0 30px;padding:16px 18px;border:1.5px solid var(--rojo);border-radius:9px;background:#FDF5F5;
+               color:var(--rojo);font-size:16px;line-height:1.45}
+  .resumen-err b{display:block;font-weight:700;margin-bottom:6px}
+  .resumen-err ul{margin:0;padding-left:20px}
+  .resumen-err li{margin:2px 0}
+  .resumen-err a{display:block;padding:6px 0;color:var(--rojo);text-decoration:underline;text-underline-offset:3px}
+  .resumen-err:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
+  .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  h2[tabindex="-1"]:focus{outline:none}
 
   /* ── BOTONES ── */
   .acciones{display:flex;flex-direction:column;gap:12px;margin-top:34px;padding-top:28px;border-top:1px solid var(--linea)}
@@ -421,12 +433,12 @@
   </div>
 
   <div class="foliado">
-    <div class="in" id="foliado">
-      <div class="folio on" data-s="1"><span class="num" data-n="I">I</span><span class="tx">Tu situación</span></div>
-      <span class="rule" data-r="1"><i></i></span>
-      <div class="folio" data-s="2"><span class="num" data-n="II">II</span><span class="tx">Preguntas</span></div>
-      <span class="rule" data-r="2"><i></i></span>
-      <div class="folio" data-s="3"><span class="num" data-n="III">III</span><span class="tx">Tus datos</span></div>
+    <div class="in" id="foliado" role="group" aria-label="Progreso de la evaluación">
+      <div class="folio on" data-s="1" aria-current="step"><span class="sr">Paso 1 de 3: Tu situación</span><span class="num" data-n="I" aria-hidden="true">I</span><span class="tx" aria-hidden="true">Tu situación</span></div>
+      <span class="rule" data-r="1" aria-hidden="true"><i></i></span>
+      <div class="folio" data-s="2"><span class="sr">Paso 2 de 3: Preguntas</span><span class="num" data-n="II" aria-hidden="true">II</span><span class="tx" aria-hidden="true">Preguntas</span></div>
+      <span class="rule" data-r="2" aria-hidden="true"><i></i></span>
+      <div class="folio" data-s="3"><span class="sr">Paso 3 de 3: Tus datos</span><span class="num" data-n="III" aria-hidden="true">III</span><span class="tx" aria-hidden="true">Tus datos</span></div>
     </div>
   </div>
 
@@ -500,6 +512,7 @@
         <span class="marca">Foja II</span>
         <h2 id="wizTitle">Contanos un poco más</h2>
         <p class="lead">Cuatro preguntas rápidas. Ninguna respuesta te compromete a nada.</p>
+        <div class="resumen-err" id="wizResumen" role="alert" tabindex="-1" hidden></div>
         <div id="wizForm"></div>
         <div class="acciones">
           <button class="btn" id="toStep3" type="button">Continuar
@@ -527,7 +540,7 @@
           <div class="campo" id="wNombre">
             <label class="lb" for="fNombre">Nombre y apellido</label>
             <input type="text" id="fNombre" autocomplete="name" required>
-            <div class="emsg">Completá tu nombre para continuar.</div>
+            <div class="emsg" id="eNombre">Completá tu nombre para continuar.</div>
           </div>
           <div class="campo">
             <label class="lb" for="fLocalidad">Localidad</label>
@@ -538,7 +551,7 @@
           <div class="campo" id="wTel">
             <label class="lb" for="fTel">WhatsApp / Teléfono</label>
             <input type="tel" id="fTel" autocomplete="tel" inputmode="tel" required>
-            <div class="emsg">Necesitamos un teléfono o WhatsApp para contactarte.</div>
+            <div class="emsg" id="eTel">Necesitamos un teléfono o WhatsApp para contactarte.</div>
           </div>
           <div class="campo">
             <label class="lb" for="fEmail">Email <span class="hint">(opcional)</span></label>
@@ -562,7 +575,7 @@
             <input type="checkbox" id="fConsent">
             <span>Autorizo a ser contactado/a por el estudio y el tratamiento de mis datos personales conforme a la <a href="/privacidad/" style="color:var(--tierra-oscuro)" target="_blank" rel="noopener">política de privacidad</a>, con el único fin de evaluar mi consulta.</span>
           </label>
-          <div class="emsg">Necesitamos tu consentimiento para poder contactarte.</div>
+          <div class="emsg" id="eConsent">Necesitamos tu consentimiento para poder contactarte.</div>
         </div>
         <div class="acciones">
           <button class="btn" id="verResultado" type="button">Ver mi resultado</button>
@@ -600,7 +613,7 @@
   <div class="cuerpo">
     <div style="padding:28px 0 0">
       <p style="font-size:17px;line-height:1.55;color:var(--tinta-70);margin:0 0 5px">Planes de ahorro, reclamos bancarios, fintech, débitos duplicados y descuentos sobre el sueldo. Respondé unas pocas preguntas y te damos una primera lectura orientativa sobre si conviene avanzar.</p>
-      <p style="margin:0 0 15px;font-size:14.5px"><a href="/notas/" style="display:inline-block;padding:9px 0;color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
+      <p style="margin:0 0 15px;font-size:14.5px"><a href="/notas/" style="display:inline-block;padding:11px 0;color:#8A3520;font-weight:600;text-decoration:none;border-bottom:1px solid #D2C8B6">Leer primero las guías sobre tus derechos →</a></p>
       <div style="border-top:1px solid var(--linea);padding-top:24px">
         <section class="voces" style="margin:0;padding:0;border:none">
       <span class="marca" style="font-family:var(--display);font-size:14px;letter-spacing:1.6px;text-transform:uppercase;color:var(--tierra)">Experiencia del estudio</span>
@@ -815,11 +828,14 @@ function irA(n){
     const done = s < n, on = s === n;
     f.classList.toggle('done', done);
     f.classList.toggle('on', on);
+    if (on) f.setAttribute('aria-current', 'step'); else f.removeAttribute('aria-current');
     num.textContent = done ? TICK : num.dataset.n;
   });
   document.querySelectorAll('.rule').forEach(r => r.classList.toggle('fill', parseInt(r.dataset.r) < n));
   const y = document.getElementById('main').getBoundingClientRect().top + window.pageYOffset - 68;
   window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  const h = document.querySelector('#' + PASOS[n-1] + ' h2');
+  if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
 }
 
 document.querySelectorAll('[data-back]').forEach(b => {
@@ -848,8 +864,8 @@ function renderWizard() {
   const f = document.getElementById('wizForm');
   f.innerHTML = data.qs.map(q => `
     <div class="q" id="q-${q.id}">
-      <span class="qt">${q.t}</span>
-      <div class="opts" role="radiogroup">
+      <span class="qt" id="t-${q.id}">${q.t}</span>
+      <div class="opts" role="radiogroup" aria-labelledby="t-${q.id}">
         ${q.o.map(op => `
           <label class="opt">
             <input type="radio" name="${q.id}" value="${op[1]}" data-q="${q.id}">
@@ -857,31 +873,64 @@ function renderWizard() {
             <span>${op[0]}</span>
           </label>`).join('')}
       </div>
+      <div class="emsg" id="e-${q.id}">Elegí una opción para continuar.</div>
     </div>`).join('');
+  document.getElementById('wizResumen').hidden = true;
   f.querySelectorAll('input[type=radio]').forEach(r => {
     r.addEventListener('change', e => {
-      respuestas[e.target.dataset.q] = parseInt(e.target.value);
+      const id = e.target.dataset.q;
+      respuestas[id] = parseInt(e.target.value);
       f.querySelectorAll(`input[name="${e.target.name}"]`).forEach(o => o.closest('.opt').classList.toggle('on', o.checked));
-      document.getElementById('q-' + e.target.dataset.q).classList.remove('err');
+      marcarPregunta(id, false);
+      quitarDelResumen(id);
     });
   });
 }
 
+function marcarPregunta(id, falta) {
+  const q = document.getElementById('q-' + id);
+  q.classList.toggle('err', falta);
+  const g = q.querySelector('.opts');
+  if (falta) { g.setAttribute('aria-invalid', 'true'); g.setAttribute('aria-describedby', 'e-' + id); }
+  else { g.removeAttribute('aria-invalid'); g.removeAttribute('aria-describedby'); }
+}
+
+function mostrarResumen(faltan) {
+  const res = document.getElementById('wizResumen');
+  res.innerHTML = '<b>Respondé estas preguntas para continuar:</b><ul>' +
+    faltan.map(q => `<li data-q="${q.id}"><a href="#q-${q.id}" data-q="${q.id}">${q.t}</a></li>`).join('') + '</ul>';
+  res.hidden = false;
+  return res;
+}
+
+function quitarDelResumen(id) {
+  const res = document.getElementById('wizResumen');
+  const li = res.querySelector(`li[data-q="${id}"]`);
+  if (li) li.remove();
+  if (!res.querySelector('li')) { res.hidden = true; res.innerHTML = ''; }
+}
+
+document.getElementById('wizResumen').addEventListener('click', e => {
+  const a = e.target.closest('a[data-q]');
+  if (!a) return;
+  e.preventDefault();
+  const q = document.getElementById('q-' + a.dataset.q);
+  window.scrollTo({ top: Math.max(0, q.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
+  const inp = q.querySelector('input');
+  if (inp) inp.focus({ preventScroll: true });
+});
+
 document.getElementById('toStep3').addEventListener('click', () => {
   const data = PREGUNTAS[vertical];
-  let primerFalta = null;
-  data.qs.forEach(q => {
-    const falta = respuestas[q.id] === undefined;
-    document.getElementById('q-' + q.id).classList.toggle('err', falta);
-    if (falta && !primerFalta) primerFalta = q.id;
-  });
-  if (primerFalta) {
-    const el = document.getElementById('q-' + primerFalta);
-    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
-    const inp = el.querySelector('input');
-    if (inp) inp.focus({ preventScroll: true });
+  const faltan = data.qs.filter(q => respuestas[q.id] === undefined);
+  data.qs.forEach(q => marcarPregunta(q.id, respuestas[q.id] === undefined));
+  if (faltan.length) {
+    const res = mostrarResumen(faltan);
+    window.scrollTo({ top: Math.max(0, res.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
+    res.focus({ preventScroll: true });
     return;
   }
+  document.getElementById('wizResumen').hidden = true;
   irA(3);
 });
 
@@ -952,18 +1001,24 @@ function buildMailtoMsg() {
 // ═══════════════════════════════════════════════════════════
 // VALIDACIÓN INLINE
 // ═══════════════════════════════════════════════════════════
+function limpiarError(campo) {
+  campo.classList.remove('err');
+  campo.querySelectorAll('[aria-invalid]').forEach(i => { i.removeAttribute('aria-invalid'); i.removeAttribute('aria-describedby'); });
+}
 function marcarError(wrapId, inputId) {
   const w = document.getElementById(wrapId);
   w.classList.add('err');
   window.scrollTo({ top: Math.max(0, w.getBoundingClientRect().top + window.pageYOffset - 96), behavior: 'smooth' });
   const el = document.getElementById(inputId);
+  const msg = w.querySelector('.emsg');
+  if (el && msg) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', msg.id); }
   if (el) el.focus({ preventScroll: true });
 }
 ['fNombre','fTel'].forEach(id => {
-  document.getElementById(id).addEventListener('input', e => e.target.closest('.campo').classList.remove('err'));
+  document.getElementById(id).addEventListener('input', e => limpiarError(e.target.closest('.campo')));
 });
 document.getElementById('fConsent').addEventListener('change', () => {
-  document.getElementById('wConsent').classList.remove('err');
+  limpiarError(document.getElementById('wConsent'));
 });
 
 // ═══════════════════════════════════════════════════════════
@@ -977,7 +1032,7 @@ document.getElementById('verResultado').addEventListener('click', async () => {
   if (btn.disabled) return;
   const datos = getDatosFormulario();
 
-  document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
+  document.querySelectorAll('#step3 .campo').forEach(limpiarError);
   if (!datos.nombre)   { marcarError('wNombre','fNombre'); return; }
   if (!datos.telefono) { marcarError('wTel','fTel'); return; }
   if (!document.getElementById('fConsent').checked) { marcarError('wConsent','fConsent'); return; }
@@ -1088,11 +1143,12 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   contactoIntentado = false; submissionIdPendiente = null;
   document.querySelectorAll('.vbtn').forEach(x => x.classList.remove('sel'));
   document.getElementById('wizForm').innerHTML = '';
+  document.getElementById('wizResumen').hidden = true;
   ['fNombre','fLocalidad','fTel','fEmail'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('fSituacion').value = '';
   document.getElementById('fConsent').checked = false;
   document.getElementById('saveStatus').innerHTML = '';
-  document.querySelectorAll('#step3 .campo').forEach(f => f.classList.remove('err'));
+  document.querySelectorAll('#step3 .campo').forEach(limpiarError);
   try{localStorage.removeItem('es_wizard');}catch(e){}
   try{sessionStorage.removeItem('es_contacto');}catch(e){}
   try{sessionStorage.removeItem('es_contacto_attempted');}catch(e){}
