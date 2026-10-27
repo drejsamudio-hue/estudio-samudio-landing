@@ -20,6 +20,8 @@ layout: default
                      border-top:1px solid var(--linea);padding-top:18px;margin-top:32px;line-height:1.6}
   .cta-caja{background:var(--papel2);border:1px solid var(--linea);border-radius:4px;padding:22px 24px;margin:30px 0}
   .cta-caja p{margin:0 0 14px;font-size:16px}
+  .cta-medio{padding:18px 22px;margin:28px 0}
+  .cta-medio p{margin:0 0 12px}
   .cta-btn{display:inline-block;background:linear-gradient(180deg,var(--tierra-claro),var(--tierra));
            color:#fff !important;text-decoration:none;font-weight:600;padding:13px 22px;border-radius:9px;
            font-size:16px;box-shadow:0 10px 22px -12px rgba(168,69,42,.7)}
@@ -50,7 +52,10 @@ layout: default
 {% if page.date %}<p class="meta">Por <span itemprop="author">Estudio Samudio — Dr. Estanislao J. Samudio · Mat. CAM 4372 · STJM 4031</span> · <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time> · Posadas, Misiones</p>{% endif %}
 
 <div itemprop="articleBody">
+{% assign partes = content | split: '<h2' %}
+{% if page.wizard_vertical and partes.size > 5 %}{% for parte in partes %}{% unless forloop.first %}{% if forloop.index == 4 %}{% include cta-medio.html %}{% endif %}<h2{% endunless %}{{ parte }}{% endfor %}{% else %}
 {{ content }}
+{% endif %}
 </div>
 
 {% if page.wizard_vertical %}
