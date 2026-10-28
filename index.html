@@ -149,6 +149,8 @@
   h1{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-1.1px;margin:0;text-wrap:balance}
   @media(min-width:761px){h1{font-size:32px}}
   h1 em{font-style:normal;color:var(--tierra);font-weight:800}
+  .hero-sub{margin:10px 0 0;max-width:52ch;font-size:15.5px;line-height:1.45;color:var(--tinta-70);text-wrap:pretty}
+  @media(min-width:761px){.hero-sub{max-width:none}}
 
   /* ── FOLIADO STICKY ── */
   .foliado{position:sticky;top:0;z-index:30;background:rgba(250,247,241,.88);backdrop-filter:saturate(1.4) blur(14px);
@@ -388,6 +390,7 @@
   html[data-escala="grande"] .volver{font-size:18.5px;min-height:62px}
   html[data-escala="grande"] .vbtn .d{font-size:17.5px}
   html[data-escala="grande"] .bajada{font-size:21px}
+  html[data-escala="grande"] .hero-sub{font-size:17.5px}
 
   html[data-escala="mayor"] body{font-size:21.5px}
   html[data-escala="mayor"] .opt{font-size:21.5px;min-height:74px;padding:17px 19px}
@@ -399,6 +402,7 @@
   html[data-escala="mayor"] .btn,html[data-escala="mayor"] .cta{font-size:22.5px;min-height:74px}
   html[data-escala="mayor"] .volver{font-size:20px;min-height:68px}
   html[data-escala="mayor"] .vbtn .d{font-size:19px}
+  html[data-escala="mayor"] .hero-sub{font-size:19px}
   html[data-escala="mayor"] .vbtn b{font-size:30px}
   html[data-escala="mayor"] .bajada{font-size:22.5px}
 
@@ -430,6 +434,7 @@
 
   <div class="cuerpo hero">
     <h1>Evaluá tu caso <em>sin compromiso</em></h1>
+    <p class="hero-sub">Gratis y orientativa. La consulta la lee el Dr.&nbsp;Samudio, abogado matriculado.</p>
   </div>
 
   <div class="foliado">
