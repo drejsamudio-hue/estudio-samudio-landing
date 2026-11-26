@@ -279,7 +279,8 @@
   .resumen-err b{display:block;font-weight:700;margin-bottom:6px}
   .resumen-err ul{margin:0;padding-left:20px}
   .resumen-err li{margin:2px 0}
-  .resumen-err a{display:block;padding:6px 0;color:var(--rojo);text-decoration:underline;text-underline-offset:3px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .resumen-err a{display:block;padding:11px 0;color:var(--rojo);text-decoration:underline;text-underline-offset:3px}
   .resumen-err:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
   .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
   h2[tabindex="-1"]:focus{outline:none}
@@ -582,6 +583,7 @@
           </label>
           <div class="emsg" id="eConsent">Necesitamos tu consentimiento para poder contactarte.</div>
         </div>
+        <div class="hp" aria-hidden="true"><label>No completar este campo<input type="text" id="fSenuelo" name="hp_contacto" tabindex="-1" autocomplete="off"></label></div>
         <div class="acciones">
           <button class="btn" id="verResultado" type="button">Ver mi resultado</button>
           <button class="volver" data-back="2" type="button">
@@ -986,7 +988,8 @@ async function guardarEnSheet(datos, resultado, submissionId) {
     prueba:    respuestas.prueba,
     monto:     respuestas.monto,
     situacion: datos.situacion,
-    origen:    (new URLSearchParams(location.search).get('utm_campaign') || document.referrer || 'directo')
+    origen:    (new URLSearchParams(location.search).get('utm_campaign') || document.referrer || 'directo'),
+    hp:        document.getElementById('fSenuelo').value
   };
   return ContactoSubmit.submitContact(CONFIG.sheetsWebhook, payload, {
     mode: CONFIG.sheetsResponseMode,
